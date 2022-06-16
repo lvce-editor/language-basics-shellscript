@@ -1,0 +1,12 @@
+{
+  "id": "builtin.language-basics-shellscript",
+  "name": "Language Basics Shell Script",
+  "description": "Provides syntax highlighting and bracket matching in Shell Script files.",
+  "languages": [
+    {
+      "id": "shellscript",
+      "extensions": [".sh"],
+      "tokenize": "src/tokenizeShellScript.js"
+    }
+  ]
+}
