@@ -1,6 +1,5 @@
 # Language Basics Shell Script
 
-
 ## Contributing
 
 ```sh
