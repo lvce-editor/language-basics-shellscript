@@ -24,6 +24,7 @@ export const TokenType = {
   Punctuation: 7,
   VariableName: 8,
   Comment: 885,
+  Text: 9,
 }
 
 export const TokenMap = {
@@ -36,6 +37,7 @@ export const TokenMap = {
   [TokenType.Punctuation]: 'Punctuation',
   [TokenType.VariableName]: 'VariableName',
   [TokenType.Comment]: 'Comment',
+  [TokenType.Text]: 'Text',
 }
 
 const RE_LINE_COMMENT_START = /^#/
@@ -111,6 +113,9 @@ export const tokenizeLine = (line, lineState) => {
         } else if ((next = part.match(RE_LINE_COMMENT_START))) {
           token = TokenType.Comment
           state = State.InsideLineComment
+        } else if ((next = part.match(RE_ANYTHING))) {
+          token = TokenType.Text
+          state = State.TopLevelContent
         } else {
           part //?
           throw new Error('no')
