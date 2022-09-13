@@ -55,7 +55,7 @@ const RE_STRING_DOUBLE_QUOTE_CONTENT = /^[^"]+/
 const RE_KEYWORD =
   /^(?:alias|bg|bind|break|builtin|caller|cd|command|compgen|complete|dirs|disown|echo|enable|eval|exec|exit|false|fc|fg|getopts|hash|help|history|jobs|kill|let|logout|popd|printf|pushd|pwd|read|readonly|set|shift|shopt|source|suspend|test|times|trap|true|type|ulimit|umask|unalias|unset|wait)\b/
 
-const RE_VARIABLE_NAME = /^[a-zA-Z]+/
+const RE_VARIABLE_NAME = /^[a-zA-Z\_]+/
 const RE_PUNCTUATION = /^[:,;\{\}\[\]\.=\(\)<>]/
 const RE_NUMERIC = /^\d+/
 
@@ -141,6 +141,9 @@ export const tokenizeLine = (line, lineState) => {
     const tokenLength = next[0].length
     index += tokenLength
     tokens.push(token, tokenLength)
+  }
+  if (state === State.InsideLineComment) {
+    state = State.TopLevelContent
   }
   return {
     state,
