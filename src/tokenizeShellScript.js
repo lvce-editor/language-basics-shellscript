@@ -4,6 +4,7 @@
 export const State = {
   TopLevelContent: 1,
   InsideString: 2,
+  InsideLineComment: 3,
 }
 
 export const StateMap = {
@@ -22,6 +23,7 @@ export const TokenType = {
   Numeric: 6,
   Punctuation: 7,
   VariableName: 8,
+  Comment: 885,
 }
 
 export const TokenMap = {
@@ -33,8 +35,10 @@ export const TokenMap = {
   [TokenType.Numeric]: 'Numeric',
   [TokenType.Punctuation]: 'Punctuation',
   [TokenType.VariableName]: 'VariableName',
+  [TokenType.Comment]: 'Comment',
 }
 
+const RE_LINE_COMMENT_START = /^#/
 const RE_SELECTOR = /^[\.a-zA-Z\d\-\:>]+/
 const RE_WHITESPACE = /^ +/
 const RE_CURLY_OPEN = /^\{/
@@ -44,7 +48,7 @@ const RE_COLON = /^:/
 const RE_PROPERTY_VALUE = /^[^;\}]+/
 const RE_SEMICOLON = /^;/
 const RE_COMMA = /^,/
-const RE_ANYTHING = /^.*/
+const RE_ANYTHING = /^.*/s
 const RE_ANYTHING_UNTIL_CLOSE_BRACE = /^[^\}]+/
 const RE_QUOTE_DOUBLE = /^"/
 const RE_STRING_DOUBLE_QUOTE_CONTENT = /^[^"]+/
@@ -104,6 +108,9 @@ export const tokenizeLine = (line, lineState) => {
         } else if ((next = part.match(RE_QUOTE_DOUBLE))) {
           token = TokenType.PunctuationString
           state = State.InsideString
+        } else if ((next = part.match(RE_LINE_COMMENT_START))) {
+          token = TokenType.Comment
+          state = State.InsideLineComment
         } else {
           part //?
           throw new Error('no')
@@ -116,6 +123,14 @@ export const tokenizeLine = (line, lineState) => {
         } else if ((next = part.match(RE_STRING_DOUBLE_QUOTE_CONTENT))) {
           token = TokenType.String
           state = State.InsideString
+        } else {
+          throw new Error('no')
+        }
+        break
+      case State.InsideLineComment:
+        if ((next = part.match(RE_ANYTHING))) {
+          token = TokenType.Comment
+          state = State.TopLevelContent
         } else {
           throw new Error('no')
         }
