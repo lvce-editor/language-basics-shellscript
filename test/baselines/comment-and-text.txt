@@ -1,4 +1,3 @@
 Comment
-Comment
 NewLine
 VariableName
