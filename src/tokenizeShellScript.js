@@ -40,7 +40,7 @@ export const TokenMap = {
   [TokenType.Text]: 'Text',
 }
 
-const RE_LINE_COMMENT_START = /^#/
+const RE_LINE_COMMENT = /^#.*/s
 const RE_SELECTOR = /^[\.a-zA-Z\d\-\:>]+/
 const RE_WHITESPACE = /^ +/
 const RE_CURLY_OPEN = /^\{/
@@ -110,9 +110,9 @@ export const tokenizeLine = (line, lineState) => {
         } else if ((next = part.match(RE_QUOTE_DOUBLE))) {
           token = TokenType.PunctuationString
           state = State.InsideString
-        } else if ((next = part.match(RE_LINE_COMMENT_START))) {
+        } else if ((next = part.match(RE_LINE_COMMENT))) {
           token = TokenType.Comment
-          state = State.InsideLineComment
+          state = State.TopLevelContent
         } else if ((next = part.match(RE_ANYTHING))) {
           token = TokenType.Text
           state = State.TopLevelContent
@@ -132,23 +132,12 @@ export const tokenizeLine = (line, lineState) => {
           throw new Error('no')
         }
         break
-      case State.InsideLineComment:
-        if ((next = part.match(RE_ANYTHING))) {
-          token = TokenType.Comment
-          state = State.TopLevelContent
-        } else {
-          throw new Error('no')
-        }
-        break
       default:
         throw new Error('no')
     }
     const tokenLength = next[0].length
     index += tokenLength
     tokens.push(token, tokenLength)
-  }
-  if (state === State.InsideLineComment) {
-    state = State.TopLevelContent
   }
   return {
     state,
