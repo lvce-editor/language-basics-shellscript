@@ -57,7 +57,7 @@ const RE_STRING_DOUBLE_QUOTE_CONTENT = /^[^"]+/
 const RE_KEYWORD =
   /^(?:alias|bg|bind|break|builtin|caller|cd|command|compgen|complete|dirs|disown|echo|enable|eval|exec|exit|false|fc|fg|getopts|hash|help|history|jobs|kill|let|logout|popd|printf|pushd|pwd|read|readonly|set|shift|shopt|source|suspend|test|times|trap|true|type|ulimit|umask|unalias|unset|wait)\b/
 
-const RE_VARIABLE_NAME = /^[a-zA-Z\_]+/
+const RE_VARIABLE_NAME = /^[a-zA-Z\_\/\-]+/
 const RE_PUNCTUATION = /^[:,;\{\}\[\]\.=\(\)<>]/
 const RE_NUMERIC = /^\d+/
 
