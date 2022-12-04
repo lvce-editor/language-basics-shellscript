@@ -37,6 +37,7 @@
       "fileNames": [
         "APKBUILD",
         "PKGBUILD",
+        ".INSTALL",
         ".envrc",
         ".hushlogin",
         "zshrc",
