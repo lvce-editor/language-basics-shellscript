@@ -48,6 +48,7 @@ NewLine
 Whitespace
 Keyword
 Whitespace
+VariableName
 Text
 NewLine
 Whitespace

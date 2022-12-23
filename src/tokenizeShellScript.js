@@ -133,7 +133,6 @@ export const tokenizeLine = (line, lineState) => {
           token = TokenType.Comment
           state = State.TopLevelContent
         } else if ((next = part.match(RE_ANYTHING))) {
-          console.log({ part })
           token = TokenType.Text
           state = State.TopLevelContent
         } else {
