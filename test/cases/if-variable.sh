@@ -1,0 +1,1 @@
+if [ -z $CAN_LAUNCH_AS_ROOT ]; then
