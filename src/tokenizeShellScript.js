@@ -25,6 +25,7 @@ export const TokenType = {
   VariableName: 8,
   Comment: 885,
   Text: 9,
+  KeywordControl: 10,
 }
 
 export const TokenMap = {
@@ -38,6 +39,7 @@ export const TokenMap = {
   [TokenType.VariableName]: 'VariableName',
   [TokenType.Comment]: 'Comment',
   [TokenType.Text]: 'Text',
+  [TokenType.KeywordControl]: 'KeywordControl',
 }
 
 const RE_LINE_COMMENT = /^#.*/s
@@ -55,7 +57,7 @@ const RE_ANYTHING_UNTIL_CLOSE_BRACE = /^[^\}]+/
 const RE_QUOTE_DOUBLE = /^"/
 const RE_STRING_DOUBLE_QUOTE_CONTENT = /^[^"]+/
 const RE_KEYWORD =
-  /^(?:alias|bg|bind|break|builtin|caller|cd|command|compgen|complete|dirs|disown|echo|enable|eval|exec|exit|false|fc|fg|getopts|hash|help|history|jobs|kill|let|logout|popd|printf|pushd|pwd|read|readonly|set|shift|shopt|source|suspend|test|times|trap|true|type|ulimit|umask|unalias|unset|wait)\b/
+  /^(?:alias|bg|bind|break|builtin|caller|case|cd|command|compgen|complete|continue|dirs|disown|do|done|echo|else|enable|esac|eval|exec|exit|false|fc|fg|fi|for|getopts|hash|help|history|if|in|jobs|kill|let|logout|popd|printf|pushd|pwd|read|readonly|set|shift|shopt|source|suspend|test|then|times|trap|true|type|ulimit|umask|unalias|unset|wait)\b/
 
 const RE_VARIABLE_NAME = /^[a-zA-Z\_\/\-]+/
 const RE_PUNCTUATION = /^[:,;\{\}\[\]\.=\(\)<>]/
@@ -96,7 +98,24 @@ export const tokenizeLine = (line, lineState) => {
           token = TokenType.Whitespace
           state = State.TopLevelContent
         } else if ((next = part.match(RE_KEYWORD))) {
-          token = TokenType.Keyword
+          switch (next[0]) {
+            case 'if':
+            case 'do':
+            case 'continue':
+            case 'for':
+            case 'else':
+            case 'fi':
+            case 'esac':
+            case 'case':
+            case 'done':
+            case 'in':
+            case 'then':
+              token = TokenType.KeywordControl
+              break
+            default:
+              token = TokenType.Keyword
+              break
+          }
           state = State.TopLevelContent
         } else if ((next = part.match(RE_PUNCTUATION))) {
           token = TokenType.Punctuation
