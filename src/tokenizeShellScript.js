@@ -60,7 +60,7 @@ const RE_KEYWORD =
   /^(?:alias|bg|bind|break|builtin|caller|case|cd|command|compgen|complete|continue|dirs|disown|do|done|echo|else|enable|esac|eval|exec|exit|false|fc|fg|fi|for|getopts|hash|help|history|if|in|jobs|kill|let|logout|popd|printf|pushd|pwd|read|readonly|set|shift|shopt|source|suspend|test|then|times|trap|true|type|ulimit|umask|unalias|unset|wait)\b/
 
 const RE_VARIABLE_NAME = /^[a-zA-Z\_\/\-]+/
-const RE_PUNCTUATION = /^[:,;\{\}\[\]\.=\(\)<>]/
+const RE_PUNCTUATION = /^[:,;\{\}\[\]\.=\(\)<>\!]/
 const RE_NUMERIC = /^\d+/
 
 export const initialLineState = {
