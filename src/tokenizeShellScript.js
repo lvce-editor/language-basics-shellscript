@@ -44,7 +44,7 @@ export const TokenMap = {
 
 const RE_LINE_COMMENT = /^#.*/s
 const RE_SELECTOR = /^[\.a-zA-Z\d\-\:>]+/
-const RE_WHITESPACE = /^ +/
+const RE_WHITESPACE = /^\s+/
 const RE_CURLY_OPEN = /^\{/
 const RE_CURLY_CLOSE = /^\}/
 const RE_PROPERTY_NAME = /^[a-zA-Z\-]+\b/
