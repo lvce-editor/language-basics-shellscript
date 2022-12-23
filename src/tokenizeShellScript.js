@@ -26,6 +26,7 @@ export const TokenType = {
   Comment: 885,
   Text: 9,
   KeywordControl: 10,
+  Function: 11,
 }
 
 export const TokenMap = {
@@ -40,6 +41,7 @@ export const TokenMap = {
   [TokenType.Comment]: 'Comment',
   [TokenType.Text]: 'Text',
   [TokenType.KeywordControl]: 'KeywordControl',
+  [TokenType.Function]: 'Function',
 }
 
 const RE_LINE_COMMENT = /^#.*/s
@@ -57,11 +59,12 @@ const RE_ANYTHING_UNTIL_CLOSE_BRACE = /^[^\}]+/
 const RE_QUOTE_DOUBLE = /^"/
 const RE_STRING_DOUBLE_QUOTE_CONTENT = /^[^"]+/
 const RE_KEYWORD =
-  /^(?:alias|bg|bind|break|builtin|caller|case|cd|command|compgen|complete|continue|dirs|disown|do|done|echo|else|enable|esac|eval|exec|exit|false|fc|fg|fi|for|getopts|hash|help|history|if|in|jobs|kill|let|logout|popd|printf|pushd|pwd|read|readonly|set|shift|shopt|source|suspend|test|then|times|trap|true|type|ulimit|umask|unalias|unset|wait)\b/
+  /^(?:alias|bg|bind|break|builtin|caller|case|cd|command|compgen|complete|continue|dirs|disown|do|done|echo|elif|else|enable|esac|eval|exec|exit|false|fc|fg|fi|for|getopts|hash|help|history|if|in|jobs|kill|let|logout|popd|printf|pushd|pwd|read|readonly|set|shift|shopt|source|suspend|test|then|times|trap|true|type|ulimit|umask|unalias|unset|wait)\b/
 
 const RE_VARIABLE_NAME = /^[a-zA-Z\_\/\-\$]+/
 const RE_PUNCTUATION = /^[:,;\{\}\[\]\.=\(\)<>\!]/
 const RE_NUMERIC = /^\d+/
+const RE_FUNCTION_NAME = /^\w+(?=\()/
 
 export const initialLineState = {
   state: State.TopLevelContent,
@@ -110,6 +113,7 @@ export const tokenizeLine = (line, lineState) => {
             case 'done':
             case 'in':
             case 'then':
+            case 'elif':
               token = TokenType.KeywordControl
               break
             default:
@@ -119,6 +123,9 @@ export const tokenizeLine = (line, lineState) => {
           state = State.TopLevelContent
         } else if ((next = part.match(RE_PUNCTUATION))) {
           token = TokenType.Punctuation
+          state = State.TopLevelContent
+        } else if ((next = part.match(RE_FUNCTION_NAME))) {
+          token = TokenType.Function
           state = State.TopLevelContent
         } else if ((next = part.match(RE_VARIABLE_NAME))) {
           token = TokenType.VariableName
