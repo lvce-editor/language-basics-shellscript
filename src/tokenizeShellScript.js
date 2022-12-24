@@ -7,6 +7,7 @@ export const State = {
   InsideLineComment: 3,
   InsideSingleQuoteString: 4,
   InsideBackTickString: 5,
+  InsideEof: 6,
 }
 
 export const StateMap = {
@@ -71,6 +72,9 @@ const RE_VARIABLE_NAME = /^[a-zA-Z\_\/\-\$][a-zA-Z\_\/\-\$#\d]*/
 const RE_PUNCTUATION = /^[:,;\{\}\[\]\.=\(\)<>\!\|\+\&\>]/
 const RE_NUMERIC = /^\d+/
 const RE_FUNCTION_NAME = /^\w+(?=\s*\()/
+const RE_EOF_START = /^<<\s*EOF/
+const RE_EOF_END = /^EOF/
+const RE_EOF_CONTENT = /.*/s
 
 export const initialLineState = {
   state: State.TopLevelContent,
@@ -139,6 +143,9 @@ export const tokenizeLine = (line, lineState) => {
               break
           }
           state = State.TopLevelContent
+        } else if ((next = part.match(RE_EOF_START))) {
+          token = TokenType.Punctuation
+          state = State.InsideEof
         } else if ((next = part.match(RE_PUNCTUATION))) {
           token = TokenType.Punctuation
           state = State.TopLevelContent
@@ -200,6 +207,17 @@ export const tokenizeLine = (line, lineState) => {
         } else if ((next = part.match(RE_STRING_BACKTICK_QUOTE_CONTENT))) {
           token = TokenType.String
           state = State.InsideBackTickString
+        } else {
+          throw new Error('no')
+        }
+        break
+      case State.InsideEof:
+        if ((next = part.match(RE_EOF_END))) {
+          token = TokenType.Punctuation
+          state = State.TopLevelContent
+        } else if ((next = part.match(RE_EOF_CONTENT))) {
+          token = TokenType.String
+          state = State.InsideEof
         } else {
           throw new Error('no')
         }
