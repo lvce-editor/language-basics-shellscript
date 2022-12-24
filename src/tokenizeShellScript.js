@@ -65,7 +65,7 @@ const RE_KEYWORD =
   /^(?:alias|bg|bind|break|builtin|caller|case|cd|command|compgen|complete|continue|dirs|disown|do|done|echo|elif|else|enable|esac|eval|exec|exit|false|fc|fg|fi|for|getopts|hash|help|history|if|in|jobs|kill|let|logout|popd|printf|pushd|pwd|read|readonly|set|shift|shopt|source|suspend|test|then|times|trap|true|type|ulimit|umask|unalias|unset|wait|while)\b/
 
 const RE_VARIABLE_NAME = /^[a-zA-Z\_\/\-\$]+/
-const RE_PUNCTUATION = /^[:,;\{\}\[\]\.=\(\)<>\!\|\+]/
+const RE_PUNCTUATION = /^[:,;\{\}\[\]\.=\(\)<>\!\|\+\&\>]/
 const RE_NUMERIC = /^\d+/
 const RE_FUNCTION_NAME = /^\w+(?=\()/
 
@@ -120,6 +120,14 @@ export const tokenizeLine = (line, lineState) => {
             case 'break':
             case 'while':
               token = TokenType.KeywordControl
+              break
+            case 'exit':
+            case 'set':
+            case 'unset':
+            case 'echo':
+            case 'shift':
+            case 'command':
+              token = TokenType.Function
               break
             default:
               token = TokenType.Keyword

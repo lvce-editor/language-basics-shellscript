@@ -7,6 +7,6 @@ Whitespace
 Punctuation
 Punctuation
 Whitespace
-Keyword
+Function
 Whitespace
 Numeric
