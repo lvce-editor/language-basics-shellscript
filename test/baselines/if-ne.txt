@@ -1,0 +1,7 @@
+KeywordControl
+Whitespace
+Punctuation
+Whitespace
+VariableName
+Text
+NewLine

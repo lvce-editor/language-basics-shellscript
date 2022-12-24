@@ -30,6 +30,7 @@ export const TokenType = {
   Text: 9,
   KeywordControl: 10,
   Function: 11,
+  LanguageConstant: 12,
 }
 
 export const TokenMap = {
@@ -45,6 +46,7 @@ export const TokenMap = {
   [TokenType.Text]: 'Text',
   [TokenType.KeywordControl]: 'KeywordControl',
   [TokenType.Function]: 'Function',
+  [TokenType.LanguageConstant]: 'LanguageConstant',
 }
 
 const RE_LINE_COMMENT = /^#.*/s
@@ -137,6 +139,10 @@ export const tokenizeLine = (line, lineState) => {
             case 'test':
             case 'exec':
               token = TokenType.Function
+              break
+            case 'true':
+            case 'false':
+              token = TokenType.LanguageConstant
               break
             default:
               token = TokenType.Keyword
