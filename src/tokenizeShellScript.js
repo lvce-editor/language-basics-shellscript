@@ -131,6 +131,7 @@ export const tokenizeLine = (line, lineState) => {
             case 'shift':
             case 'command':
             case 'test':
+            case 'exec':
               token = TokenType.Function
               break
             default:
