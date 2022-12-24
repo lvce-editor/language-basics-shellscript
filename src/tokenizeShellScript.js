@@ -67,7 +67,7 @@ const RE_KEYWORD =
 const RE_VARIABLE_NAME = /^[a-zA-Z\_\/\-\$][a-zA-Z\_\/\-\$#\d]*/
 const RE_PUNCTUATION = /^[:,;\{\}\[\]\.=\(\)<>\!\|\+\&\>]/
 const RE_NUMERIC = /^\d+/
-const RE_FUNCTION_NAME = /^\w+(?=\()/
+const RE_FUNCTION_NAME = /^\w+(?=\s*\()/
 
 export const initialLineState = {
   state: State.TopLevelContent,
