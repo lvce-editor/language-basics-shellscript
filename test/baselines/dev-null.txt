@@ -10,10 +10,6 @@ Punctuation
 Whitespace
 VariableName
 Whitespace
-Numeric
-Punctuation
-Punctuation
-Numeric
-Punctuation
+Text
 Whitespace
 KeywordControl

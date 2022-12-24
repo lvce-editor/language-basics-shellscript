@@ -59,6 +59,7 @@ const RE_COLON = /^:/
 const RE_PROPERTY_VALUE = /^[^;\}]+/
 const RE_SEMICOLON = /^;/
 const RE_COMMA = /^,/
+const RE_ANYTHING_SHORT = /^\S+/
 const RE_ANYTHING = /^.+/s
 const RE_ANYTHING_UNTIL_CLOSE_BRACE = /^[^\}]+/
 const RE_QUOTE_DOUBLE = /^"/
@@ -71,8 +72,8 @@ const RE_KEYWORD =
   /^(?:alias|bg|bind|break|builtin|caller|case|cd|command|compgen|complete|continue|dirs|disown|do|done|echo|elif|else|enable|esac|eval|exec|exit|false|fc|fg|fi|for|getopts|hash|help|history|if|in|jobs|kill|let|logout|popd|printf|pushd|pwd|read|readonly|set|shift|shopt|source|suspend|test|then|times|trap|true|type|ulimit|umask|unalias|unset|wait|while)\b/
 
 const RE_VARIABLE_NAME = /^[a-zA-Z\_\/\-\$][a-zA-Z\_\/\-\$#\d]*/
-const RE_PUNCTUATION = /^[:,;\{\}\[\]\.=\(\)<>\!\|\+\&\>]/
-const RE_NUMERIC = /^\d+/
+const RE_PUNCTUATION = /^[:,;\{\}\[\]\.=\(\)<>\!\|\+\&\>\)]/
+const RE_NUMERIC = /^\d+(?=\s|$)/
 const RE_FUNCTION_NAME = /^\w+(?=\s*\()/
 const RE_EOF_START = /^<<\s*EOF/
 const RE_EOF_END = /^EOF/
@@ -176,6 +177,9 @@ export const tokenizeLine = (line, lineState) => {
           state = State.InsideBackTickString
         } else if ((next = part.match(RE_LINE_COMMENT))) {
           token = TokenType.Comment
+          state = State.TopLevelContent
+        } else if ((next = part.match(RE_ANYTHING_SHORT))) {
+          token = TokenType.Text
           state = State.TopLevelContent
         } else if ((next = part.match(RE_ANYTHING))) {
           token = TokenType.Text
