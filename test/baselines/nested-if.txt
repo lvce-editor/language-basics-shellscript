@@ -46,7 +46,7 @@ String
 PunctuationString
 NewLine
 Whitespace
-Keyword
+Function
 Whitespace
 VariableName
 Text
