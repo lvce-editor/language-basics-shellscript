@@ -138,6 +138,7 @@ export const tokenizeLine = (line, lineState) => {
             case 'shift':
             case 'command':
             case 'test':
+            case 'trap':
             case 'exec':
             case 'getopts':
               token = TokenType.Function
