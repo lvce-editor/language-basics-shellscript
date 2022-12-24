@@ -6,6 +6,7 @@ export const State = {
   InsideDoubleQuoteString: 2,
   InsideLineComment: 3,
   InsideSingleQuoteString: 4,
+  InsideBackTickString: 5,
 }
 
 export const StateMap = {
@@ -59,8 +60,10 @@ const RE_ANYTHING = /^.+/s
 const RE_ANYTHING_UNTIL_CLOSE_BRACE = /^[^\}]+/
 const RE_QUOTE_DOUBLE = /^"/
 const RE_QUOTE_SINGLE = /^'/
+const RE_QUOTE_BACKTICK = /^`/
 const RE_STRING_DOUBLE_QUOTE_CONTENT = /^[^"]+/
 const RE_STRING_SINGLE_QUOTE_CONTENT = /^[^']+/
+const RE_STRING_BACKTICK_QUOTE_CONTENT = /^[^`]+/
 const RE_KEYWORD =
   /^(?:alias|bg|bind|break|builtin|caller|case|cd|command|compgen|complete|continue|dirs|disown|do|done|echo|elif|else|enable|esac|eval|exec|exit|false|fc|fg|fi|for|getopts|hash|help|history|if|in|jobs|kill|let|logout|popd|printf|pushd|pwd|read|readonly|set|shift|shopt|source|suspend|test|then|times|trap|true|type|ulimit|umask|unalias|unset|wait|while)\b/
 
@@ -153,6 +156,9 @@ export const tokenizeLine = (line, lineState) => {
         } else if ((next = part.match(RE_QUOTE_SINGLE))) {
           token = TokenType.Punctuation
           state = State.InsideSingleQuoteString
+        } else if ((next = part.match(RE_QUOTE_BACKTICK))) {
+          token = TokenType.Punctuation
+          state = State.InsideBackTickString
         } else if ((next = part.match(RE_LINE_COMMENT))) {
           token = TokenType.Comment
           state = State.TopLevelContent
@@ -182,6 +188,17 @@ export const tokenizeLine = (line, lineState) => {
         } else if ((next = part.match(RE_STRING_SINGLE_QUOTE_CONTENT))) {
           token = TokenType.String
           state = State.InsideSingleQuoteString
+        } else {
+          throw new Error('no')
+        }
+        break
+      case State.InsideBackTickString:
+        if ((next = part.match(RE_QUOTE_BACKTICK))) {
+          token = TokenType.PunctuationString
+          state = State.TopLevelContent
+        } else if ((next = part.match(RE_STRING_BACKTICK_QUOTE_CONTENT))) {
+          token = TokenType.String
+          state = State.InsideBackTickString
         } else {
           throw new Error('no')
         }
