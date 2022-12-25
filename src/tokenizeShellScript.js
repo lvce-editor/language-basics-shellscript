@@ -82,6 +82,7 @@ const RE_EOF_CONTENT = /.*/s
 export const initialLineState = {
   state: State.TopLevelContent,
   tokens: [],
+  knownFunctionNames: new Set(),
 }
 
 /**
@@ -106,6 +107,7 @@ export const tokenizeLine = (line, lineState) => {
   let tokens = []
   let token = TokenType.None
   let state = lineState.state
+  const knownFunctionNames = new Set(lineState.knownFunctionNames)
   while (index < line.length) {
     const part = line.slice(index)
     switch (state) {
@@ -162,8 +164,13 @@ export const tokenizeLine = (line, lineState) => {
         } else if ((next = part.match(RE_FUNCTION_NAME))) {
           token = TokenType.Function
           state = State.TopLevelContent
+          knownFunctionNames.add(next[0])
         } else if ((next = part.match(RE_VARIABLE_NAME))) {
-          token = TokenType.VariableName
+          if (knownFunctionNames.has(next[0])) {
+            token = TokenType.Function
+          } else {
+            token = TokenType.VariableName
+          }
           state = State.TopLevelContent
         } else if ((next = part.match(RE_NUMERIC))) {
           token = TokenType.Numeric
@@ -245,5 +252,6 @@ export const tokenizeLine = (line, lineState) => {
   return {
     state,
     tokens,
+    knownFunctionNames,
   }
 }
