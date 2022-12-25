@@ -69,7 +69,7 @@ const RE_STRING_DOUBLE_QUOTE_CONTENT = /^[^"]+/
 const RE_STRING_SINGLE_QUOTE_CONTENT = /^[^']+/
 const RE_STRING_BACKTICK_QUOTE_CONTENT = /^[^`]+/
 const RE_KEYWORD =
-  /^(?:alias|bg|bind|break|builtin|caller|case|cd|command|compgen|complete|continue|dirs|disown|do|done|echo|elif|else|enable|esac|eval|exec|exit|false|fc|fg|fi|for|getopts|hash|help|history|if|in|jobs|kill|let|logout|popd|printf|pushd|pwd|read|readonly|set|shift|shopt|source|suspend|test|then|times|trap|true|type|ulimit|umask|unalias|unset|wait|while)\b/
+  /^(?:alias|bg|bind|break|builtin|caller|case|cd|command|compgen|complete|continue|dirs|disown|do|done|echo|elif|else|enable|esac|eval|exec|exit|false|fc|fg|fi|for|getopts|hash|help|history|if|in|jobs|kill|let|logout|popd|printf|pushd|pwd|read|readonly|rm|set|shift|shopt|source|suspend|test|then|times|trap|true|type|ulimit|umask|unalias|unset|wait|while)\b/
 
 const RE_VARIABLE_NAME = /^[a-zA-Z\_\/\-\$][a-zA-Z\_\/\-\$#\d]*/
 const RE_PUNCTUATION = /^[:,;\{\}\[\]\.=\(\)<>\!\|\+\&\>\)]/
@@ -141,6 +141,7 @@ export const tokenizeLine = (line, lineState) => {
             case 'trap':
             case 'exec':
             case 'getopts':
+            case 'rm':
               token = TokenType.Function
               break
             case 'true':
