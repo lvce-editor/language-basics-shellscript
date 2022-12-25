@@ -9,7 +9,7 @@ COMMIT="f28b10c92497425f1477011e16a6cc1265b3afe7"
 NAME="better-shell-syntax"
 TEST_PATH="language_examples"
 
-git clone --depth=1 https://github.com/jeff-hykin/$NAME .tmp/$NAME
+git clone https://github.com/jeff-hykin/$NAME .tmp/$NAME
 
 cd .tmp/$NAME
 
