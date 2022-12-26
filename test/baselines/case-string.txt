@@ -7,11 +7,11 @@ Whitespace
 KeywordControl
 NewLine
 Whitespace
-Text
+VariableName
 Whitespace
 VariableName
 Punctuation
-Text
+VariableName
 NewLine
 KeywordControl
 NewLine

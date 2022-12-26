@@ -1,4 +1,4 @@
-Text
+VariableName
 NewLine
 NewLine
 Whitespace
@@ -9,4 +9,4 @@ Punctuation
 VariableName
 Punctuation
 Whitespace
-Text
+VariableName
