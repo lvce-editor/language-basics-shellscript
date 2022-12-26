@@ -4,7 +4,7 @@ Whitespace
 VariableName
 Whitespace
 Punctuation
-VariableName
+String
 Whitespace
 PunctuationString
 String

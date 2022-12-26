@@ -8,8 +8,8 @@ VariableName
 Whitespace
 Punctuation
 Whitespace
-VariableName
+String
 Whitespace
-VariableName
+String
 Whitespace
 KeywordControl

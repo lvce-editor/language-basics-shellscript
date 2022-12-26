@@ -1,4 +1,4 @@
-VariableName
+String
 NewLine
 NewLine
 Whitespace
@@ -9,4 +9,5 @@ Punctuation
 VariableName
 Punctuation
 Whitespace
-VariableName
+String
+Punctuation

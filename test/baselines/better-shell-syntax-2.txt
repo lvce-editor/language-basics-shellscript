@@ -19,7 +19,7 @@ VariableName
 Whitespace
 VariableName
 Whitespace
-VariableName
+String
 NewLine
 Whitespace
 Punctuation
@@ -38,9 +38,7 @@ Punctuation
 Punctuation
 Whitespace
 Punctuation
-VariableName
-Punctuation
-VariableName
+String
 Whitespace
 VariableName
 Punctuation
