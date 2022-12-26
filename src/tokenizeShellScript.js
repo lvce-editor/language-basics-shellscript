@@ -199,6 +199,7 @@ export const tokenizeLine = (line, lineState) => {
             case 'xz':
             case 'zoo':
             case 'zstd':
+            case 'umask':
               token = TokenType.Function
               break
             case 'true':
