@@ -10120,7 +10120,7 @@ VariableName
 Whitespace
 VariableName
 Whitespace
-VariableName
+Function
 Whitespace
 VariableName
 NewLine
@@ -20473,7 +20473,7 @@ VariableName
 Whitespace
 VariableName
 Whitespace
-VariableName
+Function
 Whitespace
 VariableName
 NewLine
