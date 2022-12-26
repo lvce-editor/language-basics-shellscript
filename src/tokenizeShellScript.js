@@ -146,6 +146,7 @@ export const tokenizeLine = (line, lineState) => {
             case 'exec':
             case 'getopts':
             case 'rm':
+            case 'printf':
               token = TokenType.Function
               break
             case 'true':
