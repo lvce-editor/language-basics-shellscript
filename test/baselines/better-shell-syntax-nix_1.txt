@@ -3565,7 +3565,7 @@ Function
 Whitespace
 VariableName
 Whitespace
-VariableName
+Function
 Punctuation
 PunctuationString
 NewLine
@@ -3583,7 +3583,7 @@ Function
 Whitespace
 VariableName
 Whitespace
-VariableName
+Function
 Punctuation
 PunctuationString
 NewLine
