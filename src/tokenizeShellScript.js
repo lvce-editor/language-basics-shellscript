@@ -77,8 +77,7 @@ const RE_VARIABLE_NAME = /^[a-zA-Z\_\/\-\$][a-zA-Z\_\/\-\$#\d\-]*/
 const RE_PUNCTUATION = /^[:,;\{\}\[\]\.=\(\)<>\!\|\+\&\>\)]/
 const RE_NUMERIC = /^\d+(?=\s|$)/
 const RE_FUNCTION_NAME = /^\w+(?=\s*\()/
-const RE_EOF_START = /^<<\s*EOF/
-const RE_EOF_END = /^EOF/
+const RE_EOF_START = /^<<\s*(\w+)/
 const RE_EOF_CONTENT = /.*/s
 const RE_STRING_ESCAPE = /^\\./
 const RE_BACKSLASH_AT_END = /^\\$/
@@ -87,6 +86,7 @@ export const initialLineState = {
   state: State.TopLevelContent,
   tokens: [],
   knownFunctionNames: new Set(),
+  stringEnd: '',
 }
 
 /**
@@ -111,6 +111,7 @@ export const tokenizeLine = (line, lineState) => {
   let tokens = []
   let token = TokenType.None
   let state = lineState.state
+  let stringEnd = lineState.stringEnd
   const knownFunctionNames = new Set(lineState.knownFunctionNames)
   while (index < line.length) {
     const part = line.slice(index)
@@ -192,6 +193,7 @@ export const tokenizeLine = (line, lineState) => {
         } else if ((next = part.match(RE_EOF_START))) {
           token = TokenType.Punctuation
           state = State.InsideEof
+          stringEnd = next[1]
         } else if ((next = part.match(RE_PUNCTUATION))) {
           token = TokenType.Punctuation
           state = State.TopLevelContent
@@ -278,7 +280,7 @@ export const tokenizeLine = (line, lineState) => {
         }
         break
       case State.InsideEof:
-        if ((next = part.match(RE_EOF_END))) {
+        if ((next = part.match(stringEnd))) {
           token = TokenType.Punctuation
           state = State.TopLevelContent
         } else if ((next = part.match(RE_EOF_CONTENT))) {
@@ -314,5 +316,6 @@ export const tokenizeLine = (line, lineState) => {
     state,
     tokens,
     knownFunctionNames,
+    stringEnd,
   }
 }
