@@ -9997,7 +9997,7 @@ Function
 Whitespace
 VariableName
 Whitespace
-VariableName
+Function
 Whitespace
 VariableName
 Whitespace
@@ -10068,7 +10068,7 @@ Whitespace
 VariableName
 NewLine
 Whitespace
-VariableName
+Function
 Whitespace
 VariableName
 Whitespace
@@ -20350,7 +20350,7 @@ Function
 Whitespace
 VariableName
 Whitespace
-VariableName
+Function
 Whitespace
 VariableName
 Whitespace
@@ -20421,7 +20421,7 @@ Whitespace
 VariableName
 NewLine
 Whitespace
-VariableName
+Function
 Whitespace
 VariableName
 Whitespace
