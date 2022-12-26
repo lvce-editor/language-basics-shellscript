@@ -222,7 +222,7 @@ String
 PunctuationString
 NewLine
 NewLine
-VariableName
+Function
 Whitespace
 VariableName
 Whitespace
@@ -230,13 +230,13 @@ Punctuation
 String
 PunctuationString
 NewLine
-VariableName
+Function
 Whitespace
 Punctuation
 String
 PunctuationString
 NewLine
-VariableName
+Function
 Whitespace
 Punctuation
 String
