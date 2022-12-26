@@ -71,7 +71,7 @@ NewLine
 KeywordControl
 NewLine
 NewLine
-Keyword
+Function
 Whitespace
 VariableName
 Punctuation
@@ -93,7 +93,7 @@ Whitespace
 Punctuation
 Punctuation
 Whitespace
-Keyword
+Function
 Whitespace
 VariableName
 Whitespace
@@ -158,7 +158,7 @@ VariableName
 Text
 NewLine
 Whitespace
-Keyword
+Function
 Whitespace
 PunctuationString
 String
@@ -245,7 +245,7 @@ Whitespace
 VariableName
 NewLine
 NewLine
-Keyword
+Function
 Whitespace
 VariableName
 Whitespace

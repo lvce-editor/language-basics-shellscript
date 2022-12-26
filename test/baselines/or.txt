@@ -1,4 +1,4 @@
-Keyword
+Function
 Whitespace
 PunctuationString
 String

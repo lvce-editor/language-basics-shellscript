@@ -150,6 +150,10 @@ export const tokenizeLine = (line, lineState) => {
             case 'sed':
             case 'unwrapdiff':
             case 'awk':
+            case 'pwd':
+            case 'ls':
+            case 'cd':
+            case 'read':
               token = TokenType.Function
               break
             case 'true':
