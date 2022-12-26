@@ -49,7 +49,7 @@ Whitespace
 Function
 Whitespace
 VariableName
-Text
+VariableName
 NewLine
 Whitespace
 KeywordControl

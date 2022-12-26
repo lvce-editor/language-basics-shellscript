@@ -62,18 +62,17 @@ const RE_COLON = /^:/
 const RE_PROPERTY_VALUE = /^[^;\}]+/
 const RE_SEMICOLON = /^;/
 const RE_COMMA = /^,/
-const RE_ANYTHING_SHORT = /^\S+/
+const RE_ANYTHING_SHORT = /^[^\s"']+/
 const RE_ANYTHING = /^.+/s
 const RE_ANYTHING_UNTIL_CLOSE_BRACE = /^[^\}]+/
 const RE_QUOTE_DOUBLE = /^"/
 const RE_QUOTE_SINGLE = /^'/
 const RE_QUOTE_BACKTICK = /^`/
-const RE_STRING_DOUBLE_QUOTE_CONTENT = /^[^"]+/
-const RE_STRING_SINGLE_QUOTE_CONTENT = /^[^']+/
+const RE_STRING_DOUBLE_QUOTE_CONTENT = /^[^"\\]+/
+const RE_STRING_SINGLE_QUOTE_CONTENT = /^[^'\\]+/
 const RE_STRING_BACKTICK_QUOTE_CONTENT = /^[^`]+/
 const RE_KEYWORD =
   /^(?:alias|awk|bg|bind|break|builtin|caller|case|cargo|cd|command|compgen|complete|continue|curl|dirs|disown|do|done|echo|elif|else|enable|esac|eval|eval_gettext|exec|exit|false|fc|fg|fi|for|function|getopts|hash|help|history|if|in|jobs|kill|let|logout|npm|node|popd|printf|pushd|pwd|read|readonly|rm|sed|set|shift|shopt|sleep|source|suspend|return|test|then|times|trap|true|type|ulimit|umask|unalias|unset|unwrapdiff|wait|while)\b/
-
 const RE_VARIABLE_NAME = /^[a-zA-Z\_\/\-\$][a-zA-Z\_\/\-\$#\d\-]*/
 const RE_PUNCTUATION = /^[:,;\{\}\[\]\.=\(\)<>\!\|\+\&\>\)]/
 const RE_NUMERIC = /^\d+(?=\s|$)/
@@ -81,6 +80,8 @@ const RE_FUNCTION_NAME = /^\w+(?=\s*\()/
 const RE_EOF_START = /^<<\s*EOF/
 const RE_EOF_END = /^EOF/
 const RE_EOF_CONTENT = /.*/s
+const RE_STRING_ESCAPE = /^\\./
+const RE_BACKSLASH_AT_END = /^\\$/
 
 export const initialLineState = {
   state: State.TopLevelContent,
@@ -219,7 +220,7 @@ export const tokenizeLine = (line, lineState) => {
           token = TokenType.Comment
           state = State.TopLevelContent
         } else if ((next = part.match(RE_ANYTHING_SHORT))) {
-          token = TokenType.Text
+          token = TokenType.VariableName
           state = State.TopLevelContent
         } else if ((next = part.match(RE_ANYTHING))) {
           token = TokenType.Text
@@ -236,6 +237,12 @@ export const tokenizeLine = (line, lineState) => {
         } else if ((next = part.match(RE_STRING_DOUBLE_QUOTE_CONTENT))) {
           token = TokenType.String
           state = State.InsideDoubleQuoteString
+        } else if ((next = part.match(RE_STRING_ESCAPE))) {
+          token = TokenType.String
+          state = State.InsideDoubleQuoteString
+        } else if ((next = part.match(RE_BACKSLASH_AT_END))) {
+          token = TokenType.String
+          state = State.InsideDoubleQuoteString
         } else {
           throw new Error('no')
         }
@@ -245,6 +252,12 @@ export const tokenizeLine = (line, lineState) => {
           token = TokenType.PunctuationString
           state = State.TopLevelContent
         } else if ((next = part.match(RE_STRING_SINGLE_QUOTE_CONTENT))) {
+          token = TokenType.String
+          state = State.InsideSingleQuoteString
+        } else if ((next = part.match(RE_STRING_ESCAPE))) {
+          token = TokenType.String
+          state = State.InsideSingleQuoteString
+        } else if ((next = part.match(RE_BACKSLASH_AT_END))) {
           token = TokenType.String
           state = State.InsideSingleQuoteString
         } else {
