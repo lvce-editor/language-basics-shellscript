@@ -1,0 +1,14 @@
+Function
+Whitespace
+VariableName
+Whitespace
+VariableName
+PunctuationString
+PunctuationString
+VariableName
+Punctuation
+Whitespace
+VariableName
+PunctuationString
+String
+NewLine
