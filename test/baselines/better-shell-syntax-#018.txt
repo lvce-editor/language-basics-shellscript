@@ -47,6 +47,6 @@ Whitespace
 VariableName
 NewLine
 Whitespace
-Keyword
+Function
 NewLine
 Punctuation

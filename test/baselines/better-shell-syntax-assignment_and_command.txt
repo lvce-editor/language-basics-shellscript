@@ -4,7 +4,7 @@ Punctuation
 String
 PunctuationString
 Whitespace
-Keyword
+Function
 Whitespace
 VariableName
 Whitespace
