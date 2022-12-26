@@ -69,7 +69,7 @@ const RE_QUOTE_DOUBLE = /^"/
 const RE_QUOTE_SINGLE = /^'/
 const RE_QUOTE_BACKTICK = /^`/
 const RE_STRING_DOUBLE_QUOTE_CONTENT = /^[^"\\]+/
-const RE_STRING_SINGLE_QUOTE_CONTENT = /^[^'\\]+/
+const RE_STRING_SINGLE_QUOTE_CONTENT = /^[^']+/
 const RE_STRING_BACKTICK_QUOTE_CONTENT = /^[^`]+/
 const RE_KEYWORD =
   /^(?:7za|7zr|alias|ar|awk|bg|bind|break|builtin|bunzip|bunzip2|caller|case|cargo|cat|catdog|cd|cp|command|compgen|complete|continue|curl|dirs|disown|dpkg|do|done|echo|elif|else|emulate|enable|esac|eval|eval_gettext|exec|exit|false|fc|fg|fi|for|function|getopts|grep|gzip|hash|help|history|identity|if|in|jobs|kill|let|lha|logout|lunzip|lzip|lzma|mkdir|mktemp|miniunz|miniunzip|mv|npm|node|pdftotext|popd|printf|pushd|pwd|rar|read|readonly|rm|rpm|sed|set|shift|shopt|sleep|snap|source|suspend|return|tar|tee|test|then|times|trap|true|type|ulimit|umask|unalias|unarj|unrar|unset|unwrapdiff|unzip|unzoo|xz|wait|which|while|zoo|zstd|umask)\b/
@@ -293,9 +293,6 @@ export const tokenizeLine = (line, lineState) => {
           token = TokenType.PunctuationString
           state = State.TopLevelContent
         } else if ((next = part.match(RE_STRING_SINGLE_QUOTE_CONTENT))) {
-          token = TokenType.String
-          state = State.InsideSingleQuoteString
-        } else if ((next = part.match(RE_STRING_ESCAPE))) {
           token = TokenType.String
           state = State.InsideSingleQuoteString
         } else if ((next = part.match(RE_BACKSLASH_AT_END))) {

@@ -1,7 +1,8 @@
 Punctuation
 String
-String
-String
-String
+PunctuationString
+VariableName
+VariableName
+Punctuation
 String
 PunctuationString

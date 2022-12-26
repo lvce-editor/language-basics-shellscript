@@ -30,13 +30,9 @@ VariableName
 Whitespace
 Punctuation
 String
-String
 PunctuationString
 VariableName
 Punctuation
-String
-String
-String
 String
 PunctuationString
 NewLine
