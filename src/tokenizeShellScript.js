@@ -173,6 +173,7 @@ export const tokenizeLine = (line, lineState) => {
             case 'eval_gettext':
             case 'mkdir':
             case 'grep':
+            case 'umask':
               token = TokenType.Function
               break
             case 'true':
