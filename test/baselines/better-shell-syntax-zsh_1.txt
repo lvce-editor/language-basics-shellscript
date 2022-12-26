@@ -1222,7 +1222,7 @@ Function
 Whitespace
 Function
 Whitespace
-VariableName
+Function
 NewLine
 NewLine
 Comment
@@ -11579,7 +11579,7 @@ Function
 Whitespace
 Function
 Whitespace
-VariableName
+Function
 NewLine
 NewLine
 Comment
