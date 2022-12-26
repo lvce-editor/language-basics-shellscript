@@ -72,7 +72,7 @@ const RE_STRING_DOUBLE_QUOTE_CONTENT = /^[^"\\]+/
 const RE_STRING_SINGLE_QUOTE_CONTENT = /^[^'\\]+/
 const RE_STRING_BACKTICK_QUOTE_CONTENT = /^[^`]+/
 const RE_KEYWORD =
-  /^(?:7za|7zr|alias|ar|awk|bg|bind|break|builtin|bunzip|bunzip2|caller|case|cargo|cat|catdog|cd|command|compgen|complete|continue|curl|dirs|disown|dpkg|do|done|echo|elif|else|enable|esac|eval|eval_gettext|exec|exit|false|fc|fg|fi|for|function|getopts|grep|gzip|hash|help|history|identity|if|in|jobs|kill|let|lha|logout|lunzip|lzip|lzma|mkdir|miniunz|miniunzip|npm|node|pdftotext|popd|printf|pushd|pwd|rar|read|readonly|rm|rpm|sed|set|shift|shopt|sleep|snap|source|suspend|return|tar|test|then|times|trap|true|type|ulimit|umask|unalias|unrar|unset|unwrapdiff|unzip|unzoo|xz|wait|while|zoo|zstd|umask)\b/
+  /^(?:7za|7zr|alias|ar|awk|bg|bind|break|builtin|bunzip|bunzip2|caller|case|cargo|cat|catdog|cd|command|compgen|complete|continue|curl|dirs|disown|dpkg|do|done|echo|elif|else|enable|esac|eval|eval_gettext|exec|exit|false|fc|fg|fi|for|function|getopts|grep|gzip|hash|help|history|identity|if|in|jobs|kill|let|lha|logout|lunzip|lzip|lzma|mkdir|miniunz|miniunzip|npm|node|pdftotext|popd|printf|pushd|pwd|rar|read|readonly|rm|rpm|sed|set|shift|shopt|sleep|snap|source|suspend|return|tar|test|then|times|trap|true|type|ulimit|umask|unalias|unarj|unrar|unset|unwrapdiff|unzip|unzoo|xz|wait|while|zoo|zstd|umask)\b/
 const RE_VARIABLE_NAME = /^[a-zA-Z\_\/\-\$][a-zA-Z\_\/\-\$#\d\-]*/
 const RE_PUNCTUATION = /^[:,;\{\}\[\]\.=\(\)<>\!\|\+\&\>\)]/
 const RE_NUMERIC = /^\d+(?=\s|$)/
@@ -123,84 +123,85 @@ export const tokenizeLine = (line, lineState) => {
         } else if ((next = part.match(RE_KEYWORD))) {
           state = State.TopLevelContent
           switch (next[0]) {
-            case 'if':
-            case 'do':
-            case 'continue':
-            case 'for':
-            case 'else':
-            case 'fi':
-            case 'esac':
+            case 'break':
             case 'case':
+            case 'continue':
+            case 'do':
             case 'done':
+            case 'elif':
+            case 'else':
+            case 'esac':
+            case 'fi':
+            case 'for':
+            case 'if':
             case 'in':
             case 'then':
-            case 'elif':
-            case 'break':
             case 'while':
               token = TokenType.KeywordControl
               break
-            case 'exit':
-            case 'set':
-            case 'unset':
-            case 'echo':
-            case 'shift':
-            case 'command':
-            case 'test':
-            case 'trap':
-            case 'exec':
-            case 'getopts':
-            case 'rm':
-            case 'printf':
-            case 'sed':
-            case 'unwrapdiff':
-            case 'awk':
-            case 'pwd':
-            case 'ls':
-            case 'cd':
-            case 'read':
-            case 'npm':
-            case 'node':
-            case 'cargo':
-            case 'sleep':
-            case 'curl':
-            case 'complete':
-            case 'eval':
-            case 'compgen':
-            case 'type':
-            case 'shopt':
-            case 'pushd':
-            case 'disown':
-            case 'eval_gettext':
-            case 'mkdir':
-            case 'grep':
             case '7za':
+            case '7zr':
             case 'ar':
+            case 'awk':
             case 'bunzip':
             case 'bunzip2':
+            case 'cargo':
             case 'cat':
             case 'catdoc':
+            case 'cd':
+            case 'command':
+            case 'compgen':
+            case 'complete':
+            case 'curl':
+            case 'disown':
             case 'dpkg':
+            case 'echo':
+            case 'eval_gettext':
+            case 'eval':
+            case 'exec':
+            case 'exit':
+            case 'getopts':
+            case 'grep':
             case 'gzip':
             case 'identity':
             case 'lha':
+            case 'ls':
             case 'lunzip':
             case 'lzip':
             case 'lzma':
             case 'miniunz':
             case 'miniunzip':
+            case 'mkdir':
+            case 'node':
+            case 'npm':
             case 'pdftotext':
+            case 'printf':
+            case 'pushd':
+            case 'pwd':
             case 'rar':
+            case 'read':
+            case 'rm':
             case 'rpm':
+            case 'sed':
+            case 'set':
+            case 'shift':
+            case 'shopt':
+            case 'sleep':
             case 'snap':
             case 'tar':
+            case 'test':
+            case 'trap':
+            case 'type':
+            case 'umask':
+            case 'unarj':
             case 'unrar':
+            case 'unset':
+            case 'unwrapdiff':
             case 'unzip':
             case 'unzoo':
             case 'xz':
             case 'zoo':
             case 'zstd':
-            case 'umask':
-            case '7zr':
               token = TokenType.Function
               break
             case 'true':
