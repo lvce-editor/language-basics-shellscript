@@ -10,6 +10,6 @@ Punctuation
 Whitespace
 VariableName
 Whitespace
-VariableName
+String
 Whitespace
 KeywordControl

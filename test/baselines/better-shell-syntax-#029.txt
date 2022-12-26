@@ -13,10 +13,7 @@ PunctuationString
 String
 PunctuationString
 NewLine
-VariableName
-PunctuationString
 String
-PunctuationString
 NewLine
 NewLine
 Comment

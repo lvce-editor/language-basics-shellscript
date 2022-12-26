@@ -7,7 +7,7 @@ Whitespace
 KeywordControl
 NewLine
 VariableName
-VariableName
+String
 Whitespace
 VariableName
 Punctuation
@@ -18,7 +18,7 @@ Whitespace
 Punctuation
 Punctuation
 NewLine
-VariableName
+String
 Whitespace
 KeywordControl
 Whitespace

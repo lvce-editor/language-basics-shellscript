@@ -23,7 +23,7 @@ String
 PunctuationString
 Whitespace
 Punctuation
-VariableName
+String
 Whitespace
 Punctuation
 String
@@ -55,7 +55,7 @@ Whitespace
 VariableName
 Whitespace
 Punctuation
-VariableName
+String
 Whitespace
 Punctuation
 String
@@ -89,7 +89,7 @@ Whitespace
 VariableName
 Whitespace
 Punctuation
-VariableName
+String
 Whitespace
 Punctuation
 String

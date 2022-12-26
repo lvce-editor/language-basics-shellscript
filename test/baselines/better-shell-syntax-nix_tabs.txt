@@ -120,7 +120,7 @@ VariableName
 Whitespace
 Punctuation
 Whitespace
-VariableName
+String
 NewLine
 Whitespace
 VariableName
@@ -163,7 +163,7 @@ PunctuationString
 String
 PunctuationString
 Whitespace
-VariableName
+String
 NewLine
 Whitespace
 KeywordReturn

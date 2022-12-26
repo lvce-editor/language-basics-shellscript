@@ -56,7 +56,7 @@ Whitespace
 PunctuationString
 String
 PunctuationString
-VariableName
+String
 Whitespace
 Punctuation
 Punctuation
@@ -70,7 +70,7 @@ Whitespace
 VariableName
 Whitespace
 VariableName
-VariableName
+String
 NewLine
 KeywordControl
 NewLine
@@ -79,9 +79,9 @@ Function
 Whitespace
 VariableName
 Punctuation
-VariableName
+String
 Whitespace
-VariableName
+String
 NewLine
 Whitespace
 Punctuation
@@ -91,7 +91,7 @@ Function
 Whitespace
 VariableName
 Whitespace
-VariableName
+String
 NewLine
 Whitespace
 Punctuation
@@ -101,7 +101,7 @@ Function
 Whitespace
 VariableName
 Whitespace
-VariableName
+String
 NewLine
 Whitespace
 Punctuation
@@ -109,7 +109,7 @@ Punctuation
 Whitespace
 VariableName
 Whitespace
-VariableName
+String
 NewLine
 Whitespace
 Punctuation
@@ -121,7 +121,7 @@ VariableName
 Punctuation
 VariableName
 Whitespace
-VariableName
+String
 NewLine
 Whitespace
 Punctuation
@@ -159,7 +159,7 @@ Whitespace
 VariableName
 Punctuation
 VariableName
-VariableName
+String
 NewLine
 Whitespace
 Function
@@ -178,11 +178,11 @@ NewLine
 NewLine
 Function
 Whitespace
-VariableName
+String
 NewLine
 Function
 Whitespace
-VariableName
+String
 Whitespace
 Punctuation
 Punctuation
@@ -277,9 +277,9 @@ Whitespace
 VariableName
 Whitespace
 Punctuation
-VariableName
+String
 Whitespace
-VariableName
+String
 Whitespace
 Punctuation
 Punctuation
