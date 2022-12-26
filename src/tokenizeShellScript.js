@@ -72,9 +72,9 @@ const RE_STRING_DOUBLE_QUOTE_CONTENT = /^[^"]+/
 const RE_STRING_SINGLE_QUOTE_CONTENT = /^[^']+/
 const RE_STRING_BACKTICK_QUOTE_CONTENT = /^[^`]+/
 const RE_KEYWORD =
-  /^(?:alias|awk|bg|bind|break|builtin|caller|case|cd|command|compgen|complete|continue|dirs|disown|do|done|echo|elif|else|enable|esac|eval|exec|exit|false|fc|fg|fi|for|function|getopts|hash|help|history|if|in|jobs|kill|let|logout|popd|printf|pushd|pwd|read|readonly|rm|sed|set|shift|shopt|source|suspend|return|test|then|times|trap|true|type|ulimit|umask|unalias|unset|unwrapdiff|wait|while)\b/
+  /^(?:alias|awk|bg|bind|break|builtin|caller|case|cargo|cd|command|compgen|complete|continue|curl|dirs|disown|do|done|echo|elif|else|enable|esac|eval|exec|exit|false|fc|fg|fi|for|function|getopts|hash|help|history|if|in|jobs|kill|let|logout|npm|node|popd|printf|pushd|pwd|read|readonly|rm|sed|set|shift|shopt|sleep|source|suspend|return|test|then|times|trap|true|type|ulimit|umask|unalias|unset|unwrapdiff|wait|while)\b/
 
-const RE_VARIABLE_NAME = /^[a-zA-Z\_\/\-\$][a-zA-Z\_\/\-\$#\d]*/
+const RE_VARIABLE_NAME = /^[a-zA-Z\_\/\-\$][a-zA-Z\_\/\-\$#\d\-]*/
 const RE_PUNCTUATION = /^[:,;\{\}\[\]\.=\(\)<>\!\|\+\&\>\)]/
 const RE_NUMERIC = /^\d+(?=\s|$)/
 const RE_FUNCTION_NAME = /^\w+(?=\s*\()/
@@ -156,6 +156,18 @@ export const tokenizeLine = (line, lineState) => {
             case 'ls':
             case 'cd':
             case 'read':
+            case 'npm':
+            case 'node':
+            case 'cargo':
+            case 'sleep':
+            case 'curl':
+            case 'complete':
+            case 'eval':
+            case 'compgen':
+            case 'type':
+            case 'shopt':
+            case 'pushd':
+            case 'disown':
               token = TokenType.Function
               break
             case 'true':
