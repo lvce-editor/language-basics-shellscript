@@ -23834,7 +23834,7 @@ Whitespace
 VariableName
 NewLine
 Whitespace
-Keyword
+Function
 Whitespace
 PunctuationString
 String
