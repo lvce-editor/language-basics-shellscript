@@ -622,7 +622,7 @@ Whitespace
 Punctuation
 NewLine
 Whitespace
-Keyword
+Function
 Whitespace
 PunctuationString
 String
@@ -862,7 +862,7 @@ Whitespace
 Punctuation
 NewLine
 Whitespace
-Keyword
+Function
 Whitespace
 PunctuationString
 String
@@ -1272,7 +1272,7 @@ NewLine
 Punctuation
 NewLine
 NewLine
-Keyword
+Function
 Whitespace
 VariableName
 Whitespace
@@ -1296,7 +1296,7 @@ Comment
 NewLine
 Comment
 NewLine
-Keyword
+Function
 Whitespace
 VariableName
 Whitespace
@@ -1314,7 +1314,7 @@ PunctuationString
 String
 PunctuationString
 NewLine
-Keyword
+Function
 Whitespace
 VariableName
 Whitespace
@@ -1717,7 +1717,7 @@ Whitespace
 KeywordControl
 NewLine
 Whitespace
-Keyword
+Function
 Whitespace
 VariableName
 Punctuation
@@ -1746,7 +1746,7 @@ Whitespace
 Punctuation
 NewLine
 Whitespace
-Keyword
+Function
 Whitespace
 VariableName
 Whitespace
@@ -1908,7 +1908,7 @@ PunctuationString
 PunctuationString
 NewLine
 Whitespace
-Keyword
+Function
 Whitespace
 PunctuationString
 String
