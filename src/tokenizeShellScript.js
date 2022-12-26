@@ -172,6 +172,7 @@ export const tokenizeLine = (line, lineState) => {
             case 'miniunz':
             case 'miniunzip':
             case 'mkdir':
+            case 'mktemp':
             case 'node':
             case 'npm':
             case 'pdftotext':
@@ -188,7 +189,9 @@ export const tokenizeLine = (line, lineState) => {
             case 'shopt':
             case 'sleep':
             case 'snap':
+            case 'source':
             case 'tar':
+            case 'tee':
             case 'test':
             case 'trap':
             case 'type':
@@ -202,8 +205,6 @@ export const tokenizeLine = (line, lineState) => {
             case 'xz':
             case 'zoo':
             case 'zstd':
-            case 'tee':
-            case 'mktemp':
               token = TokenType.Function
               break
             case 'true':
