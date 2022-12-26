@@ -1,0 +1,1 @@
+printf 0123456789 >file.txt
