@@ -141,6 +141,7 @@ export const tokenizeLine = (line, lineState) => {
               break
             case '7za':
             case '7zr':
+            case 'alias':
             case 'ar':
             case 'awk':
             case 'bunzip':
