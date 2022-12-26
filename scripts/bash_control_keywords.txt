@@ -1,0 +1,14 @@
+break
+case
+continue
+do
+done
+elif
+else
+esac
+fi
+for
+if
+in
+then
+while
