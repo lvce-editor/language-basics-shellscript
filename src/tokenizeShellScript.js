@@ -72,7 +72,7 @@ const RE_STRING_DOUBLE_QUOTE_CONTENT = /^[^"\\]+/
 const RE_STRING_SINGLE_QUOTE_CONTENT = /^[^']+/
 const RE_STRING_BACKTICK_QUOTE_CONTENT = /^[^`]+/
 const RE_KEYWORD =
-  /^(?:7za|7zr|alias|ar|awk|bg|bind|break|builtin|bunzip|bunzip2|caller|case|cargo|cat|catdog|cd|cp|command|compgen|complete|continue|curl|dirs|disown|dpkg|do|done|echo|elif|else|emulate|enable|esac|eval|eval_gettext|exec|exit|false|fc|fg|fi|for|function|getopts|grep|grub-mount|gzip|hash|head|help|history|identity|if|in|jobs|kill|let|lha|logout|lunzip|lzip|lzma|mkdir|mktemp|miniunz|miniunzip|mv|npm|node|pdftotext|popd|printf|pushd|pwd|rar|read|readonly|rm|rpm|sed|set|shift|shopt|sleep|snap|source|suspend|return|tar|tee|test|then|times|trap|true|type|ulimit|umask|unalias|unarj|unrar|unset|unwrapdiff|unzip|unzoo|xz|wait|which|while|zoo|zstd|umask)\b/
+  /^(?:7za|7zr|alias|ar|awk|bg|bind|break|builtin|bunzip|bunzip2|caller|case|cargo|cat|catdog|cd|cp|command|compgen|complete|continue|curl|dirs|disown|dpkg|do|done|echo|elif|else|emulate|enable|esac|eval|eval_gettext|exec|exit|false|fc|fg|fi|for|function|getopts|grep|grub-mount|gzip|hash|head|help|history|identity|if|in|jobs|kill|let|lha|logout|lunzip|lzip|lzma|mkdir|mktemp|miniunz|miniunzip|mv|npm|node|pdftotext|popd|printf|pushd|pwd|rar|read|readonly|rm|rpm|sed|set|shift|shopt|sleep|snap|source|suspend|return|tar|tee|test|then|times|trap|true|type|ulimit|umask|unalias|unarj|unmkinitramfs|unrar|unset|unwrapdiff|unzip|unzoo|xz|wait|which|while|zoo|zstd|umask)\b/
 const RE_VARIABLE_NAME = /^[a-zA-Z\_\/\-\$][a-zA-Z\_\/\-\$#\d\-]*/
 const RE_PUNCTUATION = /^[:,;\{\}\[\]\.=\(\)<>\!\|\+\&\>\)]/
 const RE_NUMERIC = /^\d+(?=\s|$)/
@@ -203,6 +203,7 @@ export const tokenizeLine = (line, lineState) => {
             case 'type':
             case 'umask':
             case 'unarj':
+            case 'unmkinitramfs':
             case 'unrar':
             case 'unset':
             case 'unwrapdiff':
