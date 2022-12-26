@@ -8,6 +8,7 @@ export const State = {
   InsideSingleQuoteString: 4,
   InsideBackTickString: 5,
   InsideEof: 6,
+  AfterKeywordFunction: 7,
 }
 
 export const StateMap = {
@@ -71,7 +72,7 @@ const RE_STRING_DOUBLE_QUOTE_CONTENT = /^[^"]+/
 const RE_STRING_SINGLE_QUOTE_CONTENT = /^[^']+/
 const RE_STRING_BACKTICK_QUOTE_CONTENT = /^[^`]+/
 const RE_KEYWORD =
-  /^(?:alias|awk|bg|bind|break|builtin|caller|case|cd|command|compgen|complete|continue|dirs|disown|do|done|echo|elif|else|enable|esac|eval|exec|exit|false|fc|fg|fi|for|getopts|hash|help|history|if|in|jobs|kill|let|logout|popd|printf|pushd|pwd|read|readonly|rm|sed|set|shift|shopt|source|suspend|return|test|then|times|trap|true|type|ulimit|umask|unalias|unset|unwrapdiff|wait|while)\b/
+  /^(?:alias|awk|bg|bind|break|builtin|caller|case|cd|command|compgen|complete|continue|dirs|disown|do|done|echo|elif|else|enable|esac|eval|exec|exit|false|fc|fg|fi|for|function|getopts|hash|help|history|if|in|jobs|kill|let|logout|popd|printf|pushd|pwd|read|readonly|rm|sed|set|shift|shopt|source|suspend|return|test|then|times|trap|true|type|ulimit|umask|unalias|unset|unwrapdiff|wait|while)\b/
 
 const RE_VARIABLE_NAME = /^[a-zA-Z\_\/\-\$][a-zA-Z\_\/\-\$#\d]*/
 const RE_PUNCTUATION = /^[:,;\{\}\[\]\.=\(\)<>\!\|\+\&\>\)]/
@@ -118,6 +119,7 @@ export const tokenizeLine = (line, lineState) => {
           token = TokenType.Whitespace
           state = State.TopLevelContent
         } else if ((next = part.match(RE_KEYWORD))) {
+          state = State.TopLevelContent
           switch (next[0]) {
             case 'if':
             case 'do':
@@ -163,11 +165,14 @@ export const tokenizeLine = (line, lineState) => {
             case 'return':
               token = TokenType.KeywordReturn
               break
+            case 'function':
+              token = TokenType.Keyword
+              state = State.AfterKeywordFunction
+              break
             default:
               token = TokenType.Keyword
               break
           }
-          state = State.TopLevelContent
         } else if ((next = part.match(RE_EOF_START))) {
           token = TokenType.Punctuation
           state = State.InsideEof
@@ -251,6 +256,21 @@ export const tokenizeLine = (line, lineState) => {
         } else if ((next = part.match(RE_EOF_CONTENT))) {
           token = TokenType.String
           state = State.InsideEof
+        } else {
+          throw new Error('no')
+        }
+        break
+      case State.AfterKeywordFunction:
+        if ((next = part.match(RE_VARIABLE_NAME))) {
+          token = TokenType.Function
+          state = State.TopLevelContent
+          knownFunctionNames.add(next[0])
+        } else if ((next = part.match(RE_WHITESPACE))) {
+          token = TokenType.Whitespace
+          state = State.AfterKeywordFunction
+        } else if ((next = part.match(RE_ANYTHING))) {
+          token = TokenType.Text
+          state = State.TopLevelContent
         } else {
           throw new Error('no')
         }

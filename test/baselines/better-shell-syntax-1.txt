@@ -130,9 +130,9 @@ Punctuation
 VariableName
 NewLine
 NewLine
-VariableName
+Keyword
 Whitespace
-VariableName
+Function
 Whitespace
 Punctuation
 NewLine
