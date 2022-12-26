@@ -6,7 +6,7 @@ Whitespace
 KeywordControl
 NewLine
 Whitespace
-VariableName
+Function
 Whitespace
 Punctuation
 Punctuation
@@ -21,7 +21,7 @@ NewLine
 Whitespace
 NewLine
 Whitespace
-VariableName
+Function
 Whitespace
 Punctuation
 Punctuation
@@ -39,7 +39,7 @@ NewLine
 Whitespace
 NewLine
 Whitespace
-VariableName
+Function
 Whitespace
 Punctuation
 Punctuation
@@ -57,7 +57,7 @@ NewLine
 Whitespace
 NewLine
 Whitespace
-VariableName
+Function
 Whitespace
 Punctuation
 Punctuation
@@ -73,7 +73,7 @@ NewLine
 Whitespace
 NewLine
 Whitespace
-VariableName
+Function
 Whitespace
 Punctuation
 NewLine
@@ -93,7 +93,7 @@ PunctuationString
 String
 PunctuationString
 NewLine
-VariableName
+Function
 Whitespace
 Punctuation
 String
@@ -128,7 +128,7 @@ String
 PunctuationString
 NewLine
 Whitespace
-VariableName
+Function
 Whitespace
 Punctuation
 Punctuation

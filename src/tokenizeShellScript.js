@@ -72,7 +72,7 @@ const RE_STRING_DOUBLE_QUOTE_CONTENT = /^[^"\\]+/
 const RE_STRING_SINGLE_QUOTE_CONTENT = /^[^'\\]+/
 const RE_STRING_BACKTICK_QUOTE_CONTENT = /^[^`]+/
 const RE_KEYWORD =
-  /^(?:alias|awk|bg|bind|break|builtin|caller|case|cargo|cd|command|compgen|complete|continue|curl|dirs|disown|do|done|echo|elif|else|enable|esac|eval|eval_gettext|exec|exit|false|fc|fg|fi|for|function|getopts|grep|hash|help|history|if|in|jobs|kill|let|logout|mkdir|npm|node|popd|printf|pushd|pwd|read|readonly|rm|sed|set|shift|shopt|sleep|source|suspend|return|test|then|times|trap|true|type|ulimit|umask|unalias|unset|unwrapdiff|wait|while)\b/
+  /^(?:7za|alias|ar|awk|bg|bind|break|builtin|bunzip|bunzip2|caller|case|cargo|cat|catdog|cd|command|compgen|complete|continue|curl|dirs|disown|dpkg|do|done|echo|elif|else|enable|esac|eval|eval_gettext|exec|exit|false|fc|fg|fi|for|function|getopts|grep|gzip|hash|help|history|identity|if|in|jobs|kill|let|logout|mkdir|npm|node|popd|printf|pushd|pwd|read|readonly|rm|sed|set|shift|shopt|sleep|source|suspend|return|test|then|times|trap|true|type|ulimit|umask|unalias|unset|unwrapdiff|wait|while)\b/
 const RE_VARIABLE_NAME = /^[a-zA-Z\_\/\-\$][a-zA-Z\_\/\-\$#\d\-]*/
 const RE_PUNCTUATION = /^[:,;\{\}\[\]\.=\(\)<>\!\|\+\&\>\)]/
 const RE_NUMERIC = /^\d+(?=\s|$)/
@@ -173,6 +173,32 @@ export const tokenizeLine = (line, lineState) => {
             case 'eval_gettext':
             case 'mkdir':
             case 'grep':
+            case '7za':
+            case 'ar':
+            case 'bunzip':
+            case 'bunzip2':
+            case 'cat':
+            case 'catdoc':
+            case 'dpkg':
+            case 'gzip':
+            case 'identity':
+            case 'lha':
+            case 'lunzip':
+            case 'lzip':
+            case 'lzma':
+            case 'miniunz':
+            case 'miniunzip':
+            case 'pdftotext':
+            case 'rar':
+            case 'rpm':
+            case 'snap':
+            case 'tar':
+            case 'unrar':
+            case 'unzip':
+            case 'unzoo':
+            case 'xz':
+            case 'zoo':
+            case 'zstd':
             case 'umask':
               token = TokenType.Function
               break
