@@ -121,6 +121,8 @@ Whitespace
 Punctuation
 Whitespace
 String
+Punctuation
+Punctuation
 NewLine
 Whitespace
 VariableName

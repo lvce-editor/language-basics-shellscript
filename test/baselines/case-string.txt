@@ -8,6 +8,7 @@ KeywordControl
 NewLine
 Whitespace
 String
+Punctuation
 Whitespace
 VariableName
 Punctuation

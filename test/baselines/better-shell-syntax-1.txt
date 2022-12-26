@@ -56,7 +56,7 @@ Whitespace
 PunctuationString
 String
 PunctuationString
-String
+Punctuation
 Whitespace
 Punctuation
 Punctuation
@@ -77,8 +77,6 @@ NewLine
 NewLine
 Function
 Whitespace
-VariableName
-Punctuation
 String
 Whitespace
 String
@@ -117,9 +115,7 @@ Punctuation
 Whitespace
 Function
 Whitespace
-VariableName
-Punctuation
-VariableName
+String
 Whitespace
 String
 NewLine
@@ -129,9 +125,7 @@ Punctuation
 Whitespace
 Function
 Whitespace
-VariableName
-Punctuation
-VariableName
+String
 NewLine
 NewLine
 Keyword
