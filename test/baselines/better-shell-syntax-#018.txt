@@ -31,7 +31,7 @@ PunctuationString
 String
 PunctuationString
 NewLine
-VariableName
+Keyword
 Whitespace
 Function
 Punctuation
