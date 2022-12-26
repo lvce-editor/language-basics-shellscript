@@ -10059,7 +10059,7 @@ VariableName
 Whitespace
 VariableName
 Whitespace
-VariableName
+Function
 Whitespace
 VariableName
 Whitespace
@@ -20412,7 +20412,7 @@ VariableName
 Whitespace
 VariableName
 Whitespace
-VariableName
+Function
 Whitespace
 VariableName
 Whitespace
@@ -22796,7 +22796,7 @@ KeywordControl
 NewLine
 NewLine
 Whitespace
-VariableName
+Function
 Whitespace
 VariableName
 Whitespace
