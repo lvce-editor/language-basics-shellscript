@@ -1,0 +1,6 @@
+Function
+Whitespace
+PunctuationString
+String
+PunctuationString
+VariableName
