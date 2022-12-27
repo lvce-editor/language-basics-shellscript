@@ -77,7 +77,7 @@ const RE_VARIABLE_NAME = /^[a-zA-Z\_\/\-\$][a-zA-Z\_\/\-\$#\d\-]*/
 const RE_PUNCTUATION = /^[:,;\{\}\[\]\.=\(\)<>\!\|\+\&\>\)]/
 const RE_NUMERIC = /^\d+(?=\s|$)/
 const RE_FUNCTION_NAME = /^\w+(?=\s*\()/
-const RE_EOF_START = /^<<\s*(\w+)/
+const RE_EOF_START = /^<<\s*([\w\!]+)/
 const RE_EOF_CONTENT = /.*/s
 const RE_STRING_ESCAPE = /^\\./
 const RE_BACKSLASH_AT_END = /^\\$/
