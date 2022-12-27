@@ -150,3 +150,7 @@ xz
 zip
 zoo
 zstd
+yarn
+killall
+gulp
+dirname
