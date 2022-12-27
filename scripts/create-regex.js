@@ -1,5 +1,4 @@
-import fs, { readFile, writeFile } from 'node:fs/promises'
-import { copyFiles, packageExtension } from '@lvce-editor/package-extension'
+import { readFile, writeFile } from 'node:fs/promises'
 import path, { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
