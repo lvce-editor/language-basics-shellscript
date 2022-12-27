@@ -117,3 +117,4 @@ gdbus
 pcmanfm
 texi2dvi
 tail
+touch
