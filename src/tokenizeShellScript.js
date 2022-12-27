@@ -72,7 +72,7 @@ const RE_STRING_DOUBLE_QUOTE_CONTENT = /^[^"\\]+/
 const RE_STRING_SINGLE_QUOTE_CONTENT = /^[^']+/
 const RE_STRING_BACKTICK_QUOTE_CONTENT = /^[^`]+/
 const RE_KEYWORD =
-  /^(?:7za|7zr|alias|ar|awk|bg|bind|break|builtin|bunzip|bunzip2|caller|cargo|case|cat|catdoc|cd|chmod|chown|command|compgen|complete|continue|cp|curl|dirs|disown|do|done|done|dpkg|echo|elif|else|emulate|enable|esac|eval|eval_gettext|exec|exit|expr|false|fc|fg|fi|for|function|getopts|grep|grub-mount|gzip|hash|head|help|history|identity|if|in|jobs|kill|less|let|lha|logout|ls|ls|lunzip|lzip|lzma|miniunz|miniunzip|mkdir|mktemp|mv|node|npm|pdftotext|popd|printf|ps|pushd|pwd|rar|read|readonly|return|rm|rpm|sed|set|shift|shopt|sleep|snap|sort|source|stty|suspend|tar|tee|test|then|times|trap|true|tty|type|ulimit|umask|umask|unalias|unarj|unmkinitramfs|unrar|unset|unwrapdiff|unzip|unzoo|wait|which|while|xz|zoo|zstd)\b/
+  /^(?:7za|7zr|alias|ar|awk|bg|bind|break|builtin|bunzip|bunzip2|caller|cargo|case|cat|catdoc|cd|chmod|chown|command|compgen|complete|continue|cp|curl|dirs|disown|do|done|done|dpkg|echo|elif|else|emulate|enable|esac|eval|eval_gettext|exec|exit|expr|false|fc|fg|fi|for|function|getopts|grep|grub-mount|gzip|hash|head|help|history|identity|if|in|jobs|kill|less|let|lha|logout|ls|ls|lunzip|lzip|lzma|miniunz|miniunzip|mkdir|mktemp|mv|node|npm|pdftotext|popd|printf|ps|pushd|pwd|rar|read|readlink|readonly|return|rm|rpm|sed|set|shift|shopt|sleep|snap|sort|source|stty|suspend|tar|tee|test|then|times|trap|true|tty|type|ulimit|umask|umask|unalias|unarj|unmkinitramfs|unrar|unset|unwrapdiff|unzip|unzoo|wait|which|while|xz|zoo|zstd)\b/
 const RE_VARIABLE_NAME = /^[a-zA-Z\_\/\-\$][a-zA-Z\_\/\-\$#\d\-]*/
 const RE_PUNCTUATION = /^[:,;\{\}\[\]\.=\(\)<>\!\|\+\&\>\)]/
 const RE_NUMERIC = /^\d+(?=\s|$)/
@@ -244,6 +244,7 @@ export const tokenizeLine = (line, lineState) => {
             case 'tty':
             case 'sort':
             case 'ls':
+            case 'readlink':
               token = TokenType.Function
               break
             case 'true':
