@@ -22858,7 +22858,7 @@ VariableName
 Punctuation
 VariableName
 Punctuation
-VariableName
+Function
 Whitespace
 PunctuationString
 String
