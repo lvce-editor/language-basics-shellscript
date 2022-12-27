@@ -120,3 +120,8 @@ tail
 touch
 prezip-bin
 ip
+cut
+pacman
+vim
+wget
+curl
