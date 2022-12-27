@@ -102,3 +102,4 @@ expr
 tty
 sort
 ls
+readlink
