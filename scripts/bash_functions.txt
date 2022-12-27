@@ -103,3 +103,15 @@ tty
 sort
 ls
 readlink
+gio
+gvfs-open
+gnome-open
+xprop
+cygstart
+open
+kde-open
+kfmclient
+dde-open
+enlightenment_open
+gdbus
+pcmanfm
