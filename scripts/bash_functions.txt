@@ -2,6 +2,8 @@
 7za
 7zr
 alias
+apk
+apt-get
 ar
 awk
 bg
@@ -29,6 +31,7 @@ cut
 cygstart
 dde-open
 diff
+dirname
 dirs
 disown
 dpkg
@@ -57,6 +60,7 @@ gnome-open
 grep
 grub-mount
 gs
+gulp
 gvfs-open
 gzip
 hash
@@ -71,6 +75,7 @@ jobs
 kde-open
 kfmclient
 kill
+killall
 less
 lha
 logout
@@ -93,6 +98,7 @@ open
 pacman
 pcmanfm
 pdftotext
+pkg
 popd
 prezip-bin
 printf
@@ -147,10 +153,8 @@ which
 xargs
 xprop
 xz
+yarn
+yum
 zip
 zoo
 zstd
-yarn
-killall
-gulp
-dirname

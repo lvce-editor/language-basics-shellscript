@@ -4,7 +4,7 @@ Function
 Whitespace
 VariableName
 Whitespace
-VariableName
+Function
 Whitespace
 Punctuation
 Whitespace
