@@ -603,7 +603,7 @@ VariableName
 Whitespace
 VariableName
 Whitespace
-VariableName
+Function
 NewLine
 Function
 Whitespace
