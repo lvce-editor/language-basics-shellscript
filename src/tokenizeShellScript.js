@@ -72,7 +72,7 @@ const RE_STRING_DOUBLE_QUOTE_CONTENT = /^[^"\\]+/
 const RE_STRING_SINGLE_QUOTE_CONTENT = /^[^']+/
 const RE_STRING_BACKTICK_QUOTE_CONTENT = /^[^`]+/
 const RE_KEYWORD =
-  /^(?:7za|7zr|alias|ar|awk|bg|bind|break|builtin|bunzip|bunzip2|caller|cargo|case|cat|catdoc|cd|chmod|chown|command|compgen|complete|continue|cp|curl|cygstart|dde-open|dirs|disown|do|done|done|dpkg|echo|elif|else|emulate|enable|enlightenment_open|esac|eval|eval_gettext|exec|exit|expr|false|fc|fg|fi|for|function|gdbus|getopts|gio|gnome-open|grep|grub-mount|gvfs-open|gzip|hash|head|help|history|identity|if|in|jobs|kde-open|kfmclient|kill|less|let|lha|logout|ls|ls|lunzip|lzip|lzma|miniunz|miniunzip|mkdir|mktemp|mv|node|npm|open|pcmanfm|pdftotext|popd|printf|ps|pushd|pwd|rar|read|readlink|readonly|return|rm|rpm|sed|set|shift|shopt|sleep|snap|sort|source|stty|suspend|tar|tee|test|texi2dvi|then|times|trap|true|tty|type|ulimit|umask|umask|unalias|unarj|unmkinitramfs|unrar|unset|unwrapdiff|unzip|unzoo|wait|which|while|xprop|xz|zoo|zstd)\b/
+  /^(?:7za|7zr|alias|ar|awk|bg|bind|break|builtin|bunzip|bunzip2|caller|cargo|case|cat|catdoc|cd|chmod|chown|command|compgen|complete|continue|cp|curl|cygstart|dde-open|dirs|disown|do|done|done|dpkg|echo|elif|else|emulate|enable|enlightenment_open|esac|eval|eval_gettext|exec|exit|expr|false|fc|fg|fi|for|function|gdbus|getopts|gio|gnome-open|grep|grub-mount|gvfs-open|gzip|hash|head|help|history|identity|if|in|jobs|kde-open|kfmclient|kill|less|let|lha|logout|ls|ls|lunzip|lzip|lzma|miniunz|miniunzip|mkdir|mktemp|mv|node|npm|open|pcmanfm|pdftotext|popd|printf|ps|pushd|pwd|rar|read|readlink|readonly|return|rm|rpm|sed|set|shift|shopt|sleep|snap|sort|source|stty|suspend|tail|tar|tee|test|texi2dvi|then|times|trap|true|tty|type|ulimit|umask|umask|unalias|unarj|unmkinitramfs|unrar|unset|unwrapdiff|unzip|unzoo|wait|which|while|xprop|xz|zoo|zstd)\b/
 const RE_VARIABLE_NAME = /^[a-zA-Z\_\/\-\$][a-zA-Z\_\/\-\$#\d\-]*/
 const RE_PUNCTUATION = /^[:,;\{\}\[\]\.=\(\)<>\!\|\+\&\>\)]/
 const RE_NUMERIC = /^\d+(?=\s|$)/
@@ -258,6 +258,7 @@ export const tokenizeLine = (line, lineState) => {
             case 'gdbus':
             case 'pcmanfm':
             case 'texi2dvi':
+            case 'tail':
               token = TokenType.Function
               break
             case 'true':

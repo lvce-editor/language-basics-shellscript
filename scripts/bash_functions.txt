@@ -116,3 +116,4 @@ enlightenment_open
 gdbus
 pcmanfm
 texi2dvi
+tail
