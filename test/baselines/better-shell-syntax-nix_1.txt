@@ -2121,7 +2121,7 @@ VariableName
 Whitespace
 VariableName
 Whitespace
-VariableName
+Function
 NewLine
 VariableName
 Whitespace
