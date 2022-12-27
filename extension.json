@@ -46,7 +46,8 @@
         "zprofile",
         "zlogout",
         "bashrc_Apple_Terminal",
-        "zshrc_Apple_Terminal"
+        "zshrc_Apple_Terminal",
+        "xvfb.init"
       ],
       "firstLine": "^#!.*\\b(bash|fish|zsh|sh|ksh|dtksh|pdksh|mksh|ash|dash|yash|sh|csh|jcsh|tcsh|itcsh).*|^#\\s*-\\*-[^*]*mode:\\s*shell-script[^*]*-\\*-",
       "tokenize": "src/tokenizeShellScript.js"
