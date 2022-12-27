@@ -72,7 +72,7 @@ const RE_STRING_DOUBLE_QUOTE_CONTENT = /^[^"\\]+/
 const RE_STRING_SINGLE_QUOTE_CONTENT = /^[^']+/
 const RE_STRING_BACKTICK_QUOTE_CONTENT = /^[^`]+/
 const RE_KEYWORD =
-  /^(?:7za|7zr|alias|ar|awk|bg|bind|break|builtin|bunzip|bunzip2|caller|cargo|case|cat|catdoc|cd|chmod|chown|command|compgen|complete|continue|cp|curl|dirs|disown|do|done|done|dpkg|echo|elif|else|emulate|enable|esac|eval|eval_gettext|exec|exit|false|fc|fg|fi|for|function|getopts|grep|grub-mount|gzip|hash|head|help|history|identity|if|in|jobs|kill|less|let|lha|logout|ls|lunzip|lzip|lzma|miniunz|miniunzip|mkdir|mktemp|mv|node|npm|pdftotext|popd|printf|ps|pushd|pwd|rar|read|readonly|return|rm|rpm|sed|set|shift|shopt|sleep|snap|source|stty|suspend|tar|tee|test|then|times|trap|true|type|ulimit|umask|umask|unalias|unarj|unmkinitramfs|unrar|unset|unwrapdiff|unzip|unzoo|wait|which|while|xz|zoo|zstd)\b/
+  /^(?:7za|7zr|alias|ar|awk|break|break|bunzip|bunzip2|cargo|case|case|cat|catdoc|cd|chmod|chown|command|compgen|complete|continue|continue|cp|curl|disown|do|do|done|done|dpkg|echo|elif|elif|else|else|emulate|esac|esac|eval|eval_gettext|exec|exit|false|fi|fi|for|for|function|getopts|grep|grub-mount|gzip|head|identity|if|if|in|in|less|lha|ls|lunzip|lzip|lzma|miniunz|miniunzip|mkdir|mktemp|mv|node|npm|pdftotext|printf|ps|pushd|pwd|rar|read|return|rm|rpm|sed|set|shift|shopt|sleep|snap|source|stty|tar|tee|test|then|then|trap|true|type|umask|unarj|unmkinitramfs|unrar|unset|unwrapdiff|unzip|unzoo|which|while|while|xz|zoo|zstd)/
 const RE_VARIABLE_NAME = /^[a-zA-Z\_\/\-\$][a-zA-Z\_\/\-\$#\d\-]*/
 const RE_PUNCTUATION = /^[:,;\{\}\[\]\.=\(\)<>\!\|\+\&\>\)]/
 const RE_NUMERIC = /^\d+(?=\s|$)/
@@ -140,17 +140,12 @@ export const tokenizeLine = (line, lineState) => {
               token = TokenType.KeywordControl
               break
             case '7za':
-            case '7za':
             case '7zr':
             case 'alias':
             case 'ar':
             case 'awk':
-            case 'bg':
-            case 'bind':
-            case 'builtin':
             case 'bunzip':
             case 'bunzip2':
-            case 'caller':
             case 'cargo':
             case 'cat':
             case 'catdoc':
@@ -162,32 +157,22 @@ export const tokenizeLine = (line, lineState) => {
             case 'complete':
             case 'cp':
             case 'curl':
-            case 'dirs':
             case 'disown':
             case 'dpkg':
             case 'echo':
             case 'emulate':
-            case 'enable':
-            case 'eval':
             case 'eval_gettext':
+            case 'eval':
             case 'exec':
             case 'exit':
-            case 'fc':
-            case 'fg':
             case 'getopts':
             case 'grep':
             case 'grub-mount':
             case 'gzip':
-            case 'hash':
             case 'head':
-            case 'help':
-            case 'history':
             case 'identity':
-            case 'jobs':
-            case 'kill':
             case 'less':
             case 'lha':
-            case 'logout':
             case 'ls':
             case 'lunzip':
             case 'lzip':
@@ -200,7 +185,6 @@ export const tokenizeLine = (line, lineState) => {
             case 'node':
             case 'npm':
             case 'pdftotext':
-            case 'popd':
             case 'printf':
             case 'ps':
             case 'pushd':
@@ -217,17 +201,12 @@ export const tokenizeLine = (line, lineState) => {
             case 'snap':
             case 'source':
             case 'stty':
-            case 'suspend':
             case 'tar':
             case 'tee':
             case 'test':
-            case 'times':
             case 'trap':
             case 'type':
-            case 'ulimit':
             case 'umask':
-            case 'umask':
-            case 'unalias':
             case 'unarj':
             case 'unmkinitramfs':
             case 'unrar':
@@ -235,13 +214,232 @@ export const tokenizeLine = (line, lineState) => {
             case 'unwrapdiff':
             case 'unzip':
             case 'unzoo':
-            case 'wait':
             case 'which':
             case 'xz':
             case 'zoo':
             case 'zstd':
               token = TokenType.Function
               break
+            case 'true':
+            case 'false':
+              token = TokenType.LanguageConstant
+              break
+            case 'return':
+              token = TokenType.KeywordReturn
+              break
+            case 'function':
+              token = TokenType.Keyword
+              state = State.AfterKeywordFunction
+              break
+            default:
+              token = TokenType.Keyword
+              break
+          }
+        } else if ((next = part.match(RE_EOF_START))) {
+          token = TokenType.Punctuation
+          state = State.InsideEof
+          stringEnd = next[1]
+        } else if ((next = part.match(RE_PUNCTUATION))) {
+          token = TokenType.Punctuation
+          state = State.TopLevelContent
+        } else if ((next = part.match(RE_FUNCTION_NAME))) {
+          token = TokenType.Function
+          state = State.TopLevelContent
+          knownFunctionNames.add(next[0])
+        } else if ((next = part.match(RE_VARIABLE_NAME))) {
+          if (knownFunctionNames.has(next[0])) {
+            token = TokenType.Function
+          } else {
+            token = TokenType.VariableName
+          }
+          state = State.TopLevelContent
+        } else if ((next = part.match(RE_NUMERIC))) {
+          token = TokenType.Numeric
+          state = State.TopLevelContent
+        } else if ((next = part.match(RE_QUOTE_DOUBLE))) {
+          token = TokenType.PunctuationString
+          state = State.InsideDoubleQuoteString
+        } else if ((next = part.match(RE_QUOTE_SINGLE))) {
+          token = TokenType.Punctuation
+          state = State.InsideSingleQuoteString
+        } else if ((next = part.match(RE_QUOTE_BACKTICK))) {
+          token = TokenType.Punctuation
+          state = State.InsideBackTickString
+        } else if ((next = part.match(RE_LINE_COMMENT))) {
+          token = TokenType.Comment
+          state = State.TopLevelContent
+        } else if ((next = part.match(RE_ANYTHING_SHORT))) {
+          token = TokenType.VariableName
+          state = State.TopLevelContent
+        } else if ((next = part.match(RE_ANYTHING))) {
+          token = TokenType.Text
+          state = State.TopLevelContent
+        } else {
+          part //?
+          throw new Error('no')
+        }
+        break
+      case State.InsideDoubleQuoteString:
+        if ((next = part.match(RE_QUOTE_DOUBLE))) {
+          token = TokenType.PunctuationString
+          state = State.TopLevelContent
+        } else if ((next = part.match(RE_STRING_DOUBLE_QUOTE_CONTENT))) {
+          token = TokenType.String
+          state = State.InsideDoubleQuoteString
+        } else if ((next = part.match(RE_STRING_ESCAPE))) {
+          token = TokenType.String
+          state = State.InsideDoubleQuoteString
+        } else if ((next = part.match(RE_BACKSLASH_AT_END))) {
+          token = TokenType.String
+          state = State.InsideDoubleQuoteString
+        } else {
+          throw new Error('no')
+        }
+        break
+      case State.InsideSingleQuoteString:
+        if ((next = part.match(RE_QUOTE_SINGLE))) {
+          token = TokenType.PunctuationString
+          state = State.TopLevelContent
+        } else if ((next = part.match(RE_STRING_SINGLE_QUOTE_CONTENT))) {
+          token = TokenType.String
+          state = State.InsideSingleQuoteString
+        } else if ((next = part.match(RE_BACKSLASH_AT_END))) {
+          token = TokenType.String
+          state = State.InsideSingleQuoteString
+        } else {
+          throw new Error('no')
+        }
+        break
+      case State.InsideBackTickString:
+        if ((next = part.match(RE_QUOTE_BACKTICK))) {
+          token = TokenType.PunctuationString
+          state = State.TopLevelContent
+        } else if ((next = part.match(RE_STRING_BACKTICK_QUOTE_CONTENT))) {
+          token = TokenType.String
+          state = State.InsideBackTickString
+        } else {
+          throw new Error('no')
+        }
+        break
+      case State.InsideEof:
+        if ((next = part.match(stringEnd))) {
+          token = TokenType.Punctuation
+          state = State.TopLevelContent
+        } else if ((next = part.match(RE_EOF_CONTENT))) {
+          token = TokenType.String
+          state = State.InsideEof
+        } else {
+          throw new Error('no')
+        }
+        break
+      case State.AfterKeywordFunction:
+        if ((next = part.match(RE_VARIABLE_NAME))) {
+          token = TokenType.Function
+          state = State.TopLevelContent
+          knownFunctionNames.add(next[0])
+        } else if ((next = part.match(RE_WHITESPACE))) {
+          token = TokenType.Whitespace
+          state = State.AfterKeywordFunction
+        } else if ((next = part.match(RE_ANYTHING))) {
+          token = TokenType.Text
+          state = State.TopLevelContent
+        } else {
+          throw new Error('no')
+        }
+        break
+      default:
+        throw new Error('no')
+    }
+    const tokenLength = next[0].length
+    index += tokenLength
+    tokens.push(token, tokenLength)
+  }
+  return {
+    state,
+    tokens,
+    knownFunctionNames,
+    stringEnd,
+  }
+}
+        case '7za':
+        case '7zr':
+        case 'alias':
+        case 'ar':
+        case 'awk':
+        case 'bunzip':
+        case 'bunzip2':
+        case 'cargo':
+        case 'cat':
+        case 'catdoc':
+        case 'cd':
+        case 'chmod':
+        case 'chown':
+        case 'command':
+        case 'compgen':
+        case 'complete':
+        case 'cp':
+        case 'curl':
+        case 'disown':
+        case 'dpkg':
+        case 'echo':
+        case 'emulate':
+        case 'eval_gettext':
+        case 'eval':
+        case 'exec':
+        case 'exit':
+        case 'getopts':
+        case 'grep':
+        case 'grub-mount':
+        case 'gzip':
+        case 'head':
+        case 'identity':
+        case 'less':
+        case 'lha':
+        case 'ls':
+        case 'lunzip':
+        case 'lzip':
+        case 'lzma':
+        case 'miniunz':
+        case 'miniunzip':
+        case 'mkdir':
+        case 'mktemp':
+        case 'mv':
+        case 'node':
+        case 'npm':
+        case 'pdftotext':
+        case 'printf':
+        case 'ps':
+        case 'pushd':
+        case 'pwd':
+        case 'rar':
+        case 'read':
+        case 'rm':
+        case 'rpm':
+        case 'sed':
+        case 'set':
+        case 'shift':
+        case 'shopt':
+        case 'sleep':
+        case 'snap':
+        case 'source':
+        case 'stty':
+        case 'tar':
+        case 'tee':
+        case 'test':
+        case 'trap':
+        case 'type':
+        case 'umask':
+        case 'unarj':
+        case 'unmkinitramfs':
+        case 'unrar':
+        case 'unset':
+        case 'unwrapdiff':
+        case 'unzip':
+        case 'unzoo':
+        case 'which':
+        case 'xz':
+        case 'zoo':
+        case 'zstd':
             case 'true':
             case 'false':
               token = TokenType.LanguageConstant

@@ -165,7 +165,7 @@ String
 PunctuationString
 Punctuation
 Whitespace
-VariableName
+Function
 Whitespace
 VariableName
 NewLine

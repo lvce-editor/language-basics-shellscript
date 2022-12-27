@@ -4283,7 +4283,7 @@ VariableName
 Whitespace
 VariableName
 Whitespace
-Keyword
+Function
 Punctuation
 Whitespace
 VariableName
