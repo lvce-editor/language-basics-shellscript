@@ -98,3 +98,7 @@ which
 xz
 zoo
 zstd
+expr
+tty
+sort
+ls
