@@ -25,8 +25,12 @@ const toSorted = (array) => {
   return array.slice().sort()
 }
 
+const escapeRegex = (regex) => {
+  return regex.replaceAll('+', '\\+')
+}
+
 const getRegexLine = (lines) => {
-  const allLinesSorted = toSorted(lines)
+  const allLinesSorted = toSorted(lines).map(escapeRegex)
   return `  /^(?:${allLinesSorted.join('|')})\\b/`
 }
 

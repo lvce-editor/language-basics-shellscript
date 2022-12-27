@@ -72,7 +72,7 @@ const RE_STRING_DOUBLE_QUOTE_CONTENT = /^[^"\\]+/
 const RE_STRING_SINGLE_QUOTE_CONTENT = /^[^']+/
 const RE_STRING_BACKTICK_QUOTE_CONTENT = /^[^`]+/
 const RE_KEYWORD =
-  /^(?:7za|7zr|alias|ar|awk|bg|bind|break|builtin|bunzip|bunzip2|caller|cargo|case|cat|catdoc|cd|chmod|chown|command|compgen|complete|continue|cp|curl|curl|cut|cygstart|dde-open|dirs|disown|do|done|done|dpkg|echo|elif|else|emulate|enable|enlightenment_open|esac|eval|eval_gettext|exec|exit|expr|false|fc|fg|fi|for|function|gdbus|getopts|gio|gnome-open|grep|grub-mount|gvfs-open|gzip|hash|head|help|history|identity|if|in|ip|jobs|kde-open|kfmclient|kill|less|let|lha|logout|ls|ls|lunzip|lzip|lzma|miniunz|miniunzip|mkdir|mktemp|mv|node|npm|open|pacman|pcmanfm|pdftotext|popd|prezip-bin|printf|ps|pushd|pwd|rar|read|readlink|readonly|return|rm|rpm|sed|set|shift|shopt|sleep|snap|sort|source|stty|suspend|tail|tar|tee|test|texi2dvi|then|times|touch|trap|true|tty|type|ulimit|umask|umask|unalias|unarj|unmkinitramfs|unrar|unset|unwrapdiff|unzip|unzoo|vim|wait|wget|which|while|xprop|xz|zoo|zstd)\b/
+  /^(?:7z|7za|7zr|alias|ar|awk|bg|bind|blkid|break|builtin|bunzip|bunzip2|caller|cargo|case|cat|catdoc|cd|chmod|chown|cmp|command|compgen|complete|continue|cp|cryptsetup|curl|curl|cut|cygstart|dde-open|diff|dirs|disown|do|done|done|dpkg|du|echo|elif|else|emulate|enable|enlightenment_open|esac|eval|eval_gettext|exec|exit|expr|false|fc|fg|fi|find|for|free|function|fzf|g\+\+|gcc|gdbus|getopts|gio|git|gnome-open|grep|grub-mount|gs|gvfs-open|gzip|hash|head|help|hexdump|history|identity|if|in|install|ip|jobs|kde-open|kfmclient|kill|less|let|lha|logout|ls|ls|lunzip|lzip|lzma|makepkg|miniunz|miniunzip|mkdir|mktemp|mount|mpicc|mv|node|npm|open|pacman|pcmanfm|pdftotext|popd|prezip-bin|printf|ps|pushd|pwd|rar|read|readlink|readonly|return|rm|rpm|rsync|sed|set|shift|shopt|sleep|snap|sort|source|stty|sudo|suspend|tail|tar|tee|test|texi2dvi|then|times|touch|trap|true|tty|tune2fs|type|ulimit|umask|umask|unalias|unarj|unmkinitramfs|unmount|unrar|unset|unwrapdiff|unzip|unzoo|vim|wait|wc|wget|which|while|xargs|xprop|xz|zip|zoo|zstd)\b/
 const RE_VARIABLE_NAME = /^[a-zA-Z\_\/\-\$][a-zA-Z\_\/\-\$#\d\-]*/
 const RE_PUNCTUATION = /^[:,;\{\}\[\]\.=\(\)<>\!\|\+\&\>\)]/
 const RE_NUMERIC = /^\d+(?=\s|$)/
@@ -140,6 +140,7 @@ export const tokenizeLine = (line, lineState) => {
               token = TokenType.KeywordControl
               break
             case '7za':
+            case '7z':
             case '7za':
             case '7zr':
             case 'alias':
@@ -147,6 +148,7 @@ export const tokenizeLine = (line, lineState) => {
             case 'awk':
             case 'bg':
             case 'bind':
+            case 'blkid':
             case 'builtin':
             case 'bunzip':
             case 'bunzip2':
@@ -157,72 +159,115 @@ export const tokenizeLine = (line, lineState) => {
             case 'cd':
             case 'chmod':
             case 'chown':
+            case 'cmp':
             case 'command':
             case 'compgen':
             case 'complete':
             case 'cp':
+            case 'cryptsetup':
             case 'curl':
+            case 'curl':
+            case 'cut':
+            case 'cygstart':
+            case 'dde-open':
+            case 'diff':
             case 'dirs':
             case 'disown':
             case 'dpkg':
+            case 'du':
             case 'echo':
             case 'emulate':
             case 'enable':
+            case 'enlightenment_open':
             case 'eval':
             case 'eval_gettext':
             case 'exec':
             case 'exit':
+            case 'expr':
             case 'fc':
             case 'fg':
+            case 'find':
+            case 'free':
+            case 'fzf':
+            case 'g++':
+            case 'gcc':
+            case 'gdbus':
             case 'getopts':
+            case 'gio':
+            case 'git':
+            case 'gnome-open':
             case 'grep':
             case 'grub-mount':
+            case 'gs':
+            case 'gvfs-open':
             case 'gzip':
             case 'hash':
             case 'head':
             case 'help':
+            case 'hexdump':
             case 'history':
             case 'identity':
+            case 'install':
+            case 'ip':
             case 'jobs':
+            case 'kde-open':
+            case 'kfmclient':
             case 'kill':
             case 'less':
             case 'lha':
             case 'logout':
             case 'ls':
+            case 'ls':
             case 'lunzip':
             case 'lzip':
             case 'lzma':
+            case 'makepkg':
             case 'miniunz':
             case 'miniunzip':
             case 'mkdir':
             case 'mktemp':
+            case 'mount':
+            case 'mpicc':
             case 'mv':
             case 'node':
             case 'npm':
+            case 'open':
+            case 'pacman':
+            case 'pcmanfm':
             case 'pdftotext':
             case 'popd':
+            case 'prezip-bin':
             case 'printf':
             case 'ps':
             case 'pushd':
             case 'pwd':
             case 'rar':
             case 'read':
+            case 'readlink':
             case 'rm':
             case 'rpm':
+            case 'rsync':
             case 'sed':
             case 'set':
             case 'shift':
             case 'shopt':
             case 'sleep':
             case 'snap':
+            case 'sort':
             case 'source':
             case 'stty':
+            case 'sudo':
             case 'suspend':
+            case 'tail':
             case 'tar':
             case 'tee':
             case 'test':
+            case 'texi2dvi':
             case 'times':
+            case 'touch':
             case 'trap':
+            case 'tty':
+            case 'tune2fs':
             case 'type':
             case 'ulimit':
             case 'umask':
@@ -230,43 +275,23 @@ export const tokenizeLine = (line, lineState) => {
             case 'unalias':
             case 'unarj':
             case 'unmkinitramfs':
+            case 'unmount':
             case 'unrar':
             case 'unset':
             case 'unwrapdiff':
             case 'unzip':
             case 'unzoo':
+            case 'vim':
             case 'wait':
+            case 'wc':
+            case 'wget':
             case 'which':
+            case 'xargs':
+            case 'xprop':
             case 'xz':
+            case 'zip':
             case 'zoo':
             case 'zstd':
-            case 'expr':
-            case 'tty':
-            case 'sort':
-            case 'ls':
-            case 'readlink':
-            case 'gio':
-            case 'gvfs-open':
-            case 'gnome-open':
-            case 'xprop':
-            case 'cygstart':
-            case 'open':
-            case 'kde-open':
-            case 'kfmclient':
-            case 'dde-open':
-            case 'enlightenment_open':
-            case 'gdbus':
-            case 'pcmanfm':
-            case 'texi2dvi':
-            case 'tail':
-            case 'touch':
-            case 'prezip-bin':
-            case 'ip':
-            case 'cut':
-            case 'pacman':
-            case 'vim':
-            case 'wget':
-            case 'curl':
               token = TokenType.Function
               break
             case 'true':

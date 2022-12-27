@@ -9630,7 +9630,7 @@ VariableName
 Whitespace
 VariableName
 Whitespace
-VariableName
+Function
 NewLine
 NewLine
 Function
@@ -9686,7 +9686,7 @@ VariableName
 Whitespace
 VariableName
 Whitespace
-VariableName
+Function
 NewLine
 NewLine
 Comment
@@ -9961,11 +9961,11 @@ VariableName
 Whitespace
 VariableName
 Whitespace
-VariableName
+Function
 Whitespace
 VariableName
 Whitespace
-VariableName
+Function
 Whitespace
 VariableName
 Whitespace
@@ -10090,7 +10090,7 @@ VariableName
 Whitespace
 VariableName
 Whitespace
-VariableName
+Function
 Whitespace
 Function
 Whitespace
@@ -19919,7 +19919,7 @@ VariableName
 Whitespace
 VariableName
 Whitespace
-VariableName
+Function
 NewLine
 NewLine
 Function
@@ -19975,7 +19975,7 @@ VariableName
 Whitespace
 VariableName
 Whitespace
-VariableName
+Function
 NewLine
 NewLine
 Comment
@@ -20247,11 +20247,11 @@ VariableName
 Whitespace
 VariableName
 Whitespace
-VariableName
+Function
 Whitespace
 VariableName
 Whitespace
-VariableName
+Function
 Whitespace
 VariableName
 Whitespace
@@ -20376,7 +20376,7 @@ VariableName
 Whitespace
 VariableName
 Whitespace
-VariableName
+Function
 Whitespace
 Function
 Whitespace
@@ -22500,7 +22500,7 @@ VariableName
 Punctuation
 VariableName
 Punctuation
-VariableName
+Function
 Whitespace
 PunctuationString
 String
@@ -22599,7 +22599,7 @@ String
 PunctuationString
 NewLine
 Whitespace
-VariableName
+Function
 Whitespace
 VariableName
 Whitespace
@@ -22637,14 +22637,14 @@ Whitespace
 Punctuation
 Punctuation
 Whitespace
-VariableName
+Function
 Whitespace
 VariableName
 Whitespace
 Punctuation
 Punctuation
 Whitespace
-VariableName
+Function
 Whitespace
 VariableName
 Whitespace
@@ -24269,7 +24269,7 @@ VariableName
 Whitespace
 Punctuation
 Whitespace
-VariableName
+Function
 Whitespace
 VariableName
 Whitespace
@@ -24319,7 +24319,7 @@ Numeric
 Whitespace
 Punctuation
 Whitespace
-VariableName
+Function
 Whitespace
 Function
 NewLine
