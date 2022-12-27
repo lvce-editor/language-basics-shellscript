@@ -10076,7 +10076,7 @@ NewLine
 Whitespace
 VariableName
 Whitespace
-VariableName
+Function
 Whitespace
 VariableName
 Whitespace
@@ -20362,7 +20362,7 @@ NewLine
 Whitespace
 VariableName
 Whitespace
-VariableName
+Function
 Whitespace
 VariableName
 Whitespace
@@ -22667,7 +22667,7 @@ String
 PunctuationString
 NewLine
 Whitespace
-VariableName
+Function
 Whitespace
 PunctuationString
 String
