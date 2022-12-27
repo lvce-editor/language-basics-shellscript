@@ -118,3 +118,4 @@ pcmanfm
 texi2dvi
 tail
 touch
+prezip-bin
