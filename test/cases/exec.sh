@@ -1,0 +1,1 @@
+exec "${bindir}"ed
