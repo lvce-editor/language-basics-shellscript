@@ -72,7 +72,7 @@ const RE_STRING_DOUBLE_QUOTE_CONTENT = /^[^"\\]+/
 const RE_STRING_SINGLE_QUOTE_CONTENT = /^[^']+/
 const RE_STRING_BACKTICK_QUOTE_CONTENT = /^[^`]+/
 const RE_KEYWORD =
-  /^(?:7za|7zr|alias|ar|awk|bg|bind|break|builtin|bunzip|bunzip2|caller|case|cargo|cat|catdog|cd|chmod|chown|cp|command|compgen|complete|continue|curl|dirs|disown|dpkg|do|done|echo|elif|else|emulate|enable|esac|eval|eval_gettext|exec|exit|false|fc|fg|fi|for|function|getopts|grep|grub-mount|gzip|hash|head|help|history|identity|if|in|jobs|kill|let|lha|less|logout|lunzip|lzip|lzma|mkdir|mktemp|miniunz|miniunzip|mv|npm|node|pdftotext|popd|printf|ps|pushd|pwd|rar|read|readonly|rm|rpm|sed|set|shift|shopt|sleep|snap|source|suspend|stty|return|tar|tee|test|then|times|trap|true|type|ulimit|umask|unalias|unarj|unmkinitramfs|unrar|unset|unwrapdiff|unzip|unzoo|xz|wait|which|while|zoo|zstd|umask)\b/
+  /^(?:7za|7zr|alias|ar|awk|bg|bind|break|builtin|bunzip|bunzip2|caller|cargo|case|cat|catdoc|cd|chmod|chown|command|compgen|complete|continue|cp|curl|dirs|disown|do|done|done|dpkg|echo|elif|else|emulate|enable|esac|eval|eval_gettext|exec|exit|false|fc|fg|fi|for|function|getopts|grep|grub-mount|gzip|hash|head|help|history|identity|if|in|jobs|kill|less|let|lha|logout|ls|lunzip|lzip|lzma|miniunz|miniunzip|mkdir|mktemp|mv|node|npm|pdftotext|popd|printf|ps|pushd|pwd|rar|read|readonly|return|rm|rpm|sed|set|shift|shopt|sleep|snap|source|stty|suspend|tar|tee|test|then|times|trap|true|type|ulimit|umask|umask|unalias|unarj|unmkinitramfs|unrar|unset|unwrapdiff|unzip|unzoo|wait|which|while|xz|zoo|zstd)\b/
 const RE_VARIABLE_NAME = /^[a-zA-Z\_\/\-\$][a-zA-Z\_\/\-\$#\d\-]*/
 const RE_PUNCTUATION = /^[:,;\{\}\[\]\.=\(\)<>\!\|\+\&\>\)]/
 const RE_NUMERIC = /^\d+(?=\s|$)/
@@ -140,12 +140,17 @@ export const tokenizeLine = (line, lineState) => {
               token = TokenType.KeywordControl
               break
             case '7za':
+            case '7za':
             case '7zr':
             case 'alias':
             case 'ar':
             case 'awk':
+            case 'bg':
+            case 'bind':
+            case 'builtin':
             case 'bunzip':
             case 'bunzip2':
+            case 'caller':
             case 'cargo':
             case 'cat':
             case 'catdoc':
@@ -157,22 +162,32 @@ export const tokenizeLine = (line, lineState) => {
             case 'complete':
             case 'cp':
             case 'curl':
+            case 'dirs':
             case 'disown':
             case 'dpkg':
             case 'echo':
             case 'emulate':
-            case 'eval_gettext':
+            case 'enable':
             case 'eval':
+            case 'eval_gettext':
             case 'exec':
             case 'exit':
+            case 'fc':
+            case 'fg':
             case 'getopts':
             case 'grep':
             case 'grub-mount':
             case 'gzip':
+            case 'hash':
             case 'head':
+            case 'help':
+            case 'history':
             case 'identity':
+            case 'jobs':
+            case 'kill':
             case 'less':
             case 'lha':
+            case 'logout':
             case 'ls':
             case 'lunzip':
             case 'lzip':
@@ -185,6 +200,7 @@ export const tokenizeLine = (line, lineState) => {
             case 'node':
             case 'npm':
             case 'pdftotext':
+            case 'popd':
             case 'printf':
             case 'ps':
             case 'pushd':
@@ -201,12 +217,17 @@ export const tokenizeLine = (line, lineState) => {
             case 'snap':
             case 'source':
             case 'stty':
+            case 'suspend':
             case 'tar':
             case 'tee':
             case 'test':
+            case 'times':
             case 'trap':
             case 'type':
+            case 'ulimit':
             case 'umask':
+            case 'umask':
+            case 'unalias':
             case 'unarj':
             case 'unmkinitramfs':
             case 'unrar':
@@ -214,6 +235,7 @@ export const tokenizeLine = (line, lineState) => {
             case 'unwrapdiff':
             case 'unzip':
             case 'unzoo':
+            case 'wait':
             case 'which':
             case 'xz':
             case 'zoo':

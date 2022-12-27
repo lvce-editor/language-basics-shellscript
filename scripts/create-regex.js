@@ -3,27 +3,6 @@ import { copyFiles, packageExtension } from '@lvce-editor/package-extension'
 import path, { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
-const extraKeywords = [
-  'true',
-  'false',
-  'return',
-  'function',
-  'break',
-  'case',
-  'continue',
-  'do',
-  'done',
-  'elif',
-  'else',
-  'esac',
-  'fi',
-  'for',
-  'if',
-  'in',
-  'then',
-  'while',
-]
-
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const root = path.join(__dirname, '..')
 
@@ -49,12 +28,11 @@ const toSorted = (array) => {
 
 const getRegexLine = (lines) => {
   const allLinesSorted = toSorted(lines)
-  return `  /^(?:${allLinesSorted.join('|')})\b/`
+  return `  /^(?:${allLinesSorted.join('|')})\\b/`
 }
 
 const isFunctionsStartIndex = (line, index) => {
-  console.log({ line: line.trim() })
-  return line.trim() === "case 'while':" + 2
+  return line.trim() === "case 'while':"
 }
 
 const isFunctionsEndIndex = (line) => {
@@ -62,19 +40,19 @@ const isFunctionsEndIndex = (line) => {
 }
 
 const getCaseLineFunction = (lineFunction) => {
-  return `        case '${lineFunction}':`
+  return `            case '${lineFunction}':`
 }
 
 const getCaseLinesFunctions = (linesFunctions) => {
   return linesFunctions.map(getCaseLineFunction)
 }
 
-const getNewLinesJs = (linesJs, linesControl, linesFunctions) => {
+const getNewLinesJs = (linesJs, linesExtra, linesFunctions) => {
   const keywordLine = linesJs.findIndex(isKeywordLine)
   if (keywordLine === -1) {
     throw new Error('keyword line not found')
   }
-  const allLines = [...linesControl, ...linesFunctions, ...extraKeywords]
+  const allLines = [...linesExtra, ...linesFunctions]
   const regexLine = getRegexLine(allLines)
   const functionStartIndex = linesJs.findIndex(isFunctionsStartIndex)
   if (functionStartIndex === -1) {
@@ -85,12 +63,17 @@ const getNewLinesJs = (linesJs, linesControl, linesFunctions) => {
     throw new Error('function end index not found')
   }
   const caseLinesFunctions = getCaseLinesFunctions(linesFunctions)
+  const linesToken = [
+    `              token = TokenType.Function`,
+    '              break',
+  ]
   const newLinesJs = [
     ...linesJs.slice(0, keywordLine + 1),
     regexLine,
-    ...linesJs.slice(keywordLine + 2, functionStartIndex),
+    ...linesJs.slice(keywordLine + 2, functionStartIndex + 4),
     ...caseLinesFunctions,
-    ...linesJs.slice(functionEndIndex, functionStartIndex),
+    ...linesToken,
+    ...linesJs.slice(functionEndIndex),
   ]
   return newLinesJs
 }
@@ -102,11 +85,11 @@ const writeLines = async (relativePath, lines) => {
 }
 
 const main = async () => {
-  const linesControl = await readLines('scripts/bash_control_keywords.txt')
+  const linesExtra = await readLines('scripts/bash_extra_keywords.txt')
   const linesFunctions = await readLines('scripts/bash_functions.txt')
   const linesJs = await readLines('src/tokenizeShellScript.js')
-  const newLinesJs = getNewLinesJs(linesJs, linesControl, linesFunctions)
-  await writeLines('src/tokenizeShellScript2.js', newLinesJs)
+  const newLinesJs = getNewLinesJs(linesJs, linesExtra, linesFunctions)
+  await writeLines('src/tokenizeShellScript.js', newLinesJs)
 }
 
 main()

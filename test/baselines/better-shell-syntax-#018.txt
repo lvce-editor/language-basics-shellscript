@@ -42,7 +42,7 @@ Whitespace
 Comment
 NewLine
 Whitespace
-VariableName
+Function
 Whitespace
 VariableName
 NewLine
