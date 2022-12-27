@@ -7991,7 +7991,7 @@ PunctuationString
 Whitespace
 Punctuation
 Whitespace
-VariableName
+Function
 Whitespace
 VariableName
 Whitespace
@@ -8465,7 +8465,7 @@ PunctuationString
 Whitespace
 Punctuation
 Whitespace
-VariableName
+Function
 Whitespace
 VariableName
 Whitespace
@@ -10059,7 +10059,7 @@ VariableName
 Whitespace
 VariableName
 Whitespace
-VariableName
+Function
 Whitespace
 VariableName
 Whitespace
@@ -18281,7 +18281,7 @@ PunctuationString
 Whitespace
 Punctuation
 Whitespace
-VariableName
+Function
 Whitespace
 VariableName
 Whitespace
@@ -18755,7 +18755,7 @@ PunctuationString
 Whitespace
 Punctuation
 Whitespace
-VariableName
+Function
 Whitespace
 VariableName
 Whitespace
@@ -20345,7 +20345,7 @@ VariableName
 Whitespace
 VariableName
 Whitespace
-VariableName
+Function
 Whitespace
 VariableName
 Whitespace
