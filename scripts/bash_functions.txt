@@ -158,3 +158,4 @@ yum
 zip
 zoo
 zstd
+basename
