@@ -160,3 +160,4 @@ zoo
 zstd
 basename
 brew
+sha256sum
