@@ -61,7 +61,7 @@ Whitespace
 KeywordControl
 NewLine
 Whitespace
-VariableName
+Function
 Whitespace
 Function
 Whitespace
