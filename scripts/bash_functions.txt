@@ -161,3 +161,6 @@ zstd
 basename
 brew
 sha256sum
+brotli
+zsh
+asciidoctor
