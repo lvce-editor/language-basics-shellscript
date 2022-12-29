@@ -165,3 +165,4 @@ brotli
 zsh
 asciidoctor
 docker
+python3
