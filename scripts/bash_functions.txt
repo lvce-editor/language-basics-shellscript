@@ -166,3 +166,6 @@ zsh
 asciidoctor
 docker
 python3
+bash
+npx
+gcloud
