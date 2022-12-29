@@ -72,7 +72,7 @@ const RE_STRING_DOUBLE_QUOTE_CONTENT = /^[^"\\]+/
 const RE_STRING_SINGLE_QUOTE_CONTENT = /^[^']+/
 const RE_STRING_BACKTICK_QUOTE_CONTENT = /^[^`]+/
 const RE_KEYWORD =
-  /^(?:7z|7za|7zr|alias|apk|apt-get|ar|asciidoctor|awk|basename|bg|bind|blkid|break|brew|brotli|builtin|bunzip|bunzip2|caller|cargo|case|cat|catdoc|cd|chmod|chown|cmp|command|compgen|complete|continue|cp|cryptsetup|curl|curl|cut|cygstart|dde-open|diff|dirname|dirs|disown|do|docker|done|done|dpkg|du|echo|elif|else|emulate|enable|enlightenment_open|esac|eval|eval_gettext|exec|exit|expr|false|fc|fg|fi|find|for|free|function|fzf|g\+\+|gcc|gdbus|getopts|gio|git|gnome-open|grep|grub-mount|gs|gulp|gvfs-open|gzip|hash|head|help|hexdump|history|identity|if|in|install|ip|jobs|kde-open|kfmclient|kill|killall|less|let|lha|logout|ls|ls|lunzip|lzip|lzma|makepkg|miniunz|miniunzip|mkdir|mktemp|mount|mpicc|mv|node|npm|open|pacman|pcmanfm|pdftotext|pkg|popd|prezip-bin|printf|ps|pushd|pwd|rar|read|readlink|readonly|return|rm|rpm|rsync|sed|set|sha256sum|shift|shopt|sleep|snap|sort|source|stty|sudo|suspend|tail|tar|tee|test|texi2dvi|then|times|touch|trap|true|tty|tune2fs|type|ulimit|umask|umask|unalias|unarj|unmkinitramfs|unmount|unrar|unset|unwrapdiff|unzip|unzoo|vim|wait|wc|wget|which|while|xargs|xprop|xz|yarn|yum|zip|zoo|zsh|zstd)\b/
+  /^(?:7z|7za|7zr|alias|apk|apt-get|ar|asciidoctor|awk|basename|bg|bind|blkid|break|brew|brotli|builtin|bunzip|bunzip2|caller|cargo|case|cat|catdoc|cd|chmod|chown|cmp|command|compgen|complete|continue|cp|cryptsetup|curl|curl|cut|cygstart|dde-open|diff|dirname|dirs|disown|do|docker|done|done|dpkg|du|echo|elif|else|emulate|enable|enlightenment_open|esac|eval|eval_gettext|exec|exit|expr|false|fc|fg|fi|find|for|free|function|fzf|g\+\+|gcc|gdbus|getopts|gio|git|gnome-open|grep|grub-mount|gs|gulp|gvfs-open|gzip|hash|head|help|hexdump|history|identity|if|in|install|ip|jobs|kde-open|kfmclient|kill|killall|less|let|lha|logout|ls|ls|lunzip|lzip|lzma|makepkg|miniunz|miniunzip|mkdir|mktemp|mount|mpicc|mv|node|npm|open|pacman|pcmanfm|pdftotext|pkg|popd|prezip-bin|printf|ps|pushd|pwd|python3|rar|read|readlink|readonly|return|rm|rpm|rsync|sed|set|sha256sum|shift|shopt|sleep|snap|sort|source|stty|sudo|suspend|tail|tar|tee|test|texi2dvi|then|times|touch|trap|true|tty|tune2fs|type|ulimit|umask|umask|unalias|unarj|unmkinitramfs|unmount|unrar|unset|unwrapdiff|unzip|unzoo|vim|wait|wc|wget|which|while|xargs|xprop|xz|yarn|yum|zip|zoo|zsh|zstd)\b/
 const RE_VARIABLE_NAME = /^[a-zA-Z\_\/\-\$][a-zA-Z\_\/\-\$#\d\-]*/
 const RE_PUNCTUATION = /^[:,;\{\}\[\]\.=\(\)<>\!\|\+\&\>\)]/
 const RE_NUMERIC = /^\d+(?=\s|$)/
@@ -307,6 +307,7 @@ export const tokenizeLine = (line, lineState) => {
             case 'zsh':
             case 'asciidoctor':
             case 'docker':
+            case 'python3':
               token = TokenType.Function
               break
             case 'true':
