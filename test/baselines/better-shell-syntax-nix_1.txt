@@ -1142,7 +1142,7 @@ KeywordControl
 NewLine
 NewLine
 Whitespace
-VariableName
+Keyword
 Whitespace
 VariableName
 Punctuation
@@ -1387,7 +1387,7 @@ Whitespace
 Punctuation
 NewLine
 Whitespace
-VariableName
+Keyword
 Whitespace
 VariableName
 Punctuation
@@ -1433,7 +1433,7 @@ Whitespace
 Punctuation
 NewLine
 Whitespace
-VariableName
+Keyword
 Whitespace
 VariableName
 Punctuation
@@ -1442,7 +1442,7 @@ String
 PunctuationString
 NewLine
 Whitespace
-VariableName
+Keyword
 Whitespace
 VariableName
 Punctuation
@@ -1831,7 +1831,7 @@ Whitespace
 Punctuation
 NewLine
 Whitespace
-VariableName
+Keyword
 Whitespace
 VariableName
 Punctuation
@@ -1840,7 +1840,7 @@ String
 PunctuationString
 NewLine
 Whitespace
-VariableName
+Keyword
 Whitespace
 VariableName
 Punctuation
@@ -1920,7 +1920,7 @@ Whitespace
 Punctuation
 NewLine
 Whitespace
-VariableName
+Keyword
 Whitespace
 VariableName
 Punctuation
