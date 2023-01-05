@@ -170,3 +170,5 @@ bash
 npx
 gcloud
 println
+plutil
+defaults
