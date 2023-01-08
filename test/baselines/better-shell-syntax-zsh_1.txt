@@ -10000,7 +10000,7 @@ VariableName
 Whitespace
 Function
 Whitespace
-VariableName
+Function
 Whitespace
 Function
 Whitespace
@@ -20286,7 +20286,7 @@ VariableName
 Whitespace
 Function
 Whitespace
-VariableName
+Function
 Whitespace
 Function
 Whitespace

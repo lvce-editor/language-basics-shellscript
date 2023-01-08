@@ -86,6 +86,7 @@ kill
 killall
 less
 lha
+ln
 logout
 ls
 ls
