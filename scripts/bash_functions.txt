@@ -44,8 +44,10 @@ dirs
 disown
 docker
 dpkg
+dpkg-trigger
 du
 echo
+egrep
 emulate
 enable
 enlightenment_open
@@ -83,13 +85,16 @@ ifconfig
 install
 ip
 jobs
+kbd_mode
 kde-open
+kdialog
 kfmclient
 kill
 killall
 less
 lha
 ln
+loadkeys
 logout
 ls
 ls
@@ -130,6 +135,7 @@ rpm
 rsync
 sed
 set
+setfont
 sha256sum
 shift
 shopt
@@ -175,6 +181,7 @@ xprop
 xz
 yarn
 yum
+zenity
 zip
 zoo
 zsh
