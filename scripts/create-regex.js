@@ -22,7 +22,15 @@ const isKeywordLine = (line) => {
 }
 
 const toSorted = (array) => {
-  return array.slice().sort()
+  const sorted = array.slice().sort()
+  for (let i = 0; i < sorted.length - 1; i++) {
+    const a = sorted[i]
+    const b = sorted[i + 1]
+    if (b.startsWith(a) && b.includes('-')) {
+      ;[sorted[i], sorted[i + 1]] = [sorted[i + 1], sorted[i]]
+    }
+  }
+  return sorted
 }
 
 const escapeRegex = (regex) => {
