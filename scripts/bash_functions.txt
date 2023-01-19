@@ -79,6 +79,7 @@ help
 hexdump
 history
 identity
+ifconfig
 install
 ip
 jobs
@@ -124,6 +125,7 @@ rar
 read
 readlink
 rm
+route
 rpm
 rsync
 sed
