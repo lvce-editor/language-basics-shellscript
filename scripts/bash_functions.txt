@@ -2,11 +2,13 @@
 7za
 7zr
 alias
+anacron
 apk
 apt-get
 ar
 asciidoctor
 awk
+base64
 basename
 bash
 bg
@@ -133,6 +135,7 @@ sleep
 snap
 sort
 source
+start-stop-daemon
 stty
 sudo
 suspend
