@@ -72,7 +72,7 @@ const RE_STRING_DOUBLE_QUOTE_CONTENT = /^[^"\\]+/
 const RE_STRING_SINGLE_QUOTE_CONTENT = /^[^']+/
 const RE_STRING_BACKTICK_QUOTE_CONTENT = /^[^`]+/
 const RE_KEYWORD =
-  /^(?:7z|7za|7zr|alias|anacron|apk|apt-get|ar|asciidoctor|awk|base64|basename|bash|bg|bind|blkid|break|brew|brotli|builtin|bunzip|bunzip2|caller|cargo|case|cat|catdoc|cd|chmod|chown|circleci|clear|cmp|command|compgen|complete|continue|cp|cryptsetup|curl|curl|cut|cygstart|dde-open|defaults|diff|dirname|dirs|disown|do|docker|done|done|dpkg-trigger|dpkg|du|echo|egrep|elif|else|emulate|enable|enlightenment_open|esac|eval|eval_gettext|exec|exit|expr|false|fc|fg|fi|find|for|free|function|fzf|g\+\+|gatsby|gcc|gcloud|gdbus|getopts|gio|git|gnome-open|grep|grub-mount|gs|gulp|gvfs-open|gzip|hash|head|help|hexdump|history|identity|if|ifconfig|in|install|ip|jobs|kbd_mode|kde-open|kdialog|kfmclient|kill|killall|less|let|lha|ln|loadkeys|local|logout|ls|ls|lunzip|lzip|lzma|makepkg|miniunz|miniunzip|mkdir|mktemp|mount|mpicc|mv|node|npm|npx|open|pacman|pcmanfm|pdftotext|pkg|plutil|popd|prezip-bin|printf|println|ps|pushd|pwd|python3|rar|read|readlink|readonly|return|rm|route|rpm|rsync|sed|set|setfont|sh|sha256sum|shift|shopt|sleep|snap|sort|source|start-stop-daemon|stty|sudo|suspend|tail|tar|tee|test|texi2dvi|then|times|touch|trap|true|tty|tune2fs|type|ulimit|umask|umask|unalias|unarj|unmkinitramfs|unmount|unrar|unset|unwrapdiff|unzip|unzoo|update-alternatives|vim|wait|wc|wget|which|while|wp|xargs|xprop|xz|yarn|yum|zenity|zip|zoo|zsh|zstd)\b/
+  /^(?:7z|7za|7zr|alias|anacron|apk|apt-get|ar|asciidoctor|awk|base64|basename|bash|bg|bind|blkid|break|brew|brotli|builtin|bunzip|bunzip2|caller|cargo|case|cat|catdoc|cd|chmod|chown|circleci|clear|cmp|command|compgen|complete|continue|cp|cryptsetup|curl|curl|cut|cygstart|dde-open|defaults|diff|dirname|dirs|disown|do|docker|done|done|dpkg-trigger|dpkg|du|echo|egrep|elif|else|emulate|enable|enlightenment_open|esac|eval|eval_gettext|exec|exit|expr|false|fc|fg|fi|find|for|free|function|fzf|g\+\+|gatsby|gcc|gcloud|gdbus|getopts|gio|git|gnome-open|grep|grub-mount|gs|gulp|gvfs-open|gzip|hash|head|help|hexdump|history|identity|if|ifconfig|in|install-plugin|install|ip|jobs|kbd_mode|kde-open|kdialog|kfmclient|kill|killall|less|let|lha|ln|loadkeys|local|logout|ls|ls|lunzip|lzip|lzma|makepkg|miniunz|miniunzip|mkdir|mktemp|mount|mpicc|mv|node|npm|npx|open|pacman|pcmanfm|pdftotext|pkg|plutil|popd|prezip-bin|printf|println|ps|pushd|pwd|python3|rar|read|readlink|readonly|return|rm|route|rpm|rsync|sed|set|setfont|sh|sha256sum|shift|shopt|sleep|snap|sort|source|start-stop-daemon|stty|sudo|suspend|tail|tar|tee|test|texi2dvi|then|times|touch|trap|true|tty|tune2fs|type|ulimit|umask|umask|unalias|unarj|unmkinitramfs|unmount|unrar|unset|unwrapdiff|unzip|unzoo|update-alternatives|vim|wait|wc|wget|which|while|wp|xargs|xprop|xz|yarn|yum|zenity|zip|zoo|zsh|zstd)\b/
 const RE_VARIABLE_NAME = /^[a-zA-Z\_\/\-\$][a-zA-Z\_\/\-\$#\d\-]*/
 const RE_PUNCTUATION = /^[:,;\{\}\[\]\.=\(\)<>\!\|\+\&\>\)]/
 const RE_NUMERIC = /^\d+(?=\s|$)/
@@ -333,6 +333,7 @@ export const tokenizeLine = (line, lineState) => {
             case 'zoo':
             case 'zsh':
             case 'zstd':
+            case 'install-plugin':
               token = TokenType.Function
               break
             case 'true':
