@@ -86,6 +86,7 @@ history
 identity
 ifconfig
 install
+install-plugin
 ip
 jobs
 kbd_mode
@@ -121,6 +122,7 @@ pcmanfm
 pdftotext
 pkg
 plutil
+pnpm
 popd
 prezip-bin
 printf
@@ -191,4 +193,3 @@ zip
 zoo
 zsh
 zstd
-install-plugin
