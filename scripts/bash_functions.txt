@@ -26,6 +26,8 @@ catdoc
 cd
 chmod
 chown
+circleci
+clear
 cmp
 command
 compgen
@@ -62,6 +64,7 @@ find
 free
 fzf
 g++
+gatsby
 gcc
 gcloud
 gdbus
@@ -136,6 +139,7 @@ rsync
 sed
 set
 setfont
+sh
 sha256sum
 shift
 shopt
@@ -176,6 +180,7 @@ wait
 wc
 wget
 which
+wp
 xargs
 xprop
 xz
@@ -186,4 +191,3 @@ zip
 zoo
 zsh
 zstd
-clear
