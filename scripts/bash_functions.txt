@@ -193,3 +193,5 @@ zip
 zoo
 zsh
 zstd
+jq
+sponge
