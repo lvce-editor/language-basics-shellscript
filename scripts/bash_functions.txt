@@ -62,6 +62,7 @@ fc
 fg
 find
 free
+fuzzponent
 fzf
 g++
 gatsby
@@ -89,6 +90,7 @@ install
 install-plugin
 ip
 jobs
+jq
 kbd_mode
 kde-open
 kdialog
@@ -149,6 +151,7 @@ sleep
 snap
 sort
 source
+sponge
 start-stop-daemon
 stty
 sudo
@@ -193,5 +196,3 @@ zip
 zoo
 zsh
 zstd
-jq
-sponge
