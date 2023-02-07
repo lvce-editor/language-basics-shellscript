@@ -293,7 +293,7 @@ NewLine
 Whitespace
 KeywordControl
 Whitespace
-VariableName
+Function
 Whitespace
 PunctuationString
 String
@@ -342,7 +342,7 @@ Whitespace
 KeywordControl
 NewLine
 Whitespace
-VariableName
+Function
 Whitespace
 PunctuationString
 String

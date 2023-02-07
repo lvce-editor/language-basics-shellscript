@@ -9,14 +9,11 @@ Function
 Whitespace
 Punctuation
 NewLine
-Punctuation
-VariableName
-Punctuation
+String
 NewLine
-Whitespace
-Function
+String
 NewLine
-VariableName
+Punctuation
 NewLine
 Whitespace
 Function
