@@ -74,6 +74,8 @@ getopts
 gio
 git
 gnome-open
+google-chrome
+google-chrome-beta
 grep
 grub-mount
 gs
@@ -81,6 +83,7 @@ gulp
 gvfs-open
 gzip
 hash
+hdiutil
 head
 help
 hexdump
@@ -117,6 +120,7 @@ mount
 mpicc
 mv
 node
+nohup
 npm
 npx
 open
