@@ -76,6 +76,7 @@ const getNewLinesJs = (linesJs, linesExtra, linesFunctions) => {
   const caseLinesFunctions = getCaseLinesFunctions(linesFunctions)
   const linesToken = [
     `              token = TokenType.Function`,
+    `              state = State.AfterFunctionName`,
     '              break',
   ]
   const newLinesJs = [
