@@ -353,6 +353,7 @@ export const tokenizeLine = (line, lineState) => {
             case 'zsh':
             case 'zstd':
               token = TokenType.Function
+              state = State.AfterFunctionName
               break
             case 'true':
             case 'false':

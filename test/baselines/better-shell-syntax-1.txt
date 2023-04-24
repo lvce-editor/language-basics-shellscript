@@ -63,7 +63,7 @@ NewLine
 Whitespace
 Function
 Whitespace
-Function
+VariableName
 Whitespace
 VariableName
 VariableName
