@@ -157,13 +157,13 @@ Punctuation
 Whitespace
 VariableName
 Whitespace
-Function
+VariableName
 Whitespace
 PunctuationString
 String
 PunctuationString
 Whitespace
-VariableName
+Text
 NewLine
 Whitespace
 KeywordReturn

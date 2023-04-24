@@ -63,10 +63,11 @@ const RE_COLON = /^:/
 const RE_PROPERTY_VALUE = /^[^;\}]+/
 const RE_SEMICOLON = /^;/
 const RE_COMMA = /^,/
-const RE_ANYTHING_SHORT = /^[^\s"']+/
+const RE_ANYTHING_SHORT = /^[^\s"'\\]+/
 const RE_ANYTHING = /^.+/s
 const RE_ANYTHING_UNTIL_CLOSE_BRACE = /^[^\}]+/
 const RE_QUOTE_DOUBLE = /^"/
+const RE_ESCAPED = /^\\./
 const RE_QUOTE_SINGLE = /^'/
 const RE_QUOTE_BACKTICK = /^`/
 const RE_STRING_DOUBLE_QUOTE_CONTENT = /^[^"\\]+/
@@ -492,17 +493,17 @@ export const tokenizeLine = (line, lineState) => {
           stringEnd = next[1]
         } else if ((next = part.match(RE_PUNCTUATION))) {
           token = TokenType.Punctuation
-          state = State.TopLevelContent
+          state = State.AfterFunctionName
         } else if ((next = part.match(RE_VARIABLE_NAME))) {
           if (knownFunctionNames.has(next[0])) {
             token = TokenType.Function
           } else {
             token = TokenType.VariableName
           }
-          state = State.TopLevelContent
+          state = State.AfterFunctionName
         } else if ((next = part.match(RE_NUMERIC))) {
           token = TokenType.Numeric
-          state = State.TopLevelContent
+          state = State.AfterFunctionName
         } else if ((next = part.match(RE_QUOTE_DOUBLE))) {
           token = TokenType.PunctuationString
           state = State.InsideDoubleQuoteString
@@ -517,12 +518,15 @@ export const tokenizeLine = (line, lineState) => {
         } else if ((next = part.match(RE_LINE_COMMENT))) {
           token = TokenType.Comment
           state = State.TopLevelContent
+        } else if ((next = part.match(RE_ESCAPED))) {
+          token = TokenType.Text
+          state = State.AfterFunctionName
         } else if ((next = part.match(RE_ANYTHING_SHORT))) {
-          token = TokenType.VariableName
-          state = State.TopLevelContent
+          token = TokenType.Text
+          state = State.AfterFunctionName
         } else if ((next = part.match(RE_ANYTHING))) {
           token = TokenType.Text
-          state = State.TopLevelContent
+          state = State.AfterFunctionName
         } else {
           part //?
           throw new Error('no')

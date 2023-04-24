@@ -40,15 +40,7 @@ Whitespace
 Punctuation
 Whitespace
 VariableName
-Whitespace
-VariableName
-Punctuation
-PunctuationString
-String
-PunctuationString
-Whitespace
-Punctuation
-Punctuation
+Text
 NewLine
 Whitespace
 VariableName

@@ -4,12 +4,12 @@ Function
 Whitespace
 VariableName
 Whitespace
-Function
+VariableName
 Whitespace
 Punctuation
 Whitespace
 VariableName
 Whitespace
-VariableName
+Text
 Whitespace
-KeywordControl
+VariableName

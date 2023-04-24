@@ -25,7 +25,7 @@ Whitespace
 Punctuation
 Punctuation
 Whitespace
-Function
+VariableName
 Whitespace
 PunctuationString
 String
