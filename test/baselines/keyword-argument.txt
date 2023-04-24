@@ -1,7 +1,7 @@
 Function
 Whitespace
-VariableName
+Function
 NewLine
 Function
 Whitespace
-VariableName
+Function
