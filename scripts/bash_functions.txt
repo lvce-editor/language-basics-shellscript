@@ -143,6 +143,7 @@ python3
 rar
 read
 readlink
+realpath
 rm
 route
 rpm
