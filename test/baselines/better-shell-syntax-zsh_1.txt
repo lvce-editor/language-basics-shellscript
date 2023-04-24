@@ -1143,7 +1143,7 @@ PunctuationString
 Whitespace
 Function
 Whitespace
-Function
+VariableName
 Whitespace
 Function
 NewLine
@@ -1178,7 +1178,7 @@ VariableName
 Whitespace
 Function
 Whitespace
-Function
+VariableName
 NewLine
 NewLine
 Comment
@@ -1220,7 +1220,7 @@ VariableName
 Whitespace
 Function
 Whitespace
-Function
+VariableName
 Whitespace
 Function
 NewLine
@@ -1402,7 +1402,7 @@ NewLine
 Whitespace
 Function
 Whitespace
-Function
+VariableName
 Whitespace
 PunctuationString
 String
@@ -9553,7 +9553,7 @@ Punctuation
 Whitespace
 Function
 Whitespace
-Function
+VariableName
 Whitespace
 PunctuationString
 String
@@ -9603,13 +9603,13 @@ VariableName
 Whitespace
 Function
 Whitespace
-KeywordControl
+VariableName
 Whitespace
 KeywordControl
 Whitespace
 Function
 Whitespace
-Function
+VariableName
 Whitespace
 VariableName
 Whitespace
@@ -9936,7 +9936,7 @@ VariableName
 Whitespace
 Function
 Whitespace
-Function
+VariableName
 Whitespace
 VariableName
 Whitespace
@@ -9955,7 +9955,7 @@ NewLine
 Whitespace
 Function
 Whitespace
-Function
+VariableName
 Whitespace
 VariableName
 Whitespace
@@ -10000,7 +10000,7 @@ VariableName
 Whitespace
 Function
 Whitespace
-Function
+VariableName
 Whitespace
 Function
 Whitespace
@@ -10069,7 +10069,7 @@ VariableName
 Whitespace
 Function
 Whitespace
-Function
+VariableName
 Whitespace
 VariableName
 NewLine
@@ -10092,7 +10092,7 @@ VariableName
 Whitespace
 Function
 Whitespace
-Function
+VariableName
 Whitespace
 VariableName
 Punctuation
@@ -10427,7 +10427,7 @@ NewLine
 Whitespace
 Function
 Whitespace
-Function
+VariableName
 Whitespace
 VariableName
 Whitespace
@@ -11433,7 +11433,7 @@ PunctuationString
 Whitespace
 Function
 Whitespace
-Function
+VariableName
 Whitespace
 Function
 NewLine
@@ -11468,7 +11468,7 @@ VariableName
 Whitespace
 Function
 Whitespace
-Function
+VariableName
 NewLine
 NewLine
 Comment
@@ -11510,7 +11510,7 @@ VariableName
 Whitespace
 Function
 Whitespace
-Function
+VariableName
 Whitespace
 Function
 NewLine
@@ -11692,7 +11692,7 @@ NewLine
 Whitespace
 Function
 Whitespace
-Function
+VariableName
 Whitespace
 PunctuationString
 String
@@ -19842,7 +19842,7 @@ Punctuation
 Whitespace
 Function
 Whitespace
-Function
+VariableName
 Whitespace
 PunctuationString
 String
@@ -19892,13 +19892,13 @@ VariableName
 Whitespace
 Function
 Whitespace
-KeywordControl
+VariableName
 Whitespace
 KeywordControl
 Whitespace
 Function
 Whitespace
-Function
+VariableName
 Whitespace
 VariableName
 Whitespace
@@ -20222,7 +20222,7 @@ VariableName
 Whitespace
 Function
 Whitespace
-Function
+VariableName
 Whitespace
 VariableName
 Whitespace
@@ -20241,7 +20241,7 @@ NewLine
 Whitespace
 Function
 Whitespace
-Function
+VariableName
 Whitespace
 VariableName
 Whitespace
@@ -20286,7 +20286,7 @@ VariableName
 Whitespace
 Function
 Whitespace
-Function
+VariableName
 Whitespace
 Function
 Whitespace
@@ -20355,7 +20355,7 @@ VariableName
 Whitespace
 Function
 Whitespace
-Function
+VariableName
 Whitespace
 VariableName
 NewLine
@@ -20378,7 +20378,7 @@ VariableName
 Whitespace
 Function
 Whitespace
-Function
+VariableName
 Whitespace
 VariableName
 Punctuation
@@ -20713,7 +20713,7 @@ NewLine
 Whitespace
 Function
 Whitespace
-Function
+VariableName
 Whitespace
 VariableName
 Whitespace
@@ -24321,7 +24321,7 @@ Punctuation
 Whitespace
 Function
 Whitespace
-Function
+VariableName
 NewLine
 Whitespace
 Punctuation

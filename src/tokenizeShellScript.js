@@ -9,6 +9,7 @@ export const State = {
   InsideBackTickString: 5,
   InsideEof: 6,
   AfterKeywordFunction: 7,
+  AfterFunctionName: 8,
 }
 
 export const StateMap = {
@@ -87,6 +88,7 @@ export const initialLineState = {
   tokens: [],
   knownFunctionNames: new Set(),
   stringEnd: '',
+  stack: [],
 }
 
 /**
@@ -112,6 +114,7 @@ export const tokenizeLine = (line, lineState) => {
   let token = TokenType.None
   let state = lineState.state
   let stringEnd = lineState.stringEnd
+  const stack = [...lineState.stack]
   const knownFunctionNames = new Set(lineState.knownFunctionNames)
   while (index < line.length) {
     const part = line.slice(index)
@@ -346,6 +349,7 @@ export const tokenizeLine = (line, lineState) => {
             case 'zsh':
             case 'zstd':
               token = TokenType.Function
+              state = State.AfterFunctionName
               break
             case 'true':
             case 'false':
@@ -409,7 +413,7 @@ export const tokenizeLine = (line, lineState) => {
       case State.InsideDoubleQuoteString:
         if ((next = part.match(RE_QUOTE_DOUBLE))) {
           token = TokenType.PunctuationString
-          state = State.TopLevelContent
+          state = stack.pop() || State.TopLevelContent
         } else if ((next = part.match(RE_STRING_DOUBLE_QUOTE_CONTENT))) {
           token = TokenType.String
           state = State.InsideDoubleQuoteString
@@ -426,7 +430,7 @@ export const tokenizeLine = (line, lineState) => {
       case State.InsideSingleQuoteString:
         if ((next = part.match(RE_QUOTE_SINGLE))) {
           token = TokenType.PunctuationString
-          state = State.TopLevelContent
+          state = stack.pop() || State.TopLevelContent
         } else if ((next = part.match(RE_STRING_SINGLE_QUOTE_CONTENT))) {
           token = TokenType.String
           state = State.InsideSingleQuoteString
@@ -474,6 +478,52 @@ export const tokenizeLine = (line, lineState) => {
           throw new Error('no')
         }
         break
+      case State.AfterFunctionName:
+        if ((next = part.match(RE_WHITESPACE))) {
+          token = TokenType.Whitespace
+          state = State.AfterFunctionName
+        } else if ((next = part.match(RE_EOF_START))) {
+          token = TokenType.Punctuation
+          state = State.InsideEof
+          stringEnd = next[1]
+        } else if ((next = part.match(RE_PUNCTUATION))) {
+          token = TokenType.Punctuation
+          state = State.TopLevelContent
+        } else if ((next = part.match(RE_VARIABLE_NAME))) {
+          if (knownFunctionNames.has(next[0])) {
+            token = TokenType.Function
+          } else {
+            token = TokenType.VariableName
+          }
+          state = State.TopLevelContent
+        } else if ((next = part.match(RE_NUMERIC))) {
+          token = TokenType.Numeric
+          state = State.TopLevelContent
+        } else if ((next = part.match(RE_QUOTE_DOUBLE))) {
+          token = TokenType.PunctuationString
+          state = State.InsideDoubleQuoteString
+          stack.push(State.AfterFunctionName)
+        } else if ((next = part.match(RE_QUOTE_SINGLE))) {
+          token = TokenType.Punctuation
+          state = State.InsideSingleQuoteString
+          stack.push(State.AfterFunctionName)
+        } else if ((next = part.match(RE_QUOTE_BACKTICK))) {
+          token = TokenType.Punctuation
+          state = State.InsideBackTickString
+        } else if ((next = part.match(RE_LINE_COMMENT))) {
+          token = TokenType.Comment
+          state = State.TopLevelContent
+        } else if ((next = part.match(RE_ANYTHING_SHORT))) {
+          token = TokenType.VariableName
+          state = State.TopLevelContent
+        } else if ((next = part.match(RE_ANYTHING))) {
+          token = TokenType.Text
+          state = State.TopLevelContent
+        } else {
+          part //?
+          throw new Error('no')
+        }
+        break
       default:
         throw new Error('no')
     }
@@ -481,10 +531,14 @@ export const tokenizeLine = (line, lineState) => {
     index += tokenLength
     tokens.push(token, tokenLength)
   }
+  if (state === State.AfterFunctionName) {
+    state = State.TopLevelContent
+  }
   return {
     state,
     tokens,
     knownFunctionNames,
     stringEnd,
+    stack,
   }
 }
