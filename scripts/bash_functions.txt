@@ -77,6 +77,7 @@ gnome-open
 google-chrome
 google-chrome-beta
 grep
+groupadd
 grub-mount
 gs
 gulp
@@ -101,6 +102,7 @@ kdialog
 kfmclient
 kill
 killall
+ldconfig
 less
 lha
 ln
@@ -187,6 +189,7 @@ unzoo
 update-alternatives
 update-desktop-database
 update-mime-database
+useradd
 vim
 wait
 wc

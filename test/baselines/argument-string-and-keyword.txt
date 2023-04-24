@@ -4,4 +4,4 @@ PunctuationString
 String
 PunctuationString
 Whitespace
-VariableName
+Function

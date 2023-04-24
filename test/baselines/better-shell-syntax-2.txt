@@ -1,4 +1,4 @@
-VariableName
+Function
 Whitespace
 VariableName
 Whitespace
@@ -7,7 +7,7 @@ Whitespace
 Punctuation
 Punctuation
 Whitespace
-VariableName
+Function
 Whitespace
 VariableName
 Whitespace
