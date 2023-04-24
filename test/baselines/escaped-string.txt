@@ -1,0 +1,10 @@
+Function
+Whitespace
+VariableName
+Punctuation
+Text
+Text
+Text
+Text
+Whitespace
+Comment

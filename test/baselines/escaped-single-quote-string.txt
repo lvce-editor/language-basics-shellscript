@@ -2,7 +2,4 @@ Punctuation
 String
 PunctuationString
 VariableName
-VariableName
-Punctuation
-String
-PunctuationString
+Text

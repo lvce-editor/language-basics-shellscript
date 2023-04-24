@@ -7,8 +7,6 @@ Whitespace
 Punctuation
 Punctuation
 Whitespace
-Function
-Whitespace
 VariableName
 Whitespace
 VariableName
@@ -20,6 +18,8 @@ Whitespace
 VariableName
 Whitespace
 VariableName
+Whitespace
+Text
 NewLine
 Whitespace
 Punctuation

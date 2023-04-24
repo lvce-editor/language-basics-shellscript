@@ -7,6 +7,6 @@ Whitespace
 Punctuation
 Punctuation
 Whitespace
-Function
+VariableName
 Whitespace
 Numeric
