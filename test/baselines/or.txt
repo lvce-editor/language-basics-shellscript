@@ -1,12 +1,8 @@
 Function
 Whitespace
+Punctuation
+Punctuation
+VariableName
+Punctuation
 PunctuationString
 String
-PunctuationString
-Whitespace
-Punctuation
-Punctuation
-Whitespace
-VariableName
-Whitespace
-Numeric
