@@ -207,3 +207,4 @@ zip
 zoo
 zsh
 zstd
+Xdialog
