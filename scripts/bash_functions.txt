@@ -102,6 +102,7 @@ kdialog
 kfmclient
 kill
 killall
+killproc
 ldconfig
 less
 lha
@@ -198,6 +199,7 @@ wget
 which
 wp
 xargs
+Xdialog
 xprop
 xz
 yarn
@@ -207,4 +209,3 @@ zip
 zoo
 zsh
 zstd
-Xdialog
