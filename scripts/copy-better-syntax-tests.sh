@@ -5,23 +5,23 @@ cd ..
 
 rm -rf .tmp
 
-COMMIT="f28b10c92497425f1477011e16a6cc1265b3afe7"
-NAME="better-shell-syntax"
+REPO="https://github.com/jeff-hykin/better-shell-syntax"
+COMMIT="ea0623cd60ea547227158eecc03e4e4911b33c0d"
 TEST_PATH="language_examples"
 
-git clone https://github.com/jeff-hykin/$NAME .tmp/$NAME
+git clone $REPO .tmp/better-shell-syntax
 
-cd .tmp/$NAME
+cd .tmp/better-shell-syntax
 
 git checkout $COMMIT
 
 cd ../../
 
-cp -r .tmp/$NAME/$TEST_PATH .tmp/cases
+cp -r .tmp/better-shell-syntax/$TEST_PATH .tmp/cases
 
 cd .tmp/cases
 
-for filename in *.sh; do mv $filename $NAME-${filename%.*}.sh; done;
+for filename in *.sh; do mv $filename better-shell-syntax-${filename%.*}.sh; done;
 rm *.yaml
 
 cd ../../
