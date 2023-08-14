@@ -32,6 +32,8 @@ cmp
 command
 compgen
 complete
+composite
+convert
 cp
 cryptsetup
 curl
@@ -89,6 +91,7 @@ head
 help
 hexdump
 history
+icotool
 identity
 ifconfig
 install
@@ -149,6 +152,7 @@ realpath
 rm
 route
 rpm
+rsvg-convert
 rsync
 sed
 set

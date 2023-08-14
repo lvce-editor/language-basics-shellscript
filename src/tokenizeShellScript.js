@@ -74,7 +74,7 @@ const RE_STRING_DOUBLE_QUOTE_CONTENT = /^[^"\\]+/
 const RE_STRING_SINGLE_QUOTE_CONTENT = /^[^']+/
 const RE_STRING_BACKTICK_QUOTE_CONTENT = /^[^`]+/
 const RE_KEYWORD =
-  /^(?:7z|7za|7zr|Xdialog|alias|anacron|apk|apt-get|ar|asciidoctor|awk|base64|basename|bash|bg|bind|blkid|break|brew|brotli|builtin|bunzip|bunzip2|caller|cargo|case|cat|catdoc|cd|chmod|chown|circleci|clear|cmp|command|compgen|complete|continue|cp|cryptsetup|curl|curl|cut|cygstart|dde-open|defaults|deno|diff|dirname|dirs|disown|do|docker|done|done|dpkg-trigger|dpkg|du|echo|egrep|elif|else|emulate|enable|enlightenment_open|esac|eval|eval_gettext|exec|exit|expr|false|fc|fg|fi|find|for|free|function|fuzzponent|fzf|g\+\+|gatsby|gcc|gcloud|gdbus|getopts|gio|git|gnome-open|google-chrome-beta|google-chrome|grep|groupadd|grub-mount|gs|gulp|gvfs-open|gzip|hash|hdiutil|head|help|hexdump|history|identity|if|ifconfig|in|install-plugin|install|ip|jobs|jq|kbd_mode|kde-open|kdialog|kfmclient|kill|killall|killproc|ldconfig|less|let|lha|ln|loadkeys|local|logout|ls|ls|lunzip|lzip|lzma|makepkg|miniunz|miniunzip|mkdir|mktemp|mount|mpicc|mv|node|nohup|npm|npx|open|pacman|pcmanfm|pdftotext|pkg|plutil|png2icns|pnpm|popd|prezip-bin|printf|println|ps|pushd|pwd|python3|rar|read|readlink|readonly|realpath|return|rm|route|rpm|rsync|sed|set|setfont|sh|sha256sum|shift|shopt|sleep|snap|sort|source|sponge|start-stop-daemon|stty|sudo|suspend|tail|tar|tee|test|texi2dvi|then|times|touch|trap|true|tty|tune2fs|type|ulimit|umask|umask|unalias|unarj|unmkinitramfs|unmount|unrar|unset|unwrapdiff|unzip|unzoo|update-alternatives|update-desktop-database|update-mime-database|useradd|vim|wait|wc|wget|which|while|wp|xargs|xprop|xz|yarn|yum|zenity|zip|zoo|zsh|zstd)\b/
+  /^(?:7z|7za|7zr|Xdialog|alias|anacron|apk|apt-get|ar|asciidoctor|awk|base64|basename|bash|bg|bind|blkid|break|brew|brotli|builtin|bunzip|bunzip2|caller|cargo|case|cat|catdoc|cd|chmod|chown|circleci|clear|cmp|command|compgen|complete|composite|continue|convert|cp|cryptsetup|curl|curl|cut|cygstart|dde-open|defaults|deno|diff|dirname|dirs|disown|do|docker|done|done|dpkg-trigger|dpkg|du|echo|egrep|elif|else|emulate|enable|enlightenment_open|esac|eval|eval_gettext|exec|exit|expr|false|fc|fg|fi|find|for|free|function|fuzzponent|fzf|g\+\+|gatsby|gcc|gcloud|gdbus|getopts|gio|git|gnome-open|google-chrome-beta|google-chrome|grep|groupadd|grub-mount|gs|gulp|gvfs-open|gzip|hash|hdiutil|head|help|hexdump|history|icotool|identity|if|ifconfig|in|install-plugin|install|ip|jobs|jq|kbd_mode|kde-open|kdialog|kfmclient|kill|killall|killproc|ldconfig|less|let|lha|ln|loadkeys|local|logout|ls|ls|lunzip|lzip|lzma|makepkg|miniunz|miniunzip|mkdir|mktemp|mount|mpicc|mv|node|nohup|npm|npx|open|pacman|pcmanfm|pdftotext|pkg|plutil|png2icns|pnpm|popd|prezip-bin|printf|println|ps|pushd|pwd|python3|rar|read|readlink|readonly|realpath|return|rm|route|rpm|rsvg-convert|rsync|sed|set|setfont|sh|sha256sum|shift|shopt|sleep|snap|sort|source|sponge|start-stop-daemon|stty|sudo|suspend|tail|tar|tee|test|texi2dvi|then|times|touch|trap|true|tty|tune2fs|type|ulimit|umask|umask|unalias|unarj|unmkinitramfs|unmount|unrar|unset|unwrapdiff|unzip|unzoo|update-alternatives|update-desktop-database|update-mime-database|useradd|vim|wait|wc|wget|which|while|wp|xargs|xprop|xz|yarn|yum|zenity|zip|zoo|zsh|zstd)\b/
 
 const RE_VARIABLE_NAME = /^[a-zA-Z\_\/\-\$][a-zA-Z\_\/\-\$#\d\-]*/
 const RE_PUNCTUATION = /^[:,;\{\}\[\]\.=\(\)<>\!\|\+\&\>\)]/
@@ -180,6 +180,8 @@ export const tokenizeLine = (line, lineState) => {
             case 'command':
             case 'compgen':
             case 'complete':
+            case 'composite':
+            case 'convert':
             case 'cp':
             case 'cryptsetup':
             case 'curl':
@@ -237,6 +239,7 @@ export const tokenizeLine = (line, lineState) => {
             case 'help':
             case 'hexdump':
             case 'history':
+            case 'icotool':
             case 'identity':
             case 'ifconfig':
             case 'install':
@@ -297,6 +300,7 @@ export const tokenizeLine = (line, lineState) => {
             case 'rm':
             case 'route':
             case 'rpm':
+            case 'rsvg-convert':
             case 'rsync':
             case 'sed':
             case 'set':
