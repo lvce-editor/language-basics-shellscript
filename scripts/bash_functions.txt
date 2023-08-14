@@ -132,6 +132,7 @@ pcmanfm
 pdftotext
 pkg
 plutil
+png2icns
 pnpm
 popd
 prezip-bin
