@@ -131,6 +131,7 @@ npm
 npx
 open
 pacman
+paste
 pcmanfm
 pdftotext
 pkg
