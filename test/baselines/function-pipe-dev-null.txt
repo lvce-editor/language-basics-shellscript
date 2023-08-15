@@ -5,7 +5,6 @@ PunctuationString
 Whitespace
 Function
 Whitespace
-Punctuation
 VariableName
 Whitespace
 VariableName
@@ -20,9 +19,8 @@ PunctuationString
 String
 PunctuationString
 Whitespace
-VariableName
+Text
 Whitespace
-Punctuation
 Punctuation
 Whitespace
 Function
