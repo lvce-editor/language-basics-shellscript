@@ -76,6 +76,7 @@ getopts
 gio
 git
 gnome-open
+go
 google-chrome
 google-chrome-beta
 grep
