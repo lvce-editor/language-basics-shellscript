@@ -28,6 +28,7 @@ const toSorted = (array) => {
     const b = sorted[i + 1]
     if (b.startsWith(a) && b.includes('-')) {
       ;[sorted[i], sorted[i + 1]] = [sorted[i + 1], sorted[i]]
+      i -= 2
     }
   }
   return sorted
