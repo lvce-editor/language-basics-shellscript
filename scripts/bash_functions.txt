@@ -135,6 +135,7 @@ pacman
 pcmanfm
 pdftotext
 pkg
+pkill
 plutil
 png2icns
 pnpm
@@ -207,6 +208,7 @@ wp
 xargs
 Xdialog
 xprop
+xunit-viewer
 xz
 yarn
 yum
