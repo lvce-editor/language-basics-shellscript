@@ -84,7 +84,7 @@ const RE_EOF_START = /^<<\s*([\w\!]+)/
 const RE_EOF_CONTENT = /.*/s
 const RE_STRING_ESCAPE = /^\\./
 const RE_BACKSLASH_AT_END = /^\\$/
-const RE_OR = /\|\|/
+const RE_OR = /^\|\|/
 
 export const initialLineState = {
   state: State.TopLevelContent,

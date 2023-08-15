@@ -1,3 +1,4 @@
+Punctuation
 Function
 Whitespace
 PunctuationString
@@ -7,5 +8,4 @@ Whitespace
 Punctuation
 Whitespace
 Function
-Whitespace
-Numeric
+Punctuation
