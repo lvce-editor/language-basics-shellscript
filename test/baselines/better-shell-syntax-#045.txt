@@ -53,7 +53,8 @@ Punctuation
 Whitespace
 VariableName
 Whitespace
-Text
+Numeric
+Punctuation
 NewLine
 Whitespace
 KeywordControl

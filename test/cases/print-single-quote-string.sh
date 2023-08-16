@@ -1,0 +1,1 @@
+print '%s\n' "$usage" || exit 1;
