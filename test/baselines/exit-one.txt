@@ -1,0 +1,4 @@
+Function
+Whitespace
+Numeric
+Punctuation

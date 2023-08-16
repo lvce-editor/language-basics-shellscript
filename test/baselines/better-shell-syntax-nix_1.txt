@@ -2274,7 +2274,8 @@ VariableName
 Whitespace
 Punctuation
 Punctuation
-Text
+Numeric
+Punctuation
 Whitespace
 VariableName
 NewLine

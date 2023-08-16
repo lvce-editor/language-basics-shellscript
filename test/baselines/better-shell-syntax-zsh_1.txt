@@ -1637,7 +1637,8 @@ VariableName
 Whitespace
 KeywordReturn
 Whitespace
-VariableName
+Numeric
+Punctuation
 Whitespace
 Punctuation
 NewLine
@@ -1678,7 +1679,8 @@ NewLine
 Whitespace
 KeywordReturn
 Whitespace
-VariableName
+Numeric
+Punctuation
 Whitespace
 Punctuation
 NewLine
@@ -1761,7 +1763,8 @@ VariableName
 Whitespace
 KeywordReturn
 Whitespace
-VariableName
+Numeric
+Punctuation
 Whitespace
 Punctuation
 NewLine
@@ -1838,7 +1841,8 @@ VariableName
 Whitespace
 KeywordReturn
 Whitespace
-VariableName
+Numeric
+Punctuation
 Whitespace
 Punctuation
 NewLine
@@ -1991,7 +1995,8 @@ VariableName
 Whitespace
 VariableName
 Punctuation
-VariableName
+Numeric
+Punctuation
 Whitespace
 VariableName
 Whitespace
@@ -2332,7 +2337,8 @@ VariableName
 Whitespace
 Punctuation
 Whitespace
-VariableName
+Numeric
+Punctuation
 Whitespace
 VariableName
 Whitespace
@@ -3257,7 +3263,8 @@ VariableName
 Whitespace
 Punctuation
 Whitespace
-VariableName
+Numeric
+Punctuation
 Whitespace
 VariableName
 Whitespace
@@ -3533,7 +3540,8 @@ PunctuationString
 String
 PunctuationString
 Whitespace
-VariableName
+Numeric
+Punctuation
 NewLine
 Whitespace
 KeywordControl
@@ -4546,7 +4554,8 @@ Punctuation
 Whitespace
 VariableName
 Punctuation
-VariableName
+Numeric
+Punctuation
 Whitespace
 VariableName
 Whitespace
@@ -7372,7 +7381,8 @@ Punctuation
 Whitespace
 VariableName
 Punctuation
-VariableName
+Numeric
+Punctuation
 Whitespace
 VariableName
 Whitespace
@@ -8979,7 +8989,8 @@ Punctuation
 Whitespace
 VariableName
 Punctuation
-VariableName
+Numeric
+Punctuation
 Whitespace
 VariableName
 Whitespace
@@ -9819,7 +9830,8 @@ Punctuation
 Whitespace
 VariableName
 Punctuation
-VariableName
+Numeric
+Punctuation
 Whitespace
 VariableName
 Whitespace
@@ -9968,7 +9980,8 @@ Punctuation
 Whitespace
 VariableName
 Punctuation
-VariableName
+Numeric
+Punctuation
 Whitespace
 VariableName
 Whitespace
@@ -10054,7 +10067,8 @@ Punctuation
 Whitespace
 VariableName
 Punctuation
-VariableName
+Numeric
+Punctuation
 Whitespace
 VariableName
 Whitespace
@@ -13583,7 +13597,8 @@ VariableName
 Whitespace
 KeywordReturn
 Whitespace
-VariableName
+Numeric
+Punctuation
 Whitespace
 Punctuation
 NewLine
@@ -13624,7 +13639,8 @@ NewLine
 Whitespace
 KeywordReturn
 Whitespace
-VariableName
+Numeric
+Punctuation
 Whitespace
 Punctuation
 NewLine
@@ -13707,7 +13723,8 @@ VariableName
 Whitespace
 KeywordReturn
 Whitespace
-VariableName
+Numeric
+Punctuation
 Whitespace
 Punctuation
 NewLine
@@ -13784,7 +13801,8 @@ VariableName
 Whitespace
 KeywordReturn
 Whitespace
-VariableName
+Numeric
+Punctuation
 Whitespace
 Punctuation
 NewLine
@@ -13937,7 +13955,8 @@ VariableName
 Whitespace
 VariableName
 Punctuation
-VariableName
+Numeric
+Punctuation
 Whitespace
 VariableName
 Whitespace
@@ -14278,7 +14297,8 @@ VariableName
 Whitespace
 Punctuation
 Whitespace
-VariableName
+Numeric
+Punctuation
 Whitespace
 VariableName
 Whitespace
@@ -15203,7 +15223,8 @@ VariableName
 Whitespace
 Punctuation
 Whitespace
-VariableName
+Numeric
+Punctuation
 Whitespace
 VariableName
 Whitespace
@@ -15479,7 +15500,8 @@ PunctuationString
 String
 PunctuationString
 Whitespace
-VariableName
+Numeric
+Punctuation
 NewLine
 Whitespace
 KeywordControl
@@ -16492,7 +16514,8 @@ Punctuation
 Whitespace
 VariableName
 Punctuation
-VariableName
+Numeric
+Punctuation
 Whitespace
 VariableName
 Whitespace
@@ -19318,7 +19341,8 @@ Punctuation
 Whitespace
 VariableName
 Punctuation
-VariableName
+Numeric
+Punctuation
 Whitespace
 VariableName
 Whitespace
@@ -20925,7 +20949,8 @@ Punctuation
 Whitespace
 VariableName
 Punctuation
-VariableName
+Numeric
+Punctuation
 Whitespace
 VariableName
 Whitespace
@@ -21764,7 +21789,8 @@ Punctuation
 Whitespace
 VariableName
 Punctuation
-VariableName
+Numeric
+Punctuation
 Whitespace
 VariableName
 Whitespace
@@ -21913,7 +21939,8 @@ Punctuation
 Whitespace
 VariableName
 Punctuation
-VariableName
+Numeric
+Punctuation
 Whitespace
 VariableName
 Whitespace
@@ -21999,7 +22026,8 @@ Punctuation
 Whitespace
 VariableName
 Punctuation
-VariableName
+Numeric
+Punctuation
 Whitespace
 VariableName
 Whitespace

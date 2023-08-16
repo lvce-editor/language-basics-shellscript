@@ -1,0 +1,16 @@
+Function
+Whitespace
+Punctuation
+String
+PunctuationString
+Whitespace
+PunctuationString
+String
+PunctuationString
+Whitespace
+Punctuation
+Whitespace
+Function
+Whitespace
+Numeric
+Punctuation
