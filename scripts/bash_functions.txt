@@ -221,3 +221,4 @@ zstd
 print
 apt
 helm
+kubectl
