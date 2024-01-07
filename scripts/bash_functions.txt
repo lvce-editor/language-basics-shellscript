@@ -220,3 +220,4 @@ zsh
 zstd
 print
 apt
+helm
