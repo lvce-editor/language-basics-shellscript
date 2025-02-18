@@ -4,6 +4,7 @@
 alias
 anacron
 apk
+apt
 apt-get
 ar
 asciidoctor
@@ -89,6 +90,7 @@ gzip
 hash
 hdiutil
 head
+helm
 help
 hexdump
 history
@@ -107,6 +109,7 @@ kfmclient
 kill
 killall
 killproc
+kubectl
 ldconfig
 less
 lha
@@ -140,8 +143,10 @@ pkill
 plutil
 png2icns
 pnpm
+pnpm
 popd
 prezip-bin
+print
 printf
 println
 ps
@@ -218,7 +223,3 @@ zip
 zoo
 zsh
 zstd
-print
-apt
-helm
-kubectl
