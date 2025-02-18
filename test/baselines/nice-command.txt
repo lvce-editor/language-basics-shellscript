@@ -1,0 +1,7 @@
+VariableName
+Whitespace
+Function
+Whitespace
+VariableName
+Whitespace
+VariableName
