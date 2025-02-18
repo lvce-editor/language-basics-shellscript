@@ -6,7 +6,7 @@ cd ..
 rm -rf .tmp
 
 REPO="https://github.com/jeff-hykin/better-shell-syntax"
-COMMIT="d92419527887233bd1f09c35217a566e4eadead3"
+COMMIT="02b319d961f1396b35981139d38c572134806cb5"
 TEST_PATH="language_examples"
 
 git clone $REPO .tmp/better-shell-syntax
