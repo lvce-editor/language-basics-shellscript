@@ -163,6 +163,7 @@ rpm
 rsvg-convert
 rsync
 sed
+sentry-cli
 set
 setfont
 sh
