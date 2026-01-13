@@ -52,5 +52,6 @@
       "firstLine": "^#!.*\\b(bash|fish|zsh|sh|ksh|dtksh|pdksh|mksh|ash|dash|yash|sh|csh|jcsh|tcsh|itcsh).*|^#\\s*-\\*-[^*]*mode:\\s*shell-script[^*]*-\\*-",
       "tokenize": "src/tokenizeShellScript.js"
     }
-  ]
+  ],
+  "repository": "https://github.com/lvce-editor/language-basics-shellscript"
 }
