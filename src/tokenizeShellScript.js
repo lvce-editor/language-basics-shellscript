@@ -82,8 +82,8 @@ const RE_URL_ARGUMENT =
 const RE_PUNCTUATION = /^[:,;\{\}\[\]\.=\(\)<>\!\|\+\&\>\)]/
 const RE_NUMERIC = /^\d+(?=\s|;|$)/
 const RE_FUNCTION_NAME = /^\w+(?=\s*\()/
-const RE_EOF_START = /^<<\s*([\w\!]+)/
-const RE_EOF_CONTENT = /.*/s
+const RE_HEREDOC_START =
+  /^<<(-?)(?!<)[ \t]*(?:'([^']+)'|"([^"]+)"|([^\s;&|()<>]+))/
 const RE_STRING_ESCAPE = /^\\./
 const RE_BACKSLASH_AT_END = /^\\$/
 const RE_OR = /^\|\|/
@@ -93,6 +93,7 @@ export const initialLineState = {
   tokens: [],
   knownFunctionNames: new Set(),
   stringEnd: '',
+  pendingHeredocs: [],
   stack: [],
 }
 
@@ -103,10 +104,41 @@ export const initialLineState = {
  * @returns
  */
 export const isEqualLineState = (lineStateA, lineStateB) => {
-  return lineStateA.state === lineStateB.state
+  return (
+    lineStateA.state === lineStateB.state &&
+    lineStateA.stringEnd === lineStateB.stringEnd &&
+    JSON.stringify(lineStateA.pendingHeredocs) ===
+      JSON.stringify(lineStateB.pendingHeredocs) &&
+    JSON.stringify(lineStateA.stack) === JSON.stringify(lineStateB.stack)
+  )
 }
 
 export const hasArrayReturn = true
+
+const getHeredocDelimiter = (match) => {
+  return match[2] || match[3] || match[4]
+}
+
+const isHeredocEnd = (line, heredoc) => {
+  if (heredoc.stripTabs) {
+    return line.replace(/^\t+/, '') === heredoc.delimiter
+  }
+  return line === heredoc.delimiter
+}
+
+const isInsideArithmeticExpression = (line, index) => {
+  const before = line.slice(0, index)
+  const arithmeticStart = Math.max(
+    before.lastIndexOf('$(('),
+    before.lastIndexOf('(('),
+  )
+  const arithmeticEnd = before.lastIndexOf('))')
+  return arithmeticStart > arithmeticEnd
+}
+
+const isHeredocStart = (line, index) => {
+  return line[index - 1] !== '<' && !isInsideArithmeticExpression(line, index)
+}
 
 /**
  * @param {string} line
@@ -119,8 +151,33 @@ export const tokenizeLine = (line, lineState) => {
   let token = TokenType.None
   let state = lineState.state
   let stringEnd = lineState.stringEnd
+  const pendingHeredocs = [...(lineState.pendingHeredocs || [])]
   const stack = [...lineState.stack]
   const knownFunctionNames = new Set(lineState.knownFunctionNames)
+  if (state === State.InsideEof && pendingHeredocs.length > 0) {
+    const heredoc = pendingHeredocs[0]
+    if (isHeredocEnd(line, heredoc)) {
+      pendingHeredocs.shift()
+      if (line.length > 0) {
+        tokens.push(TokenType.Punctuation, line.length)
+      }
+      state =
+        pendingHeredocs.length > 0 ? State.InsideEof : State.TopLevelContent
+    } else {
+      if (line.length > 0) {
+        tokens.push(TokenType.String, line.length)
+      }
+      state = State.InsideEof
+    }
+    return {
+      state,
+      tokens,
+      knownFunctionNames,
+      stringEnd,
+      pendingHeredocs,
+      stack,
+    }
+  }
   while (index < line.length) {
     const part = line.slice(index)
     switch (state) {
@@ -392,10 +449,17 @@ export const tokenizeLine = (line, lineState) => {
               token = TokenType.Keyword
               break
           }
-        } else if ((next = part.match(RE_EOF_START))) {
+        } else if (
+          (next = part.match(RE_HEREDOC_START)) &&
+          isHeredocStart(line, index)
+        ) {
           token = TokenType.Punctuation
-          state = State.InsideEof
-          stringEnd = next[1]
+          state = State.TopLevelContent
+          stringEnd = getHeredocDelimiter(next)
+          pendingHeredocs.push({
+            delimiter: stringEnd,
+            stripTabs: next[1] === '-',
+          })
         } else if ((next = part.match(RE_PUNCTUATION))) {
           token = TokenType.Punctuation
           state = State.TopLevelContent
@@ -478,17 +542,6 @@ export const tokenizeLine = (line, lineState) => {
           throw new Error('no')
         }
         break
-      case State.InsideEof:
-        if ((next = part.match(stringEnd))) {
-          token = TokenType.Punctuation
-          state = State.TopLevelContent
-        } else if ((next = part.match(RE_EOF_CONTENT))) {
-          token = TokenType.String
-          state = State.InsideEof
-        } else {
-          throw new Error('no')
-        }
-        break
       case State.AfterKeywordFunction:
         if ((next = part.match(RE_VARIABLE_NAME))) {
           token = TokenType.Function
@@ -508,10 +561,17 @@ export const tokenizeLine = (line, lineState) => {
         if ((next = part.match(RE_WHITESPACE))) {
           token = TokenType.Whitespace
           state = State.AfterFunctionName
-        } else if ((next = part.match(RE_EOF_START))) {
+        } else if (
+          (next = part.match(RE_HEREDOC_START)) &&
+          isHeredocStart(line, index)
+        ) {
           token = TokenType.Punctuation
-          state = State.InsideEof
-          stringEnd = next[1]
+          state = State.AfterFunctionName
+          stringEnd = getHeredocDelimiter(next)
+          pendingHeredocs.push({
+            delimiter: stringEnd,
+            stripTabs: next[1] === '-',
+          })
         } else if ((next = part.match(RE_OR))) {
           token = TokenType.Punctuation
           state = State.TopLevelContent
@@ -569,11 +629,15 @@ export const tokenizeLine = (line, lineState) => {
   if (state === State.AfterFunctionName) {
     state = State.TopLevelContent
   }
+  if (pendingHeredocs.length > 0 && state === State.TopLevelContent) {
+    state = State.InsideEof
+  }
   return {
     state,
     tokens,
     knownFunctionNames,
     stringEnd,
+    pendingHeredocs,
     stack,
   }
 }

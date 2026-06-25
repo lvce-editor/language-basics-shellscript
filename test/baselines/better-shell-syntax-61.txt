@@ -1,6 +1,9 @@
 Function
 Punctuation
-String
+Whitespace
+Punctuation
+Whitespace
+VariableName
 NewLine
 String
 NewLine
