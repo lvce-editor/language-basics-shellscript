@@ -1,1 +1,6 @@
-Function Function Function Function Function Function Function
+Function
+Whitespace
+VariableName
+Whitespace
+VariableName
+NewLine
