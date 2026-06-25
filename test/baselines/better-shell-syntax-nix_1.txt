@@ -5626,7 +5626,12 @@ Whitespace
 Function
 Whitespace
 Punctuation
+Whitespace
+Punctuation
+Whitespace
+PunctuationString
 String
+PunctuationString
 NewLine
 String
 NewLine
