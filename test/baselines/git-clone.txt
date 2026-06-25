@@ -3,4 +3,3 @@ Whitespace
 VariableName
 Whitespace
 VariableName
-NewLine
