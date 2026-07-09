@@ -1,6 +1,5 @@
 VariableName
 Punctuation
-VariableName
 Punctuation
 NewLine
 Whitespace
@@ -32,7 +31,6 @@ NewLine
 NewLine
 VariableName
 Punctuation
-VariableName
 Punctuation
 NewLine
 Whitespace
@@ -62,7 +60,6 @@ NewLine
 NewLine
 VariableName
 Punctuation
-VariableName
 Punctuation
 Text
 NewLine

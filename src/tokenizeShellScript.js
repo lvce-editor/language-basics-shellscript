@@ -10,6 +10,8 @@ export const State = {
   InsideEof: 6,
   AfterKeywordFunction: 7,
   AfterFunctionName: 8,
+  InsideCommandSubstitution: 9,
+  InsideParenthesis: 10,
 }
 
 export const StateMap = {
@@ -70,7 +72,7 @@ const RE_QUOTE_DOUBLE = /^"/
 const RE_ESCAPED = /^\\./
 const RE_QUOTE_SINGLE = /^'/
 const RE_QUOTE_BACKTICK = /^`/
-const RE_STRING_DOUBLE_QUOTE_CONTENT = /^[^"\\]+/
+const RE_STRING_DOUBLE_QUOTE_CONTENT = /^(?:\$\(\(|[^"\\$]|\$(?!\())+/
 const RE_STRING_SINGLE_QUOTE_CONTENT = /^[^']+/
 const RE_STRING_BACKTICK_QUOTE_CONTENT = /^[^`]+/
 const RE_KEYWORD =
@@ -87,6 +89,13 @@ const RE_HEREDOC_START =
 const RE_STRING_ESCAPE = /^\\./
 const RE_BACKSLASH_AT_END = /^\\$/
 const RE_OR = /^\|\|/
+const RE_COMMAND_SUBSTITUTION_START = /^\$\((?!\()/
+const RE_COMMAND_SUBSTITUTION_END = /^\)/
+const RE_PARENTHESIS_OPEN = /^\(/
+
+const isInsideCommandSubstitution = (stack) => {
+  return stack.includes(State.InsideCommandSubstitution)
+}
 
 export const initialLineState = {
   state: State.TopLevelContent,
@@ -460,6 +469,31 @@ export const tokenizeLine = (line, lineState) => {
             delimiter: stringEnd,
             stripTabs: next[1] === '-',
           })
+        } else if ((next = part.match(RE_COMMAND_SUBSTITUTION_START))) {
+          token = TokenType.Punctuation
+          stack.push(state, State.InsideCommandSubstitution)
+          state = State.TopLevelContent
+        } else if (
+          isInsideCommandSubstitution(stack) &&
+          (next = part.match(RE_PARENTHESIS_OPEN))
+        ) {
+          token = TokenType.Punctuation
+          stack.push(State.InsideParenthesis)
+          state = State.TopLevelContent
+        } else if (
+          stack.at(-1) === State.InsideParenthesis &&
+          (next = part.match(RE_COMMAND_SUBSTITUTION_END))
+        ) {
+          token = TokenType.Punctuation
+          stack.pop()
+          state = State.TopLevelContent
+        } else if (
+          stack.at(-1) === State.InsideCommandSubstitution &&
+          (next = part.match(RE_COMMAND_SUBSTITUTION_END))
+        ) {
+          token = TokenType.Punctuation
+          stack.pop()
+          state = stack.pop() || State.TopLevelContent
         } else if ((next = part.match(RE_PUNCTUATION))) {
           token = TokenType.Punctuation
           state = State.TopLevelContent
@@ -480,9 +514,15 @@ export const tokenizeLine = (line, lineState) => {
         } else if ((next = part.match(RE_QUOTE_DOUBLE))) {
           token = TokenType.PunctuationString
           state = State.InsideDoubleQuoteString
+          if (isInsideCommandSubstitution(stack)) {
+            stack.push(State.TopLevelContent)
+          }
         } else if ((next = part.match(RE_QUOTE_SINGLE))) {
           token = TokenType.Punctuation
           state = State.InsideSingleQuoteString
+          if (isInsideCommandSubstitution(stack)) {
+            stack.push(State.TopLevelContent)
+          }
         } else if ((next = part.match(RE_QUOTE_BACKTICK))) {
           token = TokenType.Punctuation
           state = State.InsideBackTickString
@@ -504,6 +544,10 @@ export const tokenizeLine = (line, lineState) => {
         if ((next = part.match(RE_QUOTE_DOUBLE))) {
           token = TokenType.PunctuationString
           state = stack.pop() || State.TopLevelContent
+        } else if ((next = part.match(RE_COMMAND_SUBSTITUTION_START))) {
+          token = TokenType.Punctuation
+          stack.push(state, State.InsideCommandSubstitution)
+          state = State.TopLevelContent
         } else if ((next = part.match(RE_STRING_DOUBLE_QUOTE_CONTENT))) {
           token = TokenType.String
           state = State.InsideDoubleQuoteString
@@ -572,6 +616,31 @@ export const tokenizeLine = (line, lineState) => {
             delimiter: stringEnd,
             stripTabs: next[1] === '-',
           })
+        } else if ((next = part.match(RE_COMMAND_SUBSTITUTION_START))) {
+          token = TokenType.Punctuation
+          stack.push(state, State.InsideCommandSubstitution)
+          state = State.TopLevelContent
+        } else if (
+          isInsideCommandSubstitution(stack) &&
+          (next = part.match(RE_PARENTHESIS_OPEN))
+        ) {
+          token = TokenType.Punctuation
+          stack.push(State.InsideParenthesis)
+          state = State.AfterFunctionName
+        } else if (
+          stack.at(-1) === State.InsideParenthesis &&
+          (next = part.match(RE_COMMAND_SUBSTITUTION_END))
+        ) {
+          token = TokenType.Punctuation
+          stack.pop()
+          state = State.AfterFunctionName
+        } else if (
+          stack.at(-1) === State.InsideCommandSubstitution &&
+          (next = part.match(RE_COMMAND_SUBSTITUTION_END))
+        ) {
+          token = TokenType.Punctuation
+          stack.pop()
+          state = stack.pop() || State.TopLevelContent
         } else if ((next = part.match(RE_OR))) {
           token = TokenType.Punctuation
           state = State.TopLevelContent

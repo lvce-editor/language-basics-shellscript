@@ -82,7 +82,9 @@ Whitespace
 Punctuation
 Whitespace
 PunctuationString
-String
+Punctuation
+VariableName
+Punctuation
 PunctuationString
 Whitespace
 Punctuation
@@ -208,7 +210,9 @@ Whitespace
 Punctuation
 Whitespace
 PunctuationString
-String
+Punctuation
+VariableName
+Punctuation
 PunctuationString
 Whitespace
 Punctuation
@@ -334,7 +338,9 @@ Whitespace
 Punctuation
 Whitespace
 PunctuationString
-String
+Punctuation
+VariableName
+Punctuation
 PunctuationString
 Whitespace
 Punctuation

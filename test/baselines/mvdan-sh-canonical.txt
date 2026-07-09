@@ -122,7 +122,6 @@ Punctuation
 Punctuation
 NewLine
 Whitespace
-VariableName
 Punctuation
 VariableName
 Punctuation
