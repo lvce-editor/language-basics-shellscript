@@ -29,6 +29,17 @@ NewLine
 Function
 Punctuation
 PunctuationString
+Punctuation
+Whitespace
+KeywordControl
+Whitespace
+VariableName
+Whitespace
+KeywordControl
+Whitespace
+VariableName
+Whitespace
+Punctuation
 String
 PunctuationString
 NewLine
