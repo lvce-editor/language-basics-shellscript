@@ -129,6 +129,7 @@ mktemp
 mount
 mpicc
 mv
+ncu
 node
 nohup
 npm
