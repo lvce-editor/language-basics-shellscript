@@ -81,6 +81,8 @@ const RE_KEYWORD =
 const RE_VARIABLE_NAME = /^[a-zA-Z\_\/\-\$][a-zA-Z\_\/\-\$#\d\-]*/
 const RE_URL_ARGUMENT =
   /^(?:[a-zA-Z][a-zA-Z\d+\-.]*:\/\/|[\w.-]+@[\w.-]+:)[^\s"'\\]+/
+const RE_PACKAGE_ARGUMENT =
+  /^(?:@[\w.-]+\/[\w./-]+|(?:[\w.-]+\/)+\*\/node_modules)\b/
 const RE_PUNCTUATION = /^[:,;\{\}\[\]\.=\(\)<>\!\|\+\&\>\)]/
 const RE_NUMERIC = /^\d+(?=\s|;|$)/
 const RE_FUNCTION_NAME = /^\w+(?=\s*\()/
@@ -649,6 +651,9 @@ export const tokenizeLine = (line, lineState) => {
           token = TokenType.Punctuation
           state = State.AfterFunctionName
         } else if ((next = part.match(RE_URL_ARGUMENT))) {
+          token = TokenType.VariableName
+          state = State.AfterFunctionName
+        } else if ((next = part.match(RE_PACKAGE_ARGUMENT))) {
           token = TokenType.VariableName
           state = State.AfterFunctionName
         } else if ((next = part.match(RE_VARIABLE_NAME))) {
