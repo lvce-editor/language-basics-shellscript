@@ -137,7 +137,10 @@ NewLine
 NewLine
 Function
 Whitespace
-VariableName
+Numeric
+Punctuation
+Punctuation
+Numeric
 NewLine
 Function
 Whitespace

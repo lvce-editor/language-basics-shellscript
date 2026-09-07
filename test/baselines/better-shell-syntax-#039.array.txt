@@ -224,6 +224,8 @@ String
 Punctuation
 VariableName
 Whitespace
+Numeric
+Punctuation
 VariableName
 Whitespace
 Punctuation
@@ -316,6 +318,8 @@ String
 Punctuation
 VariableName
 Whitespace
+Numeric
+Punctuation
 VariableName
 Whitespace
 Punctuation

@@ -223,7 +223,9 @@ PunctuationString
 String
 PunctuationString
 Whitespace
-Text
+Numeric
+Punctuation
+VariableName
 NewLine
 Whitespace
 KeywordReturn
