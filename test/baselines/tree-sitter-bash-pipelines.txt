@@ -4971,7 +4971,10 @@ VariableName
 Punctuation
 VariableName
 Whitespace
+Numeric
+Punctuation
 VariableName
+Punctuation
 Whitespace
 Punctuation
 Punctuation

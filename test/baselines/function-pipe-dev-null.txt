@@ -19,7 +19,9 @@ PunctuationString
 String
 PunctuationString
 Whitespace
-Text
+Numeric
+Punctuation
+VariableName
 Whitespace
 Punctuation
 Whitespace

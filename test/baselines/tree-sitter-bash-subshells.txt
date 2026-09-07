@@ -218,7 +218,10 @@ VariableName
 NewLine
 Punctuation
 Whitespace
-VariableName
+Numeric
+Punctuation
+Punctuation
+Numeric
 NewLine
 NewLine
 Function

@@ -84,7 +84,7 @@ const RE_URL_ARGUMENT =
 const RE_PACKAGE_ARGUMENT =
   /^(?:@[\w.-]+\/[\w./-]+|(?:[\w.-]+\/)+\*\/node_modules)\b/
 const RE_PUNCTUATION = /^[:,;\{\}\[\]\.=\(\)<>\!\|\+\&\>\)]/
-const RE_NUMERIC = /^\d+(?=\s|;|$)/
+const RE_NUMERIC = /^\d+(?=\s|[;<>]|$)/
 const RE_FUNCTION_NAME = /^\w+(?=\s*\()/
 const RE_HEREDOC_START =
   /^<<(-?)(?!<)[ \t]*(?:'([^']+)'|"([^"]+)"|([^\s;&|()<>]+))/
