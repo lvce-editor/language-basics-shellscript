@@ -34,6 +34,7 @@ command
 compgen
 complete
 composite
+containerd
 convert
 cp
 cryptsetup
@@ -49,6 +50,7 @@ dirname
 dirs
 disown
 docker
+dockerd
 dpkg
 dpkg-trigger
 du
