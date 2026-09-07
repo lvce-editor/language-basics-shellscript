@@ -12,7 +12,10 @@ VariableName
 Punctuation
 VariableName
 Whitespace
-Text
+Numeric
+Punctuation
+Punctuation
+Numeric
 Whitespace
 Punctuation
 NewLine
@@ -68,7 +71,10 @@ VariableName
 Punctuation
 VariableName
 Whitespace
-VariableName
+Numeric
+Punctuation
+Punctuation
+Numeric
 Whitespace
 Punctuation
 NewLine
@@ -109,7 +115,11 @@ Punctuation
 Whitespace
 VariableName
 Whitespace
-Text
+Numeric
+Punctuation
+Punctuation
+Numeric
+Punctuation
 Whitespace
 VariableName
 NewLine
