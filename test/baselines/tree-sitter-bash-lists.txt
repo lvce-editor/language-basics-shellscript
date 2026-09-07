@@ -510,7 +510,7 @@ Punctuation
 NewLine
 NewLine
 NewLine
-VariableName
+KeywordControl
 Whitespace
 VariableName
 Whitespace
