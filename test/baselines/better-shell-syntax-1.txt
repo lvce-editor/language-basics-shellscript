@@ -174,11 +174,15 @@ NewLine
 NewLine
 Function
 Whitespace
-Text
+Numeric
+Punctuation
+Punctuation
+Numeric
 NewLine
 Function
 Whitespace
-Text
+Numeric
+Punctuation
 Whitespace
 Punctuation
 Punctuation

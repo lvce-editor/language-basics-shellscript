@@ -10,6 +10,10 @@ Punctuation
 Whitespace
 VariableName
 Whitespace
-Text
+Numeric
+Punctuation
+Punctuation
+Numeric
+Punctuation
 Whitespace
 VariableName
