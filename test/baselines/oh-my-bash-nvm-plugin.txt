@@ -24,7 +24,7 @@ Whitespace
 Punctuation
 Punctuation
 Whitespace
-VariableName
+Keyword
 Whitespace
 VariableName
 Punctuation

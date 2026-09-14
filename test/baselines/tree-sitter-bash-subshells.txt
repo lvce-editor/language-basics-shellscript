@@ -943,11 +943,11 @@ Punctuation
 NewLine
 NewLine
 NewLine
-VariableName
+Keyword
 Whitespace
 VariableName
 NewLine
-VariableName
+Keyword
 Whitespace
 VariableName
 Whitespace
@@ -957,7 +957,7 @@ PunctuationString
 String
 PunctuationString
 NewLine
-VariableName
+Keyword
 Whitespace
 VariableName
 Punctuation

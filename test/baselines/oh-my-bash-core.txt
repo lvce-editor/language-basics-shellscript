@@ -1292,7 +1292,7 @@ Whitespace
 KeywordControl
 NewLine
 Whitespace
-VariableName
+Keyword
 Whitespace
 VariableName
 Punctuation
