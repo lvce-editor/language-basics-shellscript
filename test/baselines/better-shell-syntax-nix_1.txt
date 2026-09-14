@@ -5208,7 +5208,7 @@ String
 PunctuationString
 NewLine
 Whitespace
-VariableName
+Keyword
 Whitespace
 VariableName
 Punctuation
