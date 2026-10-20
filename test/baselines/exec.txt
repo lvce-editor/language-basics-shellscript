@@ -1,6 +1,6 @@
 Function
 Whitespace
 PunctuationString
-String
+VariableName
 PunctuationString
 VariableName

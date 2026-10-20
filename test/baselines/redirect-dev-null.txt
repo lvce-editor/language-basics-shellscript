@@ -33,7 +33,7 @@ NewLine
 Function
 Whitespace
 PunctuationString
-String
+VariableName
 PunctuationString
 Whitespace
 Numeric

@@ -119,7 +119,7 @@ Whitespace
 KeywordControl
 Whitespace
 PunctuationString
-String
+VariableName
 PunctuationString
 Whitespace
 KeywordControl

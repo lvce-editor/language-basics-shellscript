@@ -1,7 +1,7 @@
 Punctuation
 Whitespace
 PunctuationString
-String
+VariableName
 PunctuationString
 Whitespace
 Punctuation

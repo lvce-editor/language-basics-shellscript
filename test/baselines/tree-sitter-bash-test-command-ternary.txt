@@ -376,7 +376,7 @@ Punctuation
 Punctuation
 Whitespace
 PunctuationString
-String
+VariableName
 PunctuationString
 Whitespace
 Punctuation
@@ -389,7 +389,7 @@ Punctuation
 Punctuation
 Whitespace
 PunctuationString
-String
+VariableName
 PunctuationString
 Whitespace
 Punctuation
@@ -404,7 +404,7 @@ Punctuation
 Punctuation
 Whitespace
 PunctuationString
-String
+VariableName
 PunctuationString
 Whitespace
 Punctuation
@@ -433,7 +433,7 @@ Punctuation
 Punctuation
 Whitespace
 PunctuationString
-String
+VariableName
 PunctuationString
 Whitespace
 Punctuation
@@ -447,7 +447,7 @@ Punctuation
 Punctuation
 Whitespace
 PunctuationString
-String
+VariableName
 PunctuationString
 Whitespace
 Punctuation
@@ -483,7 +483,7 @@ Whitespace
 Numeric
 Whitespace
 PunctuationString
-String
+VariableName
 PunctuationString
 Punctuation
 Whitespace
@@ -1418,7 +1418,7 @@ Whitespace
 VariableName
 Whitespace
 PunctuationString
-String
+VariableName
 PunctuationString
 Punctuation
 Punctuation

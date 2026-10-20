@@ -11,7 +11,7 @@ Whitespace
 VariableName
 Punctuation
 PunctuationString
-String
+VariableName
 PunctuationString
 NewLine
 Whitespace
@@ -27,7 +27,7 @@ Whitespace
 VariableName
 Whitespace
 PunctuationString
-String
+VariableName
 PunctuationString
 Whitespace
 Punctuation
@@ -41,7 +41,7 @@ Whitespace
 VariableName
 Whitespace
 PunctuationString
-String
+VariableName
 PunctuationString
 Punctuation
 Whitespace
@@ -58,6 +58,7 @@ Whitespace
 VariableName
 Whitespace
 PunctuationString
+VariableName
 String
 PunctuationString
 NewLine

@@ -10,13 +10,13 @@ Whitespace
 VariableName
 Punctuation
 PunctuationString
-String
+VariableName
 PunctuationString
 Whitespace
 VariableName
 Punctuation
 PunctuationString
-String
+VariableName
 PunctuationString
 Whitespace
 Numeric
