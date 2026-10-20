@@ -808,7 +808,7 @@ Whitespace
 Function
 Whitespace
 PunctuationString
-String
+VariableName
 PunctuationString
 NewLine
 KeywordControl
@@ -954,7 +954,7 @@ NewLine
 Function
 Whitespace
 PunctuationString
-String
+VariableName
 PunctuationString
 NewLine
 KeywordControl
@@ -1051,7 +1051,7 @@ NewLine
 Function
 Whitespace
 PunctuationString
-String
+VariableName
 PunctuationString
 NewLine
 KeywordControl
@@ -3240,7 +3240,7 @@ NewLine
 KeywordControl
 Whitespace
 PunctuationString
-String
+VariableName
 PunctuationString
 Whitespace
 KeywordControl
@@ -3311,7 +3311,7 @@ NewLine
 KeywordControl
 Whitespace
 PunctuationString
-String
+VariableName
 PunctuationString
 Whitespace
 KeywordControl
@@ -3322,7 +3322,7 @@ Whitespace
 Function
 Whitespace
 PunctuationString
-String
+VariableName
 PunctuationString
 NewLine
 KeywordControl
@@ -3975,7 +3975,7 @@ Punctuation
 Punctuation
 Whitespace
 PunctuationString
-String
+VariableName
 PunctuationString
 Whitespace
 Punctuation
@@ -3992,7 +3992,7 @@ Punctuation
 VariableName
 Whitespace
 PunctuationString
-String
+VariableName
 PunctuationString
 Punctuation
 Whitespace
@@ -4043,6 +4043,7 @@ String
 PunctuationString
 Whitespace
 PunctuationString
+VariableName
 String
 Punctuation
 VariableName
@@ -4080,7 +4081,7 @@ Punctuation
 Punctuation
 Whitespace
 PunctuationString
-String
+VariableName
 PunctuationString
 Whitespace
 Punctuation
@@ -4141,6 +4142,7 @@ Whitespace
 VariableName
 Whitespace
 PunctuationString
+VariableName
 String
 PunctuationString
 Whitespace
@@ -4153,6 +4155,7 @@ Whitespace
 VariableName
 Whitespace
 PunctuationString
+VariableName
 String
 PunctuationString
 Whitespace
@@ -4180,7 +4183,7 @@ Whitespace
 VariableName
 Whitespace
 PunctuationString
-String
+VariableName
 PunctuationString
 Punctuation
 Punctuation
@@ -5334,7 +5337,7 @@ Punctuation
 Punctuation
 Whitespace
 PunctuationString
-String
+VariableName
 PunctuationString
 Whitespace
 Punctuation
@@ -5347,7 +5350,7 @@ Punctuation
 Punctuation
 Whitespace
 PunctuationString
-String
+VariableName
 PunctuationString
 Whitespace
 Punctuation
@@ -5362,7 +5365,7 @@ Punctuation
 Punctuation
 Whitespace
 PunctuationString
-String
+VariableName
 PunctuationString
 Whitespace
 Punctuation
@@ -5391,7 +5394,7 @@ Punctuation
 Punctuation
 Whitespace
 PunctuationString
-String
+VariableName
 PunctuationString
 Whitespace
 Punctuation
@@ -5405,7 +5408,7 @@ Punctuation
 Punctuation
 Whitespace
 PunctuationString
-String
+VariableName
 PunctuationString
 Whitespace
 Punctuation
@@ -5441,7 +5444,7 @@ Whitespace
 Numeric
 Whitespace
 PunctuationString
-String
+VariableName
 PunctuationString
 Punctuation
 Whitespace
@@ -6376,7 +6379,7 @@ Whitespace
 VariableName
 Whitespace
 PunctuationString
-String
+VariableName
 PunctuationString
 Punctuation
 Punctuation

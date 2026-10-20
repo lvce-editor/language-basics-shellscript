@@ -3,6 +3,7 @@ Whitespace
 VariableName
 Punctuation
 PunctuationString
+VariableName
 String
 PunctuationString
 NewLine

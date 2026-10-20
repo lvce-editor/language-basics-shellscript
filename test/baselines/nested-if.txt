@@ -5,7 +5,7 @@ Whitespace
 VariableName
 Whitespace
 PunctuationString
-String
+VariableName
 PunctuationString
 Whitespace
 Punctuation
@@ -42,7 +42,7 @@ Whitespace
 VariableName
 Whitespace
 PunctuationString
-String
+VariableName
 PunctuationString
 Whitespace
 Punctuation
@@ -52,11 +52,11 @@ KeywordControl
 NewLine
 Whitespace
 PunctuationString
-String
+VariableName
 PunctuationString
 Whitespace
 PunctuationString
-String
+VariableName
 PunctuationString
 NewLine
 Whitespace

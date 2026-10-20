@@ -128,7 +128,7 @@ Punctuation
 Punctuation
 Punctuation
 PunctuationString
-String
+VariableName
 PunctuationString
 NewLine
 NewLine

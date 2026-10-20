@@ -15,12 +15,12 @@ PunctuationString
 Whitespace
 Punctuation
 PunctuationString
-String
+VariableName
 PunctuationString
 Punctuation
 Punctuation
 PunctuationString
-String
+VariableName
 PunctuationString
 Punctuation
 NewLine

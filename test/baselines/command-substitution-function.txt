@@ -4,7 +4,7 @@ Punctuation
 Function
 Whitespace
 PunctuationString
-String
+VariableName
 PunctuationString
 Punctuation
 NewLine
@@ -15,7 +15,7 @@ Punctuation
 Function
 Whitespace
 PunctuationString
-String
+VariableName
 PunctuationString
 Punctuation
 PunctuationString

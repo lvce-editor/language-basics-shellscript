@@ -73,6 +73,8 @@ const RE_ESCAPED = /^\\./
 const RE_QUOTE_SINGLE = /^'/
 const RE_QUOTE_BACKTICK = /^`/
 const RE_STRING_DOUBLE_QUOTE_CONTENT = /^(?:\$\(\(|[^"\\$]|\$(?!\())+/
+const RE_STRING_VARIABLE =
+  /^\$(?:\{[a-zA-Z_][a-zA-Z\d_]*(?:\[[^\]\n]*\])?\}|[a-zA-Z_][a-zA-Z\d_]*|[@*#?$!0-9-])/
 const RE_STRING_SINGLE_QUOTE_CONTENT = /^[^']+/
 const RE_STRING_BACKTICK_QUOTE_CONTENT = /^[^`]+/
 const RE_KEYWORD =
@@ -554,6 +556,9 @@ export const tokenizeLine = (line, lineState) => {
           token = TokenType.Punctuation
           stack.push(state, State.InsideCommandSubstitution)
           state = State.TopLevelContent
+        } else if ((next = part.match(RE_STRING_VARIABLE))) {
+          token = TokenType.VariableName
+          state = State.InsideDoubleQuoteString
         } else if ((next = part.match(RE_STRING_DOUBLE_QUOTE_CONTENT))) {
           token = TokenType.String
           state = State.InsideDoubleQuoteString

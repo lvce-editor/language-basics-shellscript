@@ -784,7 +784,7 @@ NewLine
 Punctuation
 Punctuation
 PunctuationString
-String
+VariableName
 PunctuationString
 Whitespace
 Punctuation
@@ -805,7 +805,7 @@ String
 PunctuationString
 Whitespace
 PunctuationString
-String
+VariableName
 PunctuationString
 Punctuation
 PunctuationString
