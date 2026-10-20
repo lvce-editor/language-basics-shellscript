@@ -193,7 +193,7 @@ VariableName
 Punctuation
 Punctuation
 Whitespace
-VariableName
+Function
 Whitespace
 VariableName
 Whitespace
@@ -12477,7 +12477,7 @@ VariableName
 Punctuation
 Punctuation
 Whitespace
-VariableName
+Function
 Whitespace
 VariableName
 Whitespace
