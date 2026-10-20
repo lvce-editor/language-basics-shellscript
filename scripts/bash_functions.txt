@@ -196,6 +196,7 @@ type
 ulimit
 umask
 umask
+uname
 unalias
 unarj
 unmkinitramfs
