@@ -3058,7 +3058,7 @@ Punctuation
 Whitespace
 PunctuationString
 Punctuation
-VariableName
+Function
 Punctuation
 PunctuationString
 Whitespace

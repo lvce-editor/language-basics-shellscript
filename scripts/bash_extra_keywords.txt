@@ -7,13 +7,16 @@ done
 elif
 else
 esac
+export
 false
 fi
 for
 function
+gh
 if
 in
 let
+mapfile
 readonly
 return
 then

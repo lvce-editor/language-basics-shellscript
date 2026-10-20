@@ -505,7 +505,7 @@ NewLine
 Function
 Whitespace
 Punctuation
-VariableName
+Function
 Whitespace
 VariableName
 Punctuation
