@@ -1,4 +1,3 @@
-gh auth status
-RUN_ID="$(gh run list --repo example/repo)"
+gh release edit "$VERSION" --draft=false
 echo "gh"
 # gh

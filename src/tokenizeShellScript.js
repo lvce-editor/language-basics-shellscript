@@ -297,6 +297,7 @@ export const tokenizeLine = (line, lineState) => {
             case 'gcloud':
             case 'gdbus':
             case 'getopts':
+            case 'gh':
             case 'gio':
             case 'git':
             case 'gnome-open':
