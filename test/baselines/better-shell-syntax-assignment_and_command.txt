@@ -6,11 +6,11 @@ PunctuationString
 Whitespace
 Function
 Whitespace
-VariableName
+String
 Whitespace
-VariableName
+String
 Whitespace
-VariableName
+String
 Whitespace
 Punctuation
 Punctuation
@@ -26,7 +26,7 @@ VariableName
 Whitespace
 Function
 Whitespace
-VariableName
+String
 NewLine
 VariableName
 Punctuation
@@ -38,4 +38,4 @@ VariableName
 Whitespace
 Function
 Whitespace
-VariableName
+String

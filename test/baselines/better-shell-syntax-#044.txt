@@ -19,12 +19,12 @@ NewLine
 NewLine
 Function
 Whitespace
-VariableName
+String
 Whitespace
 Comment
 NewLine
 Function
 Whitespace
-VariableName
+String
 Whitespace
 Comment

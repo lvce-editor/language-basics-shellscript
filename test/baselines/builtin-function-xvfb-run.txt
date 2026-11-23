@@ -1,12 +1,10 @@
 Function
 Whitespace
-VariableName
+String
 Whitespace
-VariableName
+String
 Whitespace
-VariableName
-Punctuation
-VariableName
+String
 NewLine
 Function
 Whitespace

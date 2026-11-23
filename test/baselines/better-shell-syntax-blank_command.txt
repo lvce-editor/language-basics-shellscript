@@ -51,11 +51,11 @@ Whitespace
 Comment
 NewLine
 Whitespace
-VariableName
-Whitespace
 Function
 Whitespace
-VariableName
+String
+Whitespace
+String
 Whitespace
 PunctuationString
 VariableName

@@ -8,9 +8,9 @@ PunctuationString
 Whitespace
 Function
 Whitespace
-VariableName
+String
 Whitespace
-VariableName
+String
 Whitespace
 Punctuation
 Punctuation

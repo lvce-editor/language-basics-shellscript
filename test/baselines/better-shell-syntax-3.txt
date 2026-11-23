@@ -20,10 +20,10 @@ Punctuation
 Whitespace
 Function
 Whitespace
-VariableName
+String
 Whitespace
-VariableName
+String
 Whitespace
-VariableName
+String
 Whitespace
-VariableName
+String

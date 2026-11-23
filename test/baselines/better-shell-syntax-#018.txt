@@ -14,7 +14,6 @@ Punctuation
 Punctuation
 Whitespace
 Punctuation
-Punctuation
 Whitespace
 Function
 Whitespace
@@ -43,7 +42,7 @@ NewLine
 Whitespace
 Function
 Whitespace
-VariableName
+String
 NewLine
 Whitespace
 Function

@@ -1,15 +1,13 @@
 Function
 Whitespace
-VariableName
-Punctuation
+String
 PunctuationString
 String
 PunctuationString
 NewLine
 Function
 Whitespace
-VariableName
-Punctuation
+String
 PunctuationString
 String
 PunctuationString

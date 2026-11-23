@@ -20,7 +20,7 @@ NewLine
 Whitespace
 Function
 Whitespace
-VariableName
+String
 NewLine
 Punctuation
 NewLine
@@ -51,6 +51,6 @@ NewLine
 Whitespace
 Function
 Whitespace
-VariableName
+String
 NewLine
 Punctuation

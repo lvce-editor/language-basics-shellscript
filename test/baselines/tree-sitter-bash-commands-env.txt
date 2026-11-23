@@ -17,10 +17,8 @@ PunctuationString
 Whitespace
 Function
 Whitespace
-VariableName
+String
 Whitespace
-VariableName
-Punctuation
-VariableName
+String
 NewLine
 NewLine
