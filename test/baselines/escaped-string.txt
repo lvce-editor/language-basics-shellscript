@@ -1,10 +1,10 @@
 Function
 Whitespace
 VariableName
-Punctuation
-Text
-Text
-Text
-Text
+String
+String
+String
+String
+String
 Whitespace
 Comment

@@ -1,11 +1,11 @@
 Function
 Whitespace
-Text
-VariableName
+String
+String
 Whitespace
-Text
+String
 PunctuationString
 String
 PunctuationString
-Text
+String
 NewLine

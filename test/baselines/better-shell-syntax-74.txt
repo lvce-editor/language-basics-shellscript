@@ -1,11 +1,10 @@
 Comment
 NewLine
-VariableName
+Function
 Whitespace
-VariableName
+String
 Whitespace
-VariableName
-Punctuation
+String
 Punctuation
 Punctuation
 Punctuation
@@ -38,9 +37,6 @@ NewLine
 Function
 Whitespace
 VariableName
-Punctuation
-VariableName
-Punctuation
 Punctuation
 Whitespace
 Comment

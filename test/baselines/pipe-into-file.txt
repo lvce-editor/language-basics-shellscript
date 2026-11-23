@@ -3,6 +3,4 @@ Whitespace
 Numeric
 Whitespace
 Punctuation
-VariableName
-Punctuation
-VariableName
+String

@@ -16,14 +16,14 @@ PunctuationString
 VariableName
 PunctuationString
 Whitespace
-Punctuation
+String
 Whitespace
 Punctuation
 String
 PunctuationString
 Punctuation
 Whitespace
-VariableName
+KeywordControl
 NewLine
 Whitespace
 Function

@@ -15,13 +15,13 @@ Punctuation
 Punctuation
 Function
 Whitespace
-Punctuation
+String
 Whitespace
-VariableName
+String
 Whitespace
-VariableName
+String
 Whitespace
-VariableName
+String
 Punctuation
 NewLine
 Function

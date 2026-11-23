@@ -4,11 +4,11 @@ PunctuationString
 String
 PunctuationString
 NewLine
-VariableName
+Function
 Whitespace
-VariableName
+String
 Whitespace
-VariableName
+String
 NewLine
 VariableName
 Punctuation

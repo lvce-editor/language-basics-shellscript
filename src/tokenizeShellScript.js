@@ -81,18 +81,19 @@ const RE_KEYWORD =
   /^(?:7z|7za|7zr|Xdialog|alias|anacron|apk|apt-get|apt|ar|asciidoctor|awk|base64|basename|bash|bg|bind|blkid|break|brew|brotli|builtin|bunzip|bunzip2|caller|cargo|case|cat|catdoc|cd|chmod|chown|circleci|clear|cmp|command|compgen|complete|composite|containerd|continue|convert|cp|cryptsetup|curl|curl|cut|cygstart|dde-open|defaults|deno|diff|dirname|dirs|disown|do|docker|dockerd|done|done|dpkg-trigger|dpkg|du|echo|egrep|elif|else|emulate|enable|enlightenment_open|esac|eval|eval_gettext|exec|exit|export|expr|false|fc|fg|fi|find|for|free|function|fuzzponent|fzf|g\+\+|gatsby|gcc|gcloud|gdbus|getopts|gh|gio|git|gnome-open|google-chrome-beta|google-chrome|go|grep|groupadd|grub-mount|gs|gulp|gvfs-open|gzip|hash|hdiutil|head|helm|help|hexdump|history|icotool|identity|if|ifconfig|install-plugin|in|install|ip|jobs|jq|kbd_mode|kde-open|kdialog|kfmclient|kill|killall|killproc|kubectl|ldconfig|less|let|lha|ln|loadkeys|local|logout|ls|ls|lunzip|lzip|lzma|makepkg|mapfile|miniunz|miniunzip|mkdir|mktemp|mount|mpicc|mv|ncu|node|nohup|npm|npx|open|pacman|paste|pcmanfm|pdftotext|pkg|pkill|plutil|png2icns|pnpm|pnpm|popd|prezip-bin|print|printf|println|ps|pushd|pwd|python3|rar|read|readlink|readonly|realpath|return|rm|route|rpm|rsvg-convert|rsync|sed|sentry-cli|set|setfont|sh|sha256sum|shift|shopt|sleep|snap|sort|source|sponge|start-stop-daemon|stty|sudo|suspend|tail|tar|tee|test|texi2dvi|then|times|touch|trap|true|tty|tune2fs|type|ulimit|umask|umask|unalias|uname|unarj|unmkinitramfs|unmount|unrar|unset|until|unwrapdiff|unzip|unzoo|update-alternatives|update-desktop-database|update-mime-database|useradd|vim|wait|wc|wget|which|while|wp|xargs|xprop|xvfb-run|xunit-viewer|xz|yarn|yum|zenity|zip|zoo|zsh|zstd)\b/
 
 const RE_VARIABLE_NAME = /^[a-zA-Z\_\/\-\$][a-zA-Z\_\/\-\$#\d\-]*/
-const RE_URL_ARGUMENT =
-  /^(?:[a-zA-Z][a-zA-Z\d+\-.]*:\/\/|[\w.-]+@[\w.-]+:)[^\s"'\\]+/
-const RE_PACKAGE_ARGUMENT =
-  /^(?:@[\w.-]+\/[\w./-]+|(?:[\w.-]+\/)+\*\/node_modules)\b/
+const RE_UNQUOTED_ARGUMENT = /^[^\s"'\x60\\$;&|()<>{}\[\]]+/
+const RE_REDIRECTION = /^(?:&>>?|[<>]&|<>|>\|)/
+const RE_COMMAND_WITH_ARGUMENTS = /^[a-zA-Z_./][\w./+-]*(?=[ \t]+[^\s#;&|()<>])/
+const RE_COMMAND_SEPARATOR = /^(?:&&|\|\||[;&|])/
 const RE_PUNCTUATION = /^[:,;\{\}\[\]\.=\(\)<>\!\|\+\&\>\)]/
 const RE_NUMERIC = /^\d+(?=\s|[;<>]|$)/
 const RE_FUNCTION_NAME = /^\w+(?=\s*\()/
 const RE_HEREDOC_START =
   /^<<(-?)(?!<)[ \t]*(?:'([^']+)'|"([^"]+)"|([^\s;&|()<>]+))/
 const RE_STRING_ESCAPE = /^\\./
+const RE_BRACED_VARIABLE_START = /^\$\{(?:[a-zA-Z_]\w*|[0-9]+|[@*#?$!-])/
+const RE_LITERAL_DOLLAR = /^\$/
 const RE_BACKSLASH_AT_END = /^\\$/
-const RE_OR = /^\|\|/
 const RE_COMMAND_SUBSTITUTION_START = /^\$\((?!\()/
 const RE_COMMAND_SUBSTITUTION_END = /^\)/
 const RE_PARENTHESIS_OPEN = /^\(/
@@ -160,6 +161,8 @@ const isHeredocStart = (line, index) => {
 export const tokenizeLine = (line, lineState) => {
   let next = null
   let index = 0
+  let commandStart = 0
+  let continued = false
   let tokens = []
   let token = TokenType.None
   let state = lineState.state
@@ -197,6 +200,9 @@ export const tokenizeLine = (line, lineState) => {
       case State.TopLevelContent:
         if ((next = part.match(RE_WHITESPACE))) {
           token = TokenType.Whitespace
+          if (index === commandStart) {
+            commandStart += next[0].length
+          }
           state = State.TopLevelContent
         } else if ((next = part.match(RE_KEYWORD))) {
           state = State.TopLevelContent
@@ -483,6 +489,7 @@ export const tokenizeLine = (line, lineState) => {
         } else if ((next = part.match(RE_COMMAND_SUBSTITUTION_START))) {
           token = TokenType.Punctuation
           stack.push(state, State.InsideCommandSubstitution)
+          commandStart = index + next[0].length
           state = State.TopLevelContent
         } else if (
           isInsideCommandSubstitution(stack) &&
@@ -505,6 +512,16 @@ export const tokenizeLine = (line, lineState) => {
           token = TokenType.Punctuation
           stack.pop()
           state = stack.pop() || State.TopLevelContent
+        } else if ((next = part.match(RE_COMMAND_SEPARATOR))) {
+          token = TokenType.Punctuation
+          commandStart = index + next[0].length
+          state = State.TopLevelContent
+        } else if (
+          index === commandStart &&
+          (next = part.match(RE_COMMAND_WITH_ARGUMENTS))
+        ) {
+          token = TokenType.Function
+          state = State.AfterFunctionName
         } else if ((next = part.match(RE_PUNCTUATION))) {
           token = TokenType.Punctuation
           state = State.TopLevelContent
@@ -515,10 +532,11 @@ export const tokenizeLine = (line, lineState) => {
         } else if ((next = part.match(RE_VARIABLE_NAME))) {
           if (knownFunctionNames.has(next[0])) {
             token = TokenType.Function
+            state = State.AfterFunctionName
           } else {
             token = TokenType.VariableName
+            state = State.TopLevelContent
           }
-          state = State.TopLevelContent
         } else if ((next = part.match(RE_NUMERIC))) {
           token = TokenType.Numeric
           state = State.TopLevelContent
@@ -537,6 +555,7 @@ export const tokenizeLine = (line, lineState) => {
         } else if ((next = part.match(RE_QUOTE_BACKTICK))) {
           token = TokenType.Punctuation
           state = State.InsideBackTickString
+          stack.push(State.TopLevelContent)
         } else if ((next = part.match(RE_LINE_COMMENT))) {
           token = TokenType.Comment
           state = State.TopLevelContent
@@ -558,6 +577,7 @@ export const tokenizeLine = (line, lineState) => {
         } else if ((next = part.match(RE_COMMAND_SUBSTITUTION_START))) {
           token = TokenType.Punctuation
           stack.push(state, State.InsideCommandSubstitution)
+          commandStart = index + next[0].length
           state = State.TopLevelContent
         } else if ((next = part.match(RE_STRING_VARIABLE))) {
           token = TokenType.VariableName
@@ -592,7 +612,7 @@ export const tokenizeLine = (line, lineState) => {
       case State.InsideBackTickString:
         if ((next = part.match(RE_QUOTE_BACKTICK))) {
           token = TokenType.PunctuationString
-          state = State.TopLevelContent
+          state = stack.pop() || State.TopLevelContent
         } else if ((next = part.match(RE_STRING_BACKTICK_QUOTE_CONTENT))) {
           token = TokenType.String
           state = State.InsideBackTickString
@@ -633,6 +653,7 @@ export const tokenizeLine = (line, lineState) => {
         } else if ((next = part.match(RE_COMMAND_SUBSTITUTION_START))) {
           token = TokenType.Punctuation
           stack.push(state, State.InsideCommandSubstitution)
+          commandStart = index + next[0].length
           state = State.TopLevelContent
         } else if (
           isInsideCommandSubstitution(stack) &&
@@ -655,24 +676,18 @@ export const tokenizeLine = (line, lineState) => {
           token = TokenType.Punctuation
           stack.pop()
           state = stack.pop() || State.TopLevelContent
-        } else if ((next = part.match(RE_OR))) {
+        } else if ((next = part.match(RE_REDIRECTION))) {
           token = TokenType.Punctuation
+          state = State.AfterFunctionName
+        } else if ((next = part.match(RE_COMMAND_SEPARATOR))) {
+          token = TokenType.Punctuation
+          commandStart = index + next[0].length
           state = State.TopLevelContent
-        } else if ((next = part.match(RE_PUNCTUATION))) {
-          token = TokenType.Punctuation
-          state = State.AfterFunctionName
-        } else if ((next = part.match(RE_URL_ARGUMENT))) {
+        } else if (
+          (next = part.match(RE_STRING_VARIABLE)) ||
+          (next = part.match(RE_BRACED_VARIABLE_START))
+        ) {
           token = TokenType.VariableName
-          state = State.AfterFunctionName
-        } else if ((next = part.match(RE_PACKAGE_ARGUMENT))) {
-          token = TokenType.VariableName
-          state = State.AfterFunctionName
-        } else if ((next = part.match(RE_VARIABLE_NAME))) {
-          if (knownFunctionNames.has(next[0])) {
-            token = TokenType.Function
-          } else {
-            token = TokenType.VariableName
-          }
           state = State.AfterFunctionName
         } else if ((next = part.match(RE_NUMERIC))) {
           token = TokenType.Numeric
@@ -688,14 +703,22 @@ export const tokenizeLine = (line, lineState) => {
         } else if ((next = part.match(RE_QUOTE_BACKTICK))) {
           token = TokenType.Punctuation
           state = State.InsideBackTickString
+          stack.push(State.AfterFunctionName)
         } else if ((next = part.match(RE_LINE_COMMENT))) {
           token = TokenType.Comment
           state = State.TopLevelContent
-        } else if ((next = part.match(RE_ESCAPED))) {
+        } else if ((next = part.match(RE_BACKSLASH_AT_END))) {
           token = TokenType.Text
+          continued = true
+        } else if (
+          (next = part.match(RE_ESCAPED)) ||
+          (next = part.match(RE_UNQUOTED_ARGUMENT)) ||
+          (next = part.match(RE_LITERAL_DOLLAR))
+        ) {
+          token = TokenType.String
           state = State.AfterFunctionName
-        } else if ((next = part.match(RE_ANYTHING_SHORT))) {
-          token = TokenType.Text
+        } else if ((next = part.match(RE_PUNCTUATION))) {
+          token = TokenType.Punctuation
           state = State.AfterFunctionName
         } else if ((next = part.match(RE_ANYTHING))) {
           token = TokenType.Text
@@ -712,7 +735,7 @@ export const tokenizeLine = (line, lineState) => {
     index += tokenLength
     tokens.push(token, tokenLength)
   }
-  if (state === State.AfterFunctionName) {
+  if (state === State.AfterFunctionName && !continued) {
     state = State.TopLevelContent
   }
   if (pendingHeredocs.length > 0 && state === State.TopLevelContent) {

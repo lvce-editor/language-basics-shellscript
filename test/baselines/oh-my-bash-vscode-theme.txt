@@ -111,9 +111,9 @@ NewLine
 Whitespace
 Function
 Whitespace
-VariableName
+String
 Whitespace
-Function
+String
 NewLine
 Punctuation
 NewLine
